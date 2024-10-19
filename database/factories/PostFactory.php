@@ -24,9 +24,9 @@ class PostFactory extends Factory
             'author_id' => User::Factory(), //satu user satu tulisan
             //App\Models\Post::factory(100)->recycle(User::factory(5)->cretae())->create(); 
             //membuat banyak tulisan dengan 5 user
-            'category_id' => Category::Factory(),
             'slug' => Str::slug(fake()->sentence()),
-            'body' => fake()->text()
+            'body' => fake()->text(),
+            'image' => 'assets/img/default-banner-1.jpg'
         ];
     }
 }

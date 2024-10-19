@@ -59,11 +59,6 @@ Route::get('/authors/{user:username}', function (User $user) {
     return view('galeri', ['title' => count($user->posts) . ' Artikel by ' . $user->name, 'posts' => $user->posts]);
 });
 
-Route::get('/categories/{category:slug}', function (Category $category) {
-    
-    return view('galeri', ['title' => ' Articles in: ' . $category->name, 'posts' => $category->posts]);
-});
-
 Route::get('/kontak', function () {
     return view('kontak', ['title' => 'Halaman Kontak']);
 });

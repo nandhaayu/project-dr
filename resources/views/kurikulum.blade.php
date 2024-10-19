@@ -1,39 +1,41 @@
 <x-layout>
-    <x-slot:title>{{ $title }}</x-slot>
-     <!-- Section Kurikulum Tahfidz dan Kitab -->
-     <div class="mt-10">
-        <h3 class="text-2xl font-semibold text-gray-800 text-center">Kurikulum Tahfidz dan Kitab</h3>
-        <p class="mt-4 text-gray-600 text-center">
-          Pondok Pesantren Darruh Rahmah memiliki kurikulum khusus yang memadukan hafalan Al-Qur'an (Tahfidz) dengan pengajaran kitab-kitab klasik (kitab kuning) untuk memperdalam pemahaman santri terhadap ajaran Islam yang menyeluruh.
-        </p>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-          <!-- Kurikulum Tahfidz -->
-          <div class="bg-white p-6 rounded-lg shadow-lg">
-            <h4 class="text-xl font-semibold text-gray-800">Program Tahfidz Al-Qur'an</h4>
-            <p class="mt-4 text-gray-600">
-              Program Tahfidz kami bertujuan untuk membimbing santri dalam menghafal Al-Qur'an 30 juz dengan bimbingan intensif. Selain hafalan, santri juga dibekali dengan pemahaman tafsir dan tajwid yang mendalam, agar mereka dapat mengamalkan Al-Qur'an dengan benar.
+  <section class="py-12 bg-gray-100">
+    <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">Kurikulum Tahfidz dan Kajian Kitab</h1>
+            <p class="text-gray-700 leading-relaxed">
+                Pondok Pesantren Darruh Rahmah memfokuskan kurikulumnya pada dua aspek utama, yaitu program Tahfidzul Qur'an dan pembelajaran Kitab Kuning. Kedua program ini bertujuan membentuk santri yang hafidz Al-Qur'an serta memiliki pemahaman agama yang mendalam melalui kajian kitab-kitab klasik.
             </p>
-            <ul class="mt-4 text-gray-600 list-disc list-inside">
-              <li>Target Hafalan 30 Juz</li>
-              <li>Bimbingan Harian oleh Ustadz/Ustadzah</li>
-              <li>Pelajaran Tafsir dan Tajwid</li>
-              <li>Program Muraja'ah (pengulangan hafalan)</li>
-            </ul>
-          </div>
-
-          <!-- Kurikulum Kitab -->
-          <div class="bg-white p-6 rounded-lg shadow-lg">
-            <h4 class="text-xl font-semibold text-gray-800">Pengajaran Kitab Kuning</h4>
-            <p class="mt-4 text-gray-600">
-              Kami juga menyediakan pengajaran kitab kuning yang membahas berbagai bidang ilmu agama seperti fiqh, aqidah, akhlak, dan hadits. Santri diajarkan untuk memahami teks klasik ini dengan metode yang sistematis sehingga dapat mengembangkan wawasan keislaman mereka.
-            </p>
-            <ul class="mt-4 text-gray-600 list-disc list-inside">
-              <li>Pelajaran Fiqh, Aqidah, dan Akhlak</li>
-              <li>Kitab-kitab Karya Ulama Klasik</li>
-              <li>Diskusi dan Studi Kritis</li>
-              <li>Bimbingan oleh Para Kyai dan Ustadz Senior</li>
-            </ul>
-          </div>
         </div>
-      </div>
+
+        <!-- Grid untuk Program Tahfidz dan Kajian Kitab -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            
+            <!-- Program Tahfidz -->
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <img src="assets/img/banner-tahfidz.jpg" alt="Program Tahfidz" class="w-full h-auto rounded-lg mb-6">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Program Tahfidz Al-Qur'an</h2>
+                <p class="text-gray-700 leading-relaxed">
+                    Program Tahfidz Pondok Pesantren Darruh Rahmah bertujuan mencetak santri yang mampu menghafal Al-Qur'an 30 juz dengan pemahaman tajwid dan makhraj yang benar. Santri diberikan bimbingan intensif oleh para ustadz yang berkompeten, memastikan setiap santri dapat mencapai target hafalan sesuai dengan kemampuan mereka.
+                </p>
+                <p class="mt-4 text-gray-700 leading-relaxed">
+                    Metode yang digunakan dalam program ini meliputi tasmi' (memperdengarkan hafalan), muraja'ah (mengulang hafalan), dan tafsir Al-Qur'an agar santri tidak hanya hafal, tetapi juga memahami isi kandungan Al-Qur'an.
+                </p>
+            </div>
+
+            <!-- Kajian Kitab Kuning -->
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <img src="assets/img/banner-kitab.jpg" alt="Kajian Kitab Kuning" class="w-full h-auto rounded-lg mb-6">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Kajian Kitab Kuning</h2>
+                <p class="text-gray-700 leading-relaxed">
+                    Kajian Kitab Kuning merupakan salah satu program unggulan di Pondok Pesantren Darruh Rahmah. Santri mempelajari berbagai kitab klasik karya ulama salaf, mencakup ilmu fiqih, aqidah, tasawuf, nahwu, dan sharaf. Program ini bertujuan membekali santri dengan pengetahuan agama yang mendalam dan kemampuan untuk memahami teks-teks keislaman dengan baik.
+                </p>
+                <p class="mt-4 text-gray-700 leading-relaxed">
+                    Kitab-kitab yang diajarkan antara lain seperti "Fathul Mu'in" dalam bidang fiqih, "Al-Aqidah Al-Tahawiyyah" dalam aqidah, dan "Talimul Mutaallim" yang menjadi panduan adab menuntut ilmu. Kajian ini diajarkan secara bertahap sesuai dengan tingkat pemahaman santri.
+                </p>
+            </div>
+            
+        </div>
+    </div>
+  </section>
 </x-layout>
