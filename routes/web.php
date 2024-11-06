@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
@@ -7,6 +9,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 
 
+//ROUTE FRONTEND
 
 Route::get('/', function () {
     return view('home', ['title' => 'Beranda']);
@@ -65,4 +68,17 @@ Route::get('/kontak', function () {
 
 Route::get('/beranda', function () {
     return view('beranda');
+});
+
+
+Route::get('/registrasi', [AuthController::class, 'tampilRegistrasi'])->name('registrasi.tampil');
+Route::post('/registrasi/submit', [AuthController::class, 'submitRegistrasi'])->name('registrasi.submit');
+Route::get('/login', [AuthController::class, 'tampilLogin'])->name('login');
+Route::post('/login/submit', [AuthController::class, 'submitLogin'])->name('login.submit');
+
+//ROUTE BACKEND
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard',[DashboardController::class, 'dashboard'])->name('dashboard');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
 });

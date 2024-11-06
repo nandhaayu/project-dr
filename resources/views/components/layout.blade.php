@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     @vite('resources/css/app.css')
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <title>PDR</title>
+    <title>PONPES DAARUR RAHMAH</title>
+    <link rel="icon" href="assets/img/logo-PPDR.png" type="image/png" />
     <link href="assets/css/fontawesome/css/fontawesome.css" rel="stylesheet" />
     <link href="assets/css/fontawesome/css/brands.css" rel="stylesheet" />
     <link href="assets/css/fontawesome/css/solid.css" rel="stylesheet" />

@@ -12,7 +12,6 @@
       <!-- Slide 3 -->
       <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0" id="slide3">
         <img src="assets/img/banner-1.jpg" alt="Slide 3" class="w-full h-full object-cover">
-        {{-- <img src="https://via.placeholder.com/1920x1080/32CD32/FFFFFF?text=Slide+3" alt="Slide 3" class="w-full h-full object-cover"> --}}
       </div>
     </div>
   
