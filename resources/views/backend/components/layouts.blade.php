@@ -15,15 +15,28 @@
 <body>
   <!--  Body Wrapper -->
   <main>
-    @yield('content')
+    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
+      <!--  Aside Start -->
+      @include('backend.components.aside')
+      <!--  Aside End -->
+      <!--  Main wrapper -->
+      <div class="body-wrapper">
+        <!--  Header Start -->
+        @include('backend.components.header')
+        <!--  Header End -->
+        <!--  Content Start -->
+        @yield('content')
+        <!--  Content End -->
+      </div>
+    </div>
   </main>
   <script src="backend/libs/jquery/dist/jquery.min.js"></script>
   <script src="backend/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="backend/js/sidebarmenu.js"></script>
-  <script src="/backend/js/app.min.js"></script>
-  <script src="/backend/libs/apexcharts/dist/apexcharts.min.js"></script>
-  <script src="/backend/libs/simplebar/dist/simplebar.js"></script>
-  <script src="/backend/js/dashboard.js"></script>
+  <script src="backend/js/app.min.js"></script>
+  <script src="backend/libs/apexcharts/dist/apexcharts.min.js"></script>
+  <script src="backend/libs/simplebar/dist/simplebar.js"></script>
+  <script src="backend/js/dashboard.js"></script>
 </body>
 
 </html>

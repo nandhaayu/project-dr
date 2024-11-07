@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProfilController;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
@@ -80,5 +81,8 @@ Route::post('/login/submit', [AuthController::class, 'submitLogin'])->name('logi
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard',[DashboardController::class, 'dashboard'])->name('dashboard');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/profilAdmin', [ProfilController::class, 'profilAdmin'])->name('profil.admin');
+    Route::get('/profilAdmin/create', [ProfilController::class, 'create'])->name('profil.create');
+    Route::get('/profilAdmin/edit', [ProfilController::class, 'edit'])->name('profil.edit');
 
 });

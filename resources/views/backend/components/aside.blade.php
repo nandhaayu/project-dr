@@ -39,8 +39,8 @@
             <!-- Dropdown Sub-Menu -->
             <ul class="sidebar-submenu hidden group-hover:block ml-6 mt-2 space-y-2">
                 <li>
-                    <a href="./visi-misi.html" class="sidebar-link text-sm text-gray-600 hover:text-green-700">
-                        Visi & Misi
+                    <a href="{{ route('profil.admin') }}" class="sidebar-link text-sm text-gray-600 hover:text-green-700">
+                        Profil
                     </a>
                 </li>
                 <li>
