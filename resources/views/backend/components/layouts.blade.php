@@ -8,8 +8,9 @@
   @vite('resources/css/app.css')
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <title>PONPES DAARUR RAHMAH</title>
-  <link rel="shortcut icon" type="image/png" href="assets/img/logo-PPDR.png" />
-  <link rel="stylesheet" href="backend/css/styles.min.css" />
+  <link rel="shortcut icon" type="image/png" href="{{ asset('assets/img/logo.png') }}"/>
+  <link rel="stylesheet" href="/backend/css/styles.min.css" />
+  <link rel="stylesheet" href="/backend/summernote/summernote.min.css">
 </head>
 
 <body>
@@ -30,13 +31,19 @@
       </div>
     </div>
   </main>
-  <script src="backend/libs/jquery/dist/jquery.min.js"></script>
-  <script src="backend/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="backend/js/sidebarmenu.js"></script>
-  <script src="backend/js/app.min.js"></script>
-  <script src="backend/libs/apexcharts/dist/apexcharts.min.js"></script>
-  <script src="backend/libs/simplebar/dist/simplebar.js"></script>
-  <script src="backend/js/dashboard.js"></script>
+  <script src="/backend/libs/jquery/dist/jquery.min.js"></script>
+  <script src="/backend/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/backend/js/sidebarmenu.js"></script>
+  <script src="/backend/js/app.min.js"></script>
+  <script src="/backend/libs/apexcharts/dist/apexcharts.min.js"></script>
+  <script src="/backend/libs/simplebar/dist/simplebar.js"></script>
+  <script src="/backend/js/dashboard.js"></script>
+  <script src="/backend/summernote/summernote.min.js"></script>
+  <script>
+    $(document).ready(function() {
+        $('#summernote').summernote();
+    });
+  </script>
 </body>
 
 </html>

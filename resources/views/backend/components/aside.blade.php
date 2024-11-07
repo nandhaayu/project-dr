@@ -2,9 +2,9 @@
     <!-- Sidebar scroll-->
     <div>
       <div class="brand-logo d-flex align-items-center justify-content-between">
-        <a href="./index.html" class="text-nowrap logo-img">
+        <a href="{{ route('dashboard') }}" class="text-nowrap logo-img">
             <div class="d-flex align-items-center">
-                <img src="backend/images/logos/logo.png" width="50" alt="Logo" />
+                <img src="{{ asset('assets/img/logo.png') }}" width="50" alt="Logo" />
                 <p class="mb-0 ms-2 text-green-700 font-bold text-xl">PONPES-DR</p>
             </div>            
         </a>

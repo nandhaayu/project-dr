@@ -83,6 +83,5 @@ Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/profilAdmin', [ProfilController::class, 'profilAdmin'])->name('profil.admin');
     Route::get('/profilAdmin/create', [ProfilController::class, 'create'])->name('profil.create');
-    Route::get('/profilAdmin/edit', [ProfilController::class, 'edit'])->name('profil.edit');
-
+    Route::post('/profilAdmin/store', [ProfilController::class, 'store'])->name('profil.store');
 });

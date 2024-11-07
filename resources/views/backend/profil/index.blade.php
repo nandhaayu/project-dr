@@ -20,15 +20,9 @@
             <tr>
               <td>{{ $d->judul }}</td>
               <td>
-                @empty($d->foto)
-                  <img src="{{url('assets/img/logo-PPDR.png')}}"
-                    alt="project-image" class="rounded" style="width: 100%; max-width: 100px; height: auto;">
-                  @else
-                  <img src="{{url('assets/img/logo.png')}}/{{$d->foto}}"
-                    alt="project-image" class="rounded" style="width: 100%; max-width: 100px; height: auto;">
-                @endempty
+                <img src="{{ asset('assets/images/' . $d->foto) }}" alt="project-image" class="rounded" style="width: 100%; max-width: 100px; height: auto;">
               </td>
-              <td>{{ $d->deskripsi }}</td>
+              <td>{!! $d->deskripsi !!}</td>
               <td>
                 <a href="#" class="btn btn-warning btn-sm">Edit</a>
                 <form action="#" method="POST" style="display:inline;">
