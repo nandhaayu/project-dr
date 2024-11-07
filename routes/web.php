@@ -84,4 +84,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profilAdmin', [ProfilController::class, 'profilAdmin'])->name('profil.admin');
     Route::get('/profilAdmin/create', [ProfilController::class, 'create'])->name('profil.create');
     Route::post('/profilAdmin/store', [ProfilController::class, 'store'])->name('profil.store');
+    Route::get('/profilAdmin/edit/{id}', [ProfilController::class, 'edit'])->name('profil.edit');
+    Route::put('/profilAdmin/update/{id}', [ProfilController::class, 'update'])->name('profil.update');
+    Route::delete('/profilAdmin/delete/{id}', [ProfilController::class, 'destroy'])->name('profil.destroy');
 });
