@@ -44,8 +44,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="./sejarah.html" class="sidebar-link text-sm text-gray-600 hover:text-green-700">
-                        Sejarah
+                    <a href="{{ route('kurikulum.admin') }}" class="sidebar-link text-sm text-gray-600 hover:text-green-700">
+                        Kurikulum
                     </a>
                 </li>
                 <li>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KurikulumController;
 use App\Http\Controllers\ProfilController;
 use App\Models\Category;
 use App\Models\Post;
@@ -87,4 +88,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/profilAdmin/edit/{id}', [ProfilController::class, 'edit'])->name('profil.edit');
     Route::put('/profilAdmin/update/{id}', [ProfilController::class, 'update'])->name('profil.update');
     Route::delete('/profilAdmin/delete/{id}', [ProfilController::class, 'destroy'])->name('profil.destroy');
+    Route::get('/kurikulumAdmin', [KurikulumController::class, 'kurikulumAdmin'])->name('kurikulum.admin');
+    Route::get('/kurikulumAdmin/create', [KurikulumController::class, 'create'])->name('kurikulum.create');
+    Route::post('/kurikulumAdmin/store', [KurikulumController::class, 'store'])->name('kurikulum.store');
+    Route::get('/kurikulumAdmin/edit/{id}', [KurikulumController::class, 'edit'])->name('kurikulum.edit');
+    Route::put('/kurikulumAdmin/update/{id}', [KurikulumController::class, 'update'])->name('kurikulum.update');
+    Route::delete('/kurikulumAdmin/delete/{id}', [KurikulumController::class, 'destroy'])->name('kurikulum.destroy');
 });

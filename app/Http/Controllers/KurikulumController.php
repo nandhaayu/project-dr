@@ -2,20 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Profil;
+use App\Models\Kurikulum;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class ProfilController extends Controller
+class KurikulumController extends Controller
 {
-
-    function profilAdmin () {
-        $profil = Profil::first();
-        return view('backend.profil.index', compact('profil'));
+    function kurikulumAdmin () {
+        $kurikulum = Kurikulum::all();
+        return view('backend.kurikulum.index', compact('kurikulum'));
     }
 
     function create () {
-        return view('backend.profil.create');
+        return view('backend.kurikulum.create');
     }
 
     public function store(Request $request)
@@ -46,17 +45,17 @@ class ProfilController extends Controller
         }
         
         //tambah data produk
-        DB::table('profils')->insert([
+        DB::table('kurikulums')->insert([
             'judul'=>$request->judul,
             'deskripsi' => $request->deskripsi,
             'foto'=>$fileName,
         ]);
         
-        return redirect()->route('profil.admin');
+        return redirect()->route('kurikulum.admin');
     }
 
-    public function edit(Profil $id) {
-        return view('backend.profil.edit', compact('id'));
+    public function edit(Kurikulum $id) {
+        return view('backend.kurikulum.edit', compact('id'));
     }
 
     public function update(Request $request, string $id) {
@@ -74,7 +73,7 @@ class ProfilController extends Controller
         ]);
 
         //foto lama
-        $fotoLama = DB::table('profils')->select('foto')->where('id',$id)->get();
+        $fotoLama = DB::table('kurikulums')->select('foto')->where('id',$id)->get();
         foreach($fotoLama as $f1){
             $fotoLama = $f1->foto;
         }
@@ -92,17 +91,17 @@ class ProfilController extends Controller
         }
     
         //update data produk
-        DB::table('profils')->where('id',$id)->update([
+        DB::table('kurikulums')->where('id',$id)->update([
             'judul'=>$request->judul,
             'deskripsi' => $request->deskripsi,
             'foto'=>$fileName,
         ]);
                 
-        return redirect()->route('profil.admin');
+        return redirect()->route('kurikulum.admin');
     }
 
-    public function destroy(Profil $id) {
+    public function destroy(kurikulum $id) {
         $id->delete();
-        return redirect()->route('profil.admin')->with('succes', 'Data berhasil dihapus');
+        return redirect()->route('kurikulum.admin')->with('succes', 'Data berhasil dihapus');
     }
 }
