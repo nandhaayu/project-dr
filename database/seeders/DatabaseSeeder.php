@@ -14,10 +14,11 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call(ProfilSeeder::class);
+        $this->call(KurikulumSeeder::class);
         User::factory()->create([
-            'name' => 'Admin',
-            'username' => 'Admin',
-            'email' => 'Admin@example.com',
+            'name' => 'admin',
+            'username' => 'admin',
+            'email' => 'admin@example.com',
             'password' => '12345678',
         ]);
     }

@@ -1,21 +1,16 @@
 <x-layout>
-    <x-slot:title>{{ $title }}</x-slot>
     <section class="py-12 bg-gray-100">
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex flex-col lg:flex-row gap-8">
                 <!-- Left: Gambar dan Deskripsi -->
                 <div class="lg:w-2/3 bg-white p-6 rounded-lg shadow-lg">
-                    <img src="assets/img/banner-1.jpg" alt="Foto Pondok Pesantren Darruh Rahmah" class="w-full h-auto rounded-lg mb-6">
-                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Tentang Pondok Pesantren Darruh Rahmah</h2>
+                    @foreach ($profil as $d)
+                    <img src="{{ asset('assets/images/'. $d->foto) }}" alt="Foto Pondok Pesantren Darruh Rahmah" class="w-full h-auto rounded-lg mb-6">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">{{ $d->judul }}</h2>
                     <p class="text-gray-700 leading-relaxed">
-                        Pondok Pesantren Darruh Rahmah merupakan lembaga pendidikan Islam yang berfokus pada pengembangan ilmu agama, hafalan Al-Qur'an, dan kajian kitab kuning. Dengan suasana yang sejuk dan asri, pondok ini menyediakan lingkungan yang kondusif untuk belajar dan beribadah.
+                        {!! $d->deskripsi !!}
                     </p>
-                    <p class="mt-4 text-gray-700 leading-relaxed">
-                        Darruh Rahmah didirikan pada tahun 1990 dengan tujuan mencetak generasi yang berakhlak mulia, hafidz Al-Qur'an, dan berpengetahuan luas. Berbagai program unggulan seperti Tahfidzul Qur'an, kajian Kitab Kuning, dan kegiatan ekstrakurikuler disiapkan untuk para santri agar seimbang dalam ilmu, ibadah, dan kehidupan sosial.
-                    </p>
-                    <p class="mt-4 text-gray-700 leading-relaxed">
-                        Selain pendidikan agama, santri juga mendapatkan ilmu umum yang terintegrasi, mempersiapkan mereka untuk menghadapi tantangan masa depan dengan pondasi akhlak dan ilmu yang kuat.
-                    </p>
+                    @endforeach
                 </div>
 
                 <!-- Right: Berita Terbaru -->

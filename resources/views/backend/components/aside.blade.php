@@ -49,8 +49,8 @@
                     </a>
                 </li>
                 <li>
-                    <a href="./struktur-organisasi.html" class="sidebar-link text-sm text-gray-600 hover:text-green-700">
-                        Struktur Organisasi
+                    <a href="{{ route('rutinitas.admin') }}" class="sidebar-link text-sm text-gray-600 hover:text-green-700">
+                        Rutinitas Kegiatan
                     </a>
                 </li>
             </ul>

@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KurikulumController;
 use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\RutinitasController;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
@@ -17,21 +19,9 @@ Route::get('/', function () {
     return view('home', ['title' => 'Beranda']);
 });
 
-Route::get('/kami', function () {
-    return view('kami', ['title' => 'Halaman Kami']);
-});
-
-Route::get('/profil', function () {
-    return view('profil', ['title' => 'Profil']);
-});
-
-Route::get('/kurikulum', function () {
-    return view('kurikulum', ['title' => 'Kurikulum']);
-});
-
-Route::get('/rutinitas', function () {
-    return view('rutinitas', ['title' => 'Jadwal Kegiatan']);
-});
+Route::get('/profil',[HomeController::class, 'profil'])->name('profil');
+Route::get('/kurikulum',[HomeController::class, 'kurikulum'])->name('kurikulum');
+Route::get('/rutinitas',[HomeController::class, 'rutinitas'])->name('rutinitas');
 
 Route::get('/syaikhuna', function () {
     return view('syaikhuna', ['title' => 'Halaman Syaikhuna']);
@@ -53,8 +43,6 @@ Route::get('/galeri', function () {
 // });
 
 Route::get('/posts/{post:slug}', function (Post $post) {
-
-    // $post = Post::find($slug);
     
     return view('galeriSingle', ['title' => 'Single Post', 'post' => $post]);
 });
@@ -94,4 +82,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/kurikulumAdmin/edit/{id}', [KurikulumController::class, 'edit'])->name('kurikulum.edit');
     Route::put('/kurikulumAdmin/update/{id}', [KurikulumController::class, 'update'])->name('kurikulum.update');
     Route::delete('/kurikulumAdmin/delete/{id}', [KurikulumController::class, 'destroy'])->name('kurikulum.destroy');
+    Route::get('/rutinitasAdmin', [RutinitasController::class, 'rutinitasAdmin'])->name('rutinitas.admin');
+    Route::get('/rutinitasAdmin/create', [RutinitasController::class, 'create'])->name('rutinitas.create');
+    Route::post('/rutinitasAdmin/store', [RutinitasController::class, 'store'])->name('rutinitas.store');
+    Route::get('/rutinitasAdmin/edit/{id}', [RutinitasController::class, 'edit'])->name('rutinitas.edit');
+    Route::put('/rutinitasAdmin/update/{id}', [RutinitasController::class, 'update'])->name('rutinitas.update');
+    Route::delete('/rutinitasAdmin/delete/{id}', [RutinitasController::class, 'destroy'])->name('rutinitas.destroy');
 });
