@@ -54,7 +54,15 @@
                     </a>
                 </li>
             </ul>
-        </li>        
+          </li>     
+          <li class="sidebar-item">
+            <a class="sidebar-link" href="{{ route('syaikhuna.admin') }}" aria-expanded="false">
+              <span>
+                <i class="ti ti-layout-dashboard"></i>
+              </span>
+              <span class="hide-menu">Syaikhuna</span>
+            </a>
+          </li>   
       </nav>
       <!-- End Sidebar navigation -->
     </div>

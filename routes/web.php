@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KurikulumController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\RutinitasController;
+use App\Http\Controllers\SyaikhunaController;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
@@ -22,10 +23,8 @@ Route::get('/', function () {
 Route::get('/profil',[HomeController::class, 'profil'])->name('profil');
 Route::get('/kurikulum',[HomeController::class, 'kurikulum'])->name('kurikulum');
 Route::get('/rutinitas',[HomeController::class, 'rutinitas'])->name('rutinitas');
+Route::get('/syaikhuna',[HomeController::class, 'syaikhuna'])->name('syaikhuna');
 
-Route::get('/syaikhuna', function () {
-    return view('syaikhuna', ['title' => 'Halaman Syaikhuna']);
-});
 
 Route::get('/pendaftaran', function () {
     return view('pendaftaran', ['title' => 'Halaman Pendaftaran']);
@@ -88,4 +87,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/rutinitasAdmin/edit/{id}', [RutinitasController::class, 'edit'])->name('rutinitas.edit');
     Route::put('/rutinitasAdmin/update/{id}', [RutinitasController::class, 'update'])->name('rutinitas.update');
     Route::delete('/rutinitasAdmin/delete/{id}', [RutinitasController::class, 'destroy'])->name('rutinitas.destroy');
+    Route::get('/syaikhunaAdmin', [SyaikhunaController::class, 'syaikhunaAdmin'])->name('syaikhuna.admin');
+    Route::get('/syaikhunaAdmin/create', [SyaikhunaController::class, 'create'])->name('syaikhuna.create');
+    Route::post('/syaikhunaAdmin/store', [SyaikhunaController::class, 'store'])->name('syaikhuna.store');
+    Route::get('/syaikhunaAdmin/edit/{id}', [SyaikhunaController::class, 'edit'])->name('syaikhuna.edit');
+    Route::put('/syaikhunaAdmin/update/{id}', [SyaikhunaController::class, 'update'])->name('syaikhuna.update');
+    Route::delete('/syaikhunaAdmin/delete/{id}', [SyaikhunaController::class, 'destroy'])->name('syaikhuna.destroy');
 });

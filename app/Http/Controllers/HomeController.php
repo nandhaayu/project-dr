@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Kurikulum;
 use App\Models\Profil;
 use App\Models\Rutinitas;
+use App\Models\Syaikhuna;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -20,5 +21,9 @@ class HomeController extends Controller
     public function rutinitas () {
         $rutinitas = Rutinitas::all();
         return view('rutinitas', compact('rutinitas'));
+    }
+    public function syaikhuna () {
+        $syaikhuna = Syaikhuna::all();
+        return view('syaikhuna', compact('syaikhuna'));
     }
 }
