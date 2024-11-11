@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KurikulumController;
+use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\RutinitasController;
 use App\Http\Controllers\SyaikhunaController;
@@ -24,11 +25,8 @@ Route::get('/profil',[HomeController::class, 'profil'])->name('profil');
 Route::get('/kurikulum',[HomeController::class, 'kurikulum'])->name('kurikulum');
 Route::get('/rutinitas',[HomeController::class, 'rutinitas'])->name('rutinitas');
 Route::get('/syaikhuna',[HomeController::class, 'syaikhuna'])->name('syaikhuna');
-
-
-Route::get('/pendaftaran', function () {
-    return view('pendaftaran', ['title' => 'Halaman Pendaftaran']);
-});
+Route::get('/pendaftaran',[HomeController::class, 'pendaftaran'])->name('pendaftaran');
+Route::get('/pendaftaranAdmin/{file}/download', [HomeController::class, 'download'])->name('pendaftaran.download');
 
 Route::get('/galeri', function () {
     return view('galeri', ['title' => 'Halaman Galeri', 'posts' => Post::all()]);
@@ -93,4 +91,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/syaikhunaAdmin/edit/{id}', [SyaikhunaController::class, 'edit'])->name('syaikhuna.edit');
     Route::put('/syaikhunaAdmin/update/{id}', [SyaikhunaController::class, 'update'])->name('syaikhuna.update');
     Route::delete('/syaikhunaAdmin/delete/{id}', [SyaikhunaController::class, 'destroy'])->name('syaikhuna.destroy');
+    Route::get('/pendaftaranAdmin', [PendaftaranController::class, 'pendaftaranAdmin'])->name('pendaftaran.admin');
+    Route::get('/pendaftaranAdmin/create', [PendaftaranController::class, 'create'])->name('pendaftaran.create');
+    Route::post('/pendaftaranAdmin/store', [PendaftaranController::class, 'store'])->name('pendaftaran.store');
+    Route::get('/pendaftaranAdmin/edit/{id}', [PendaftaranController::class, 'edit'])->name('pendaftaran.edit');
+    Route::put('/pendaftaranAdmin/update/{id}', [PendaftaranController::class, 'update'])->name('pendaftaran.update');
+    Route::delete('/pendaftaranAdmin/delete/{id}', [PendaftaranController::class, 'destroy'])->name('pendaftaran.destroy');
 });

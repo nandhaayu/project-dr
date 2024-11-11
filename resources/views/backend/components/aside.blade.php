@@ -63,6 +63,14 @@
               <span class="hide-menu">Syaikhuna</span>
             </a>
           </li>   
+          <li class="sidebar-item">
+            <a class="sidebar-link" href="{{ route('pendaftaran.admin') }}" aria-expanded="false">
+              <span>
+                <i class="ti ti-layout-dashboard"></i>
+              </span>
+              <span class="hide-menu">Pendaftaran</span>
+            </a>
+          </li>   
       </nav>
       <!-- End Sidebar navigation -->
     </div>

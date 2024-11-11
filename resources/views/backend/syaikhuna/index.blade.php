@@ -3,7 +3,7 @@
 <div class="container-fluid">
   <div class="card">
     <div class="card-body">
-      <h5 class="card-title fw-semibold mb-4">syaikhuna</h5>
+      <h5 class="card-title fw-semibold mb-4">Syaikhuna</h5>
         @if(!$syaikhuna) <!-- Jika syaikhuna tidak ada, tampilkan tombol -->
           <a href="{{ route('syaikhuna.create') }}" class="bg-green-600 mb-2 px-2 py-2 rounded-lg text-white hover:bg-green-700">+ Tambah Data</a>
         @endif
