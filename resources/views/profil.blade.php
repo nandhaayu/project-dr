@@ -18,34 +18,16 @@
                     <h3 class="text-2xl font-semibold text-gray-900 mb-4">Berita Terbaru</h3>
                     <div class="space-y-6">
                         <!-- Berita 1 -->
+                        @foreach ($posts as $d)
                         <div class="bg-white p-4 rounded-lg shadow-lg">
-                            <img src="assets/img/banner-1.jpg" alt="Berita 1" class="w-full h-32 object-cover rounded-lg mb-3">
-                            <h4 class="text-xl font-semibold text-gray-800">Kegiatan Haflah Akhir Tahun</h4>
+                            <img src="{{ asset('assets/images/' . $d->image) }}" alt="Berita 1" class="w-full h-32 object-cover rounded-lg mb-3">
+                            <h4 class="text-xl font-semibold text-gray-800">{{ $d->title }}</h4>
                             <p class="text-gray-600 text-sm mt-2">
-                                Pondok Pesantren Darruh Rahmah baru saja menggelar Haflah Akhir Tahun yang dihadiri oleh wali santri dan tokoh masyarakat. Acara ini diisi dengan penampilan para santri yang telah menyelesaikan hafalan Al-Qur'an 30 juz.
+                                {!! Illuminate\Support\Str::words(strip_tags($d->body), 10, '...') !!}
                             </p>
-                            <a href="#" class="text-teal-500 hover:underline text-sm">Baca Selengkapnya</a>
+                            <a href="{{ route('show.singlePost' , $d->id) }}" class="text-teal-500 hover:underline text-sm">Baca Selengkapnya</a>
                         </div>
-
-                        <!-- Berita 2 -->
-                        <div class="bg-white p-4 rounded-lg shadow-lg">
-                            <img src="assets/img/banner-1.jpg" alt="Berita 2" class="w-full h-32 object-cover rounded-lg mb-3">
-                            <h4 class="text-xl font-semibold text-gray-800">Penerimaan Santri Baru 2024</h4>
-                            <p class="text-gray-600 text-sm mt-2">
-                                Pendaftaran santri baru Pondok Pesantren Darruh Rahmah telah dibuka untuk tahun ajaran 2024. Segera daftarkan putra-putri Anda untuk mendapatkan pendidikan agama dan akademik berkualitas.
-                            </p>
-                            <a href="#" class="text-teal-500 hover:underline text-sm">Baca Selengkapnya</a>
-                        </div>
-
-                        <!-- Berita 3 -->
-                        <div class="bg-white p-4 rounded-lg shadow-lg">
-                            <img src="assets/img/banner-1.jpg" alt="Berita 3" class="w-full h-32 object-cover rounded-lg mb-3">
-                            <h4 class="text-xl font-semibold text-gray-800">Prestasi Santri dalam Lomba Tahfidz</h4>
-                            <p class="text-gray-600 text-sm mt-2">
-                                Alhamdulillah, santri Darruh Rahmah berhasil meraih juara 1 dalam lomba Tahfidz Nasional. Ini adalah bukti nyata kualitas pendidikan dan bimbingan yang diberikan di pondok kami.
-                            </p>
-                            <a href="#" class="text-teal-500 hover:underline text-sm">Baca Selengkapnya</a>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

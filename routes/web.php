@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KurikulumController;
 use App\Http\Controllers\PendaftaranController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\RutinitasController;
 use App\Http\Controllers\SyaikhunaController;
@@ -27,10 +28,13 @@ Route::get('/rutinitas',[HomeController::class, 'rutinitas'])->name('rutinitas')
 Route::get('/syaikhuna',[HomeController::class, 'syaikhuna'])->name('syaikhuna');
 Route::get('/pendaftaran',[HomeController::class, 'pendaftaran'])->name('pendaftaran');
 Route::get('/pendaftaranAdmin/{file}/download', [HomeController::class, 'download'])->name('pendaftaran.download');
+Route::get('/pendaftaran',[HomeController::class, 'pendaftaran'])->name('pendaftaran');
+Route::get('/galeri',[HomeController::class, 'galeri'])->name('galeri');
+Route::get('/galeri/{id}', [HomeController::class, 'show'])->name('show.singlePost');
 
-Route::get('/galeri', function () {
-    return view('galeri', ['title' => 'Halaman Galeri', 'posts' => Post::all()]);
-});
+// Route::get('/galeri', function () {
+//     return view('galeri', ['title' => 'Halaman Galeri', 'posts' => Post::all()]);
+// });
 
 // Route::get('/posts/{slug}', function ($slug) {
 
@@ -39,15 +43,15 @@ Route::get('/galeri', function () {
 //     return view('galeriSingle', ['title' => 'Single Post', 'post' => $post]);
 // });
 
-Route::get('/posts/{post:slug}', function (Post $post) {
+// Route::get('/posts/{post:slug}', function (Post $post) {
     
-    return view('galeriSingle', ['title' => 'Single Post', 'post' => $post]);
-});
+//     return view('galeriSingle', ['title' => 'Single Post', 'post' => $post]);
+// });
 
-Route::get('/authors/{user:username}', function (User $user) {
+// Route::get('/authors/{user:username}', function (User $user) {
     
-    return view('galeri', ['title' => count($user->posts) . ' Artikel by ' . $user->name, 'posts' => $user->posts]);
-});
+//     return view('galeri', ['title' => count($user->posts) . ' Artikel by ' . $user->name, 'posts' => $user->posts]);
+// });
 
 Route::get('/kontak', function () {
     return view('kontak', ['title' => 'Halaman Kontak']);
@@ -97,4 +101,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/pendaftaranAdmin/edit/{id}', [PendaftaranController::class, 'edit'])->name('pendaftaran.edit');
     Route::put('/pendaftaranAdmin/update/{id}', [PendaftaranController::class, 'update'])->name('pendaftaran.update');
     Route::delete('/pendaftaranAdmin/delete/{id}', [PendaftaranController::class, 'destroy'])->name('pendaftaran.destroy');
+    Route::get('/postAdmin', [PostController::class, 'postAdmin'])->name('post.admin');
+    Route::get('/postAdmin/create', [PostController::class, 'create'])->name('post.create');
+    Route::post('/postAdmin/store', [PostController::class, 'store'])->name('post.store');
+    Route::get('/postAdmin/edit/{id}', [PostController::class, 'edit'])->name('post.edit');
+    Route::put('/postAdmin/update/{id}', [PostController::class, 'update'])->name('post.update');
+    Route::delete('/postAdmin/delete/{id}', [PostController::class, 'destroy'])->name('post.destroy');
 });

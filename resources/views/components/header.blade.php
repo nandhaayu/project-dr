@@ -4,7 +4,7 @@
         <div class="flex items-center">
           <div class="flex-shrink-0">
             <div class="md:ml-16">
-                <img id="logo" style="width: 100%; height:70px" src="assets/img/logo-PPDR.png" alt="logo">
+                <img id="logo" style="width: 100%; height:70px" src="{{ asset('assets/img/logo-PPDR.png') }}" alt="logo">
             </div>
           </div>
         </div>
@@ -15,9 +15,9 @@
                 var logo = document.getElementById('logo');
                 
                 if (window.scrollY > 50) { // Check if scrolled more than 50px
-                    logo.src = "assets/img/logo-YDR.png"; // Change logo to new one
+                    logo.src = "{{ asset('assets/img/logo-YDR.png') }}"; // Change logo to new one
                 } else {
-                    logo.src = "assets/img/logo-PPDR.png"; // Change back to original logo
+                    logo.src = "{{ asset('assets/img/logo-PPDR.png') }}"; // Change back to original logo
                 }
             });
         </script>

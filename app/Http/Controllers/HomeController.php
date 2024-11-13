@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kurikulum;
 use App\Models\Pendaftaran;
+use App\Models\Post;
 use App\Models\Profil;
 use App\Models\Rutinitas;
 use App\Models\Syaikhuna;
@@ -13,7 +14,8 @@ class HomeController extends Controller
 {
     public function profil () {
         $profil = Profil::all();
-        return view('profil', compact('profil'));
+        $posts = Post::orderBy('created_at', 'desc')->take(3)->get();
+        return view('profil', compact('profil', 'posts'));
     }
     public function kurikulum () {
         $kurikulum = Kurikulum::all();
@@ -45,4 +47,15 @@ class HomeController extends Controller
             abort(404, 'File not found');
         }
     }
+    public function galeri() {
+        $post = Post::orderBy('created_at', 'desc')->get();
+        return view('galeri', compact('post'));
+    }
+    public function show($id)
+    {
+        $post = Post::where('id', $id)->firstOrFail();
+        $posts = Post::orderBy('created_at', 'desc')->take(3)->get();
+        return view('galeriSingle', compact('post', 'posts'));
+    }
+
 }
