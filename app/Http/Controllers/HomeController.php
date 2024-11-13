@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\kontak;
 use App\Models\Kurikulum;
 use App\Models\Pendaftaran;
 use App\Models\Post;
@@ -56,6 +57,10 @@ class HomeController extends Controller
         $post = Post::where('id', $id)->firstOrFail();
         $posts = Post::orderBy('created_at', 'desc')->take(3)->get();
         return view('galeriSingle', compact('post', 'posts'));
+    }
+    public function kontak () {
+        $kontak = kontak::first();
+        return view('kontak', compact('kontak'));
     }
 
 }

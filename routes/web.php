@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\KontakController;
 use App\Http\Controllers\KurikulumController;
 use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\PostController;
@@ -31,31 +32,7 @@ Route::get('/pendaftaranAdmin/{file}/download', [HomeController::class, 'downloa
 Route::get('/pendaftaran',[HomeController::class, 'pendaftaran'])->name('pendaftaran');
 Route::get('/galeri',[HomeController::class, 'galeri'])->name('galeri');
 Route::get('/galeri/{id}', [HomeController::class, 'show'])->name('show.singlePost');
-
-// Route::get('/galeri', function () {
-//     return view('galeri', ['title' => 'Halaman Galeri', 'posts' => Post::all()]);
-// });
-
-// Route::get('/posts/{slug}', function ($slug) {
-
-//     $post = Post::find($slug);
-    
-//     return view('galeriSingle', ['title' => 'Single Post', 'post' => $post]);
-// });
-
-// Route::get('/posts/{post:slug}', function (Post $post) {
-    
-//     return view('galeriSingle', ['title' => 'Single Post', 'post' => $post]);
-// });
-
-// Route::get('/authors/{user:username}', function (User $user) {
-    
-//     return view('galeri', ['title' => count($user->posts) . ' Artikel by ' . $user->name, 'posts' => $user->posts]);
-// });
-
-Route::get('/kontak', function () {
-    return view('kontak', ['title' => 'Halaman Kontak']);
-});
+Route::get('/kontak',[HomeController::class, 'kontak'])->name('kontak');
 
 Route::get('/beranda', function () {
     return view('beranda');
@@ -107,4 +84,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/postAdmin/edit/{id}', [PostController::class, 'edit'])->name('post.edit');
     Route::put('/postAdmin/update/{id}', [PostController::class, 'update'])->name('post.update');
     Route::delete('/postAdmin/delete/{id}', [PostController::class, 'destroy'])->name('post.destroy');
+    Route::get('/kontakAdmin', [KontakController::class, 'kontakAdmin'])->name('kontak.admin');
+    Route::get('/kontakAdmin/create', [KontakController::class, 'create'])->name('kontak.create');
+    Route::post('/kontakAdmin/store', [KontakController::class, 'store'])->name('kontak.store');
+    Route::get('/kontakAdmin/edit/{id}', [KontakController::class, 'edit'])->name('kontak.edit');
+    Route::put('/kontakAdmin/update/{id}', [KontakController::class, 'update'])->name('kontak.update');
+    Route::delete('/kontakAdmin/delete/{id}', [KontakController::class, 'destroy'])->name('kontak.destroy');
 });

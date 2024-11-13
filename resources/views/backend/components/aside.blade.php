@@ -79,6 +79,14 @@
               <span class="hide-menu">Galeri</span>
             </a>
           </li>   
+          <li class="sidebar-item">
+            <a class="sidebar-link" href="{{ route('kontak.admin') }}" aria-expanded="false">
+              <span>
+                <i class="ti ti-layout-dashboard"></i>
+              </span>
+              <span class="hide-menu">Kontak</span>
+            </a>
+          </li>   
       </nav>
       <!-- End Sidebar navigation -->
     </div>
