@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Beranda;
 use App\Models\kontak;
 use App\Models\Kurikulum;
 use App\Models\Pendaftaran;
@@ -19,7 +20,8 @@ class HomeController extends Controller
         $syaikhuna = Syaikhuna::all();
         $posts = Post::orderBy('created_at', 'desc')->take(4)->get();
         $slide = Slide::all();
-        return view('home', compact('profil', 'posts', 'syaikhuna', 'slide'));
+        $beranda = Beranda::first();
+        return view('home', compact('profil', 'posts', 'syaikhuna', 'slide', 'beranda'));
     }
     public function profil () {
         $profil = Profil::first();

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KontakController;
@@ -97,4 +98,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/slideAdmin/edit/{id}', [SlideController::class, 'edit'])->name('slide.edit');
     Route::put('/slideAdmin/update/{id}', [SlideController::class, 'update'])->name('slide.update');
     Route::delete('/slideAdmin/delete/{id}', [SlideController::class, 'destroy'])->name('slide.destroy');
+    Route::get('/berandaAdmin', [BerandaController::class, 'berandaAdmin'])->name('beranda.admin');
+    Route::get('/berandaAdmin/create', [BerandaController::class, 'create'])->name('beranda.create');
+    Route::post('/berandaAdmin/store', [BerandaController::class, 'store'])->name('beranda.store');
+    Route::get('/berandaAdmin/edit/{id}', [BerandaController::class, 'edit'])->name('beranda.edit');
+    Route::put('/berandaAdmin/update/{id}', [BerandaController::class, 'update'])->name('beranda.update');
+    Route::delete('/berandaAdmin/delete/{id}', [BerandaController::class, 'destroy'])->name('beranda.destroy');
+    Route::get('/posts/search', [PostController::class, 'search'])->name('posts.search');
 });

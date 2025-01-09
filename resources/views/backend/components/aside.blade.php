@@ -30,9 +30,17 @@
           <li class="sidebar-item">
             <a class="sidebar-link" href="{{ route('slide.admin') }}" aria-expanded="false">
               <span>
-                <i class="fa-solid fa-bars"></i>
+                <i class="fa-solid fa-sliders"></i>
               </span>
               <span class="hide-menu">Slide</span>
+            </a>
+          </li>
+          <li class="sidebar-item">
+            <a class="sidebar-link" href="{{ route('beranda.admin') }}" aria-expanded="false">
+              <span>
+                <i class="fa-solid fa-house-chimney"></i>
+              </span>
+              <span class="hide-menu">Beranda</span>
             </a>
           </li>
           <li class="sidebar-item group">

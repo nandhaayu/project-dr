@@ -21,16 +21,27 @@
   let currentSlide = 1;
 
   function showSlide(slideIndex) {
-    const slides = document.querySelectorAll('[id^="slide"]');
+    const slides = document.querySelectorAll('[id^="slide"]'); // Ambil semua elemen slide
+    const totalSlides = slides.length; // Hitung jumlah slide
+
+    // Pastikan slideIndex tetap dalam batas jumlah slide
+    slideIndex = ((slideIndex - 1) % totalSlides) + 1;
+
+    // Atur visibilitas slide
     slides.forEach((slide, index) => {
       slide.style.opacity = (index + 1 === slideIndex) ? '1' : '0';
     });
-    currentSlide = slideIndex;
+
+    currentSlide = slideIndex; // Perbarui slide saat ini
   }
 
-  // Auto slide every 5 seconds
+  // Auto slide setiap 5 detik
   setInterval(() => {
-    currentSlide = (currentSlide % 3) + 1;
-    showSlide(currentSlide);
+    showSlide(currentSlide + 1); // Pindah ke slide berikutnya
   }, 5000);
+
+  // Inisialisasi slide pertama
+  document.addEventListener("DOMContentLoaded", () => {
+    showSlide(currentSlide);
+  });
 </script>

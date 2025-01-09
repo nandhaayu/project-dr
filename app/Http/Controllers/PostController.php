@@ -108,10 +108,26 @@ class PostController extends Controller
     return redirect()->route('post.admin');
 }
 
-
-
     public function destroy(Post $id) {
         $id->delete();
         return redirect()->route('post.admin')->with('succes', 'Data berhasil dihapus');
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        $request->validate([
+            'query' => 'required|string|max:255',
+        ], [
+            'query.required' => 'Kata kunci pencarian tidak boleh kosong.',
+            'query.max' => 'Kata kunci pencarian maksimal 255 karakter.',
+        ]);
+
+        $posts = Post::where('title', 'like', "%{$query}%")
+            ->orWhere('body', 'like', "%{$query}%")
+            ->paginate(10);
+
+        return view('post', compact('posts', 'query'));
     }
 }

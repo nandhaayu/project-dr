@@ -6,7 +6,7 @@
                 <article class="w-full mx-auto border rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300 ease-in-out">
                     <!-- Featured Image -->
                     <a href="{{ route('show.singlePost', $d->id) }}}}">
-                        <img src="{{ asset('assets/images/' . $d->image) }}" alt="{{ $d['title'] }}" class="w-full object-cover" style="max-height: 270px">
+                        <img src="{{ asset('assets/images/' . $d->image) }}" alt="{{ $d['title'] }}" class="w-full h-48 object-cover">
                     </a>
                     <div class="p-5">
                         <!-- Title -->
