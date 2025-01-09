@@ -10,19 +10,19 @@
                     </a>
                     <div class="p-5">
                         <!-- Title -->
-                        <a href="{{ route('show.singlePost', $d->id) }}}}" class="hover:underline">
-                            <h2 class="mb-1 text-2xl tracking-tight font-bold text-green-800">{{ $d['title'] }}</h2>
+                        <a href="{{ route('show.singlePost', $d->id) }}">
+                            <h2 class="mb-1 tracking-tight font-bold hover:underline">{{ $d['title'] }}</h2>
                         </a>
                         <!-- Author and Date -->
                         <div class="text-gray-500 text-sm mb-4">
                             By 
-                            <a href="/authors/{{ $d->author->username }}" class="hover:underline">{{ $d->author->name }}</a> 
+                            <a href="#" class="hover:underline">{{ $d->author->name }}</a> 
                             | {{ $d->created_at->format('j F Y') }}
                         </div>
                         <!-- Excerpt -->
-                        <p class="text-gray-700 font-light">{!! Illuminate\Support\Str::words(strip_tags($d->body), 25, '...') !!}</p>
+                        <p class="text-gray-700 font-light text-sm">{!! Illuminate\Support\Str::words(strip_tags($d->body), 25, '...') !!}</p>
                         <!-- Read More -->
-                        <a href="{{ route('show.singlePost', $d->id) }}}}" class="mt-4 inline-block text-blue-600 hover:text-blue-800 font-medium">Read more &raquo;</a>
+                        <a href="{{ route('show.singlePost', $d->id) }}" class="mt-4 text-sm inline-block text-green-500 hover:underline">Read more &raquo;</a>
                     </div>
                 </article>
                 @endforeach

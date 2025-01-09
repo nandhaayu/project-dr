@@ -4,105 +4,92 @@ namespace App\Http\Controllers;
 
 use App\Models\Profil;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ProfilController extends Controller
 {
+    // Menyimpan profil baru
+    public function store(Request $request)
+    {
+        $request->validate([
+            'judul' => 'required|string|max:255',
+            'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',  // Validasi untuk foto
+            'deskripsi' => 'required|string',
+        ]);
 
-    function profilAdmin () {
-        $profil = Profil::first();
+        // Mengupload foto dan menyimpan path
+        $fotoPath = $request->file('foto')->store('images', 'public');
+
+        // Membuat data profil baru
+        Profil::create([
+            'judul' => $request->judul,
+            'foto' => $fotoPath,  // Menyimpan path foto
+            'deskripsi' => $request->deskripsi,
+        ]);
+
+        return redirect()->route('profil.admin')->with('success', 'Profil berhasil dibuat');
+    }
+
+    // Mengupdate profil
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'judul' => 'required|string|max:255',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',  // Validasi untuk foto
+            'deskripsi' => 'required|string',
+        ]);
+
+        // Mencari profil berdasarkan ID
+        $profil = Profil::findOrFail($id);
+        
+        // Jika ada foto baru yang diupload
+        if ($request->hasFile('foto')) {
+            // Menghapus foto lama dari penyimpanan
+            Storage::delete('public/' . $profil->foto);
+            
+            // Mengupload foto baru
+            $fotoPath = $request->file('foto')->store('images', 'public');
+            $profil->foto = $fotoPath;  // Memperbarui path foto
+        }
+
+        // Memperbarui data profil
+        $profil->update([
+            'judul' => $request->judul,
+            'deskripsi' => $request->deskripsi,
+        ]);
+
+        return redirect()->route('profil.admin')->with('success', 'Profil berhasil diperbarui');
+    }
+
+    // Menampilkan profil di halaman admin
+    public function profilAdmin()
+    {
+        $profil = Profil::first();  // Mengambil profil pertama
         return view('backend.profil.index', compact('profil'));
     }
 
-    function create () {
+    // Menampilkan form untuk membuat profil baru
+    public function create()
+    {
         return view('backend.profil.create');
     }
 
-    public function store(Request $request)
+    public function edit($id)
     {
-        // melakukan validasi data
-        $request->validate([
-            'judul' => 'required|max:45',
-            'deskripsi' => 'required',
-            'foto' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
-        ],
-        [
-            'name.required' => 'Nama wajib diisi',
-            'name.max' => 'Nama maksimal 45 karakter',
-            'deskripsi.required' => 'jenis wajib diisi',
-            'foto.max' => 'Foto maksimal 2 MB',
-            'foto.mimes' => 'File ekstensi hanya bisa jpg,png,jpeg,gif, svg',
-            'foto.image' => 'File harus berbentuk image'
-        ]);
-        
-        //jika file foto ada yang terupload
-        if(!empty($request->foto)){
-            //maka proses berikut yang dijalankan
-            $fileName = 'foto-'.uniqid().'.'.$request->foto->extension();
-            //setelah tau fotonya sudah masuk maka tempatkan ke public
-            $request->foto->move(public_path('assets/images'), $fileName);
-        } else {
-            $fileName = 'nophoto.jpg';
-        }
-        
-        //tambah data produk
-        DB::table('profils')->insert([
-            'judul'=>$request->judul,
-            'deskripsi' => $request->deskripsi,
-            'foto'=>$fileName,
-        ]);
-        
-        return redirect()->route('profil.admin');
+        $profil = Profil::findOrFail($id);  // Mengambil data profil berdasarkan ID
+        return view('backend.profil.edit', compact('profil'));  // Mengirimkan profil ke view
     }
-
-    public function edit(Profil $id) {
-        return view('backend.profil.edit', compact('id'));
-    }
-
-    public function update(Request $request, string $id) {
-        $request->validate([
-            'judul' => 'required|max:45',
-            'deskripsi' => 'required',
-            'foto' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-        ],
-        [
-            'judul.required' => 'Judul Wajib diisi',
-            'deskripsi.required' => 'deskripsi wajib diisi',
-            'foto.max' => 'Foto maksimal 2 MB',
-            'foto.mimes' => 'File ekstensi hanya bisa jpg,png,jpeg,gif, svg',
-            'foto.image' => 'File harus berbentuk image'
-        ]);
-
-        //foto lama
-        $fotoLama = DB::table('profils')->select('foto')->where('id',$id)->get();
-        foreach($fotoLama as $f1){
-            $fotoLama = $f1->foto;
-        }
     
-        //jika foto sudah ada yang terupload
-        if(!empty($request->foto)){
-            //maka proses selanjutnya
-            if(!empty($fotoLama->foto)) unlink(public_path('assets/images'.$fotoLama->foto));
-            //proses ganti foto
-            $fileName = 'foto-'.$request->id.'.'.$request->foto->extension();
-            //setelah tau fotonya sudah masuk maka tempatkan ke public
-            $request->foto->move(public_path('assets/images'), $fileName);
-        } else{
-            $fileName = $fotoLama;
-        }
-    
-        //update data produk
-        DB::table('profils')->where('id',$id)->update([
-            'judul'=>$request->judul,
-            'deskripsi' => $request->deskripsi,
-            'foto'=>$fileName,
-        ]);
-                
-        return redirect()->route('profil.admin');
-    }
 
-    public function destroy(Profil $id) {
+    // Menghapus profil
+    public function destroy(Profil $id)
+    {
+        // Menghapus foto dari penyimpanan
+        Storage::delete('public/' . $id->foto);
+        
+        // Menghapus data profil
         $id->delete();
-        return redirect()->route('profil.admin')->with('succes', 'Data berhasil dihapus');
+
+        return redirect()->route('profil.admin')->with('success', 'Data berhasil dihapus');
     }
 }

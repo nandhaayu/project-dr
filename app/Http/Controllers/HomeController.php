@@ -13,8 +13,14 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    public function beranda () {
+        $profil = Profil::first();
+        $syaikhuna = Syaikhuna::all();
+        $posts = Post::orderBy('created_at', 'desc')->take(5)->get();
+        return view('home', compact('profil', 'posts', 'syaikhuna',));
+    }
     public function profil () {
-        $profil = Profil::all();
+        $profil = Profil::first();
         $posts = Post::orderBy('created_at', 'desc')->take(3)->get();
         return view('profil', compact('profil', 'posts'));
     }

@@ -6,12 +6,12 @@
             <div class="flex flex-col lg:flex-row gap-8">
                 <!-- Left: Gambar Syaikhuna -->
                 <div class="lg:w-1/3 bg-white p-6 rounded-lg shadow-lg">
-                    <img src="{{ asset('assets/images/' . $d->foto) }}" alt="Foto Syaikhuna" class="w-full h-auto rounded-lg mb-6">
+                    <img src="{{ asset('storage/' . $d->foto) }}" alt="Foto Syaikhuna" class="w-full h-auto rounded-lg mb-6">
                 </div>
 
                 <!-- Right: Biografi Syaikhuna -->
                 <div class="lg:w-2/3 bg-white p-6 rounded-lg shadow-lg">
-                    <h2 class="text-3xl font-bold text-gray-900 mb-4">{{ $d->judul }}</h2>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">{{ $d->judul }}</h2>
                     <p class="text-gray-700 leading-relaxed mb-4">
                         {!! $d->deskripsi !!}
                     </p>

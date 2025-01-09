@@ -19,10 +19,10 @@ use Illuminate\Support\Facades\Route;
 
 //ROUTE FRONTEND
 
-Route::get('/', function () {
-    return view('home', ['title' => 'Beranda']);
-});
-
+// Route::get('/', function () {
+//     return view('home', ['title' => 'Beranda']);
+// });
+Route::get('/',[HomeController::class, 'beranda'])->name('beranda');
 Route::get('/profil',[HomeController::class, 'profil'])->name('profil');
 Route::get('/kurikulum',[HomeController::class, 'kurikulum'])->name('kurikulum');
 Route::get('/rutinitas',[HomeController::class, 'rutinitas'])->name('rutinitas');

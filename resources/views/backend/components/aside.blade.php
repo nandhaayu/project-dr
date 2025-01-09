@@ -22,7 +22,7 @@
           <li class="sidebar-item">
             <a class="sidebar-link" href="{{ route('dashboard') }}" aria-expanded="false">
               <span>
-                <i class="ti ti-layout-dashboard"></i>
+                <i class="fa-solid fa-bars"></i>
               </span>
               <span class="hide-menu">Dashboard</span>
             </a>
@@ -30,7 +30,7 @@
           <li class="sidebar-item group">
             <a class="sidebar-link flex items-center justify-between" href="#" aria-expanded="false">
                 <span class="flex items-center">
-                    <i class="ti ti-layout-dashboard"></i>
+                    <i class="fa-regular fa-id-card"></i>
                     <span class="hide-menu ml-2">Tentang Kami</span>
                 </span>
                 <i class="ti ti-chevron-down transition-transform duration-300 group-hover:rotate-180"></i>
@@ -58,7 +58,7 @@
           <li class="sidebar-item">
             <a class="sidebar-link" href="{{ route('syaikhuna.admin') }}" aria-expanded="false">
               <span>
-                <i class="ti ti-layout-dashboard"></i>
+                <i class="fa-solid fa-user"></i>
               </span>
               <span class="hide-menu">Syaikhuna</span>
             </a>
@@ -66,7 +66,7 @@
           <li class="sidebar-item">
             <a class="sidebar-link" href="{{ route('pendaftaran.admin') }}" aria-expanded="false">
               <span>
-                <i class="ti ti-layout-dashboard"></i>
+                <i class="fa-solid fa-clipboard"></i>
               </span>
               <span class="hide-menu">Pendaftaran</span>
             </a>
@@ -74,7 +74,7 @@
           <li class="sidebar-item">
             <a class="sidebar-link" href="{{ route('post.admin') }}" aria-expanded="false">
               <span>
-                <i class="ti ti-layout-dashboard"></i>
+                <i class="fa-solid fa-images"></i>
               </span>
               <span class="hide-menu">Galeri</span>
             </a>
@@ -82,7 +82,7 @@
           <li class="sidebar-item">
             <a class="sidebar-link" href="{{ route('kontak.admin') }}" aria-expanded="false">
               <span>
-                <i class="ti ti-layout-dashboard"></i>
+                <i class="fa-solid fa-phone"></i>
               </span>
               <span class="hide-menu">Kontak</span>
             </a>

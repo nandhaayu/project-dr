@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Syaikhuna;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class SyaikhunaController extends Controller
 {
@@ -19,85 +20,60 @@ class SyaikhunaController extends Controller
 
     public function store(Request $request)
     {
-        // melakukan validasi data
         $request->validate([
-            'judul' => 'required|max:45',
-            'deskripsi' => 'required',
-            'foto' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
-        ],
-        [
-            'name.required' => 'Nama wajib diisi',
-            'name.max' => 'Nama maksimal 45 karakter',
-            'deskripsi.required' => 'jenis wajib diisi',
-            'foto.max' => 'Foto maksimal 2 MB',
-            'foto.mimes' => 'File ekstensi hanya bisa jpg,png,jpeg,gif, svg',
-            'foto.image' => 'File harus berbentuk image'
+            'judul' => 'required|string|max:255',
+            'deskripsi' => 'required|string',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-        
-        //jika file foto ada yang terupload
-        if(!empty($request->foto)){
-            //maka proses berikut yang dijalankan
-            $fileName = 'foto-'.uniqid().'.'.$request->foto->extension();
-            //setelah tau fotonya sudah masuk maka tempatkan ke public
-            $request->foto->move(public_path('assets/images'), $fileName);
-        } else {
-            $fileName = 'nophoto.jpg';
+
+        $foto = null;
+        if ($request->hasFile('foto')) {
+            $foto = $request->file('foto')->store('public/syaikhuna');
         }
-        
-        //tambah data produk
-        DB::table('syaikhunas')->insert([
-            'judul'=>$request->judul,
+
+        Syaikhuna::create([
+            'judul' => $request->judul,
             'deskripsi' => $request->deskripsi,
-            'foto'=>$fileName,
+            'foto' => $foto,
         ]);
-        
-        return redirect()->route('syaikhuna.admin');
+
+        return redirect()->route('syaikhuna.index');
     }
 
-    public function edit(syaikhuna $id) {
-        return view('backend.syaikhuna.edit', compact('id'));
+    public function edit($id)
+    {
+        $syaikhuna = Syaikhuna::findOrFail($id);  // Mengambil data profil berdasarkan ID
+        return view('backend.syaikhuna.edit', compact('syaikhuna'));  // Mengirimkan profil ke view
     }
 
-    public function update(Request $request, string $id) {
+    public function update(Request $request, $id)
+    {
         $request->validate([
-            'judul' => 'required|max:45',
-            'deskripsi' => 'required',
-            'foto' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-        ],
-        [
-            'judul.required' => 'Judul Wajib diisi',
-            'deskripsi.required' => 'deskripsi wajib diisi',
-            'foto.max' => 'Foto maksimal 2 MB',
-            'foto.mimes' => 'File ekstensi hanya bisa jpg,png,jpeg,gif, svg',
-            'foto.image' => 'File harus berbentuk image'
+            'judul' => 'required|string|max:255',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',  // Validasi untuk foto
+            'deskripsi' => 'required|string',
         ]);
 
-        //foto lama
-        $fotoLama = DB::table('syaikhunas')->select('foto')->where('id',$id)->get();
-        foreach($fotoLama as $f1){
-            $fotoLama = $f1->foto;
+        // Mencari profil berdasarkan ID
+        $syaikhuna = Syaikhuna::findOrFail($id);
+        
+        // Jika ada foto baru yang diupload
+        if ($request->hasFile('foto')) {
+            // Menghapus foto lama dari penyimpanan
+            Storage::delete('public/' . $syaikhuna->foto);
+            
+            // Mengupload foto baru
+            $fotoPath = $request->file('foto')->store('images', 'public');
+            $syaikhuna->foto = $fotoPath;  // Memperbarui path foto
         }
-    
-        //jika foto sudah ada yang terupload
-        if(!empty($request->foto)){
-            //maka proses selanjutnya
-            if(!empty($fotoLama->foto)) unlink(public_path('assets/images'.$fotoLama->foto));
-            //proses ganti foto
-            $fileName = 'foto-'.$request->id.'.'.$request->foto->extension();
-            //setelah tau fotonya sudah masuk maka tempatkan ke public
-            $request->foto->move(public_path('assets/images'), $fileName);
-        } else{
-            $fileName = $fotoLama;
-        }
-    
-        //update data produk
-        DB::table('syaikhunas')->where('id',$id)->update([
-            'judul'=>$request->judul,
+
+        // Memperbarui data profil
+        $syaikhuna->update([
+            'judul' => $request->judul,
             'deskripsi' => $request->deskripsi,
-            'foto'=>$fileName,
         ]);
-                
-        return redirect()->route('syaikhuna.admin');
+
+        return redirect()->route('syaikhuna.admin')->with('success', 'Profil berhasil diperbarui');
     }
 
     public function destroy(syaikhuna $id) {

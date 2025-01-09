@@ -21,7 +21,7 @@
             @if($syaikhuna)
             <tr>
               <td>{{ $syaikhuna->judul }}</td>
-              <td><img src="{{ asset('assets/images/' . $syaikhuna->foto) }}" alt="project-image" class="rounded" style="width: 100%; max-width: 100px; height: auto;"></td>
+              <td><img src="{{ asset('storage/' . $syaikhuna->foto) }}" alt="project-image" class="rounded" style="width: 100%; max-width: 100px; height: auto;"></td>
               <td>{!! $syaikhuna->deskripsi !!}</td>
               <td>
                   <a href="{{ route('syaikhuna.edit', $syaikhuna->id) }}" class="btn btn-warning btn-sm">Edit</a>
