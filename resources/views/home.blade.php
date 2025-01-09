@@ -30,7 +30,7 @@
           </div>
           @foreach ($posts as $d)
           <div class="mb-6 flex items-start gap-4 p-6 shadow-sm">
-            <img src="{{ asset('assets/images/' . $d->image) }}" alt="Foto Artikel 1" class="w-72 h-32 object-cover rounded-lg">
+            <img src="{{ asset('assets/images/' . $d->image) }}" alt="Foto Artikel 1" class="w-72 h-44 object-cover rounded-lg">
             <div>
               <h3 class="font-bold text-gray-900 mb-2">{{ $d['title'] }}</h3>
               <p class="text-gray-700 leading-relaxed mb-2 text-sm">{!! $d['body'] !!}</p>

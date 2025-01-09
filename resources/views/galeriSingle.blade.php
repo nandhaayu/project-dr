@@ -24,7 +24,7 @@
                         <!-- Berita 1 -->
                         @foreach ($posts as $d)
                         <div class="bg-white p-4 rounded-lg shadow-lg">
-                            <img src="{{ asset('assets/images/' . $d->image) }}" alt="Berita 1" class="w-full h-32 object-cover rounded-lg mb-3">
+                            <img src="{{ asset('assets/images/' . $d->image) }}" alt="Berita 1" class="w-full h-44 object-cover rounded-lg mb-3">
                             <h3 class="font-semibold text-gray-800">{{ $d->title }}</h3>
                             <p class="text-gray-600 text-sm mt-2">
                                 {!! Illuminate\Support\Str::words(strip_tags($d->body), 10, '...') !!}

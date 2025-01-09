@@ -16,7 +16,7 @@ class HomeController extends Controller
     public function beranda () {
         $profil = Profil::first();
         $syaikhuna = Syaikhuna::all();
-        $posts = Post::orderBy('created_at', 'desc')->take(5)->get();
+        $posts = Post::orderBy('created_at', 'desc')->take(4)->get();
         return view('home', compact('profil', 'posts', 'syaikhuna',));
     }
     public function profil () {
