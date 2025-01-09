@@ -27,6 +27,14 @@
               <span class="hide-menu">Dashboard</span>
             </a>
           </li>
+          <li class="sidebar-item">
+            <a class="sidebar-link" href="{{ route('slide.admin') }}" aria-expanded="false">
+              <span>
+                <i class="fa-solid fa-bars"></i>
+              </span>
+              <span class="hide-menu">Slide</span>
+            </a>
+          </li>
           <li class="sidebar-item group">
             <a class="sidebar-link flex items-center justify-between" href="#" aria-expanded="false">
                 <span class="flex items-center">

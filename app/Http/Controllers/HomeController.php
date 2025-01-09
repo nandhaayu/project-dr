@@ -8,6 +8,7 @@ use App\Models\Pendaftaran;
 use App\Models\Post;
 use App\Models\Profil;
 use App\Models\Rutinitas;
+use App\Models\Slide;
 use App\Models\Syaikhuna;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,8 @@ class HomeController extends Controller
         $profil = Profil::first();
         $syaikhuna = Syaikhuna::all();
         $posts = Post::orderBy('created_at', 'desc')->take(4)->get();
-        return view('home', compact('profil', 'posts', 'syaikhuna',));
+        $slide = Slide::all();
+        return view('home', compact('profil', 'posts', 'syaikhuna', 'slide'));
     }
     public function profil () {
         $profil = Profil::first();

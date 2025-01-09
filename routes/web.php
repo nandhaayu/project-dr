@@ -9,6 +9,7 @@ use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\RutinitasController;
+use App\Http\Controllers\SlideController;
 use App\Http\Controllers\SyaikhunaController;
 use App\Models\Category;
 use App\Models\Post;
@@ -90,4 +91,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/kontakAdmin/edit/{id}', [KontakController::class, 'edit'])->name('kontak.edit');
     Route::put('/kontakAdmin/update/{id}', [KontakController::class, 'update'])->name('kontak.update');
     Route::delete('/kontakAdmin/delete/{id}', [KontakController::class, 'destroy'])->name('kontak.destroy');
+    Route::get('/slideAdmin', [SlideController::class, 'slideAdmin'])->name('slide.admin');
+    Route::get('/slideAdmin/create', [SlideController::class, 'create'])->name('slide.create');
+    Route::post('/slideAdmin/store', [SlideController::class, 'store'])->name('slide.store');
+    Route::get('/slideAdmin/edit/{id}', [SlideController::class, 'edit'])->name('slide.edit');
+    Route::put('/slideAdmin/update/{id}', [SlideController::class, 'update'])->name('slide.update');
+    Route::delete('/slideAdmin/delete/{id}', [SlideController::class, 'destroy'])->name('slide.destroy');
 });
