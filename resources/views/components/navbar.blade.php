@@ -4,7 +4,7 @@
         <div class="flex items-center">
           <ul class="flex">
             <li class="flex text-white text-m items-center mr-4">                                        
-              <a href="#" class="text-white text-sm hover:text-green-900"><i class="fa-solid fa-envelope mr-2"></i>info@company.com</a></li>
+              <a href="#" class="text-white text-sm hover:text-green-900"><i class="fa-solid fa-phone mr-2"></i>085712225557</a></li>
             <li class="flex text-white text-m items-center mr-4">                                        
               <a href="#" class="text-white text-sm hover:text-green-900">|</a></li>
             <li class="flex items-center text-white text-m">
@@ -13,7 +13,7 @@
         </div>
         <div class="flex items-center">
           <ul class="px-2 flex text-white text-m items-center">
-            <li class="px-2 text-white hover:bg-green-900 rounded-2xl"><a href="#" target="_blank"><i class="fab fa-facebook"></i></a></li>
+            <li class="px-2 text-white hover:bg-green-900 rounded-2xl"><a href="https://wa.me/6285712225557" target="_blank"><i class="fa-brands fa-whatsapp"></i></a></li>
             <li class="px-2 text-white hover:bg-green-900 rounded-2xl"><a href="https://youtube.com/@daarurrohmahmedia-uc8sb?si=s9uIuBLgkPhAql8m" target="_blank"><i class="fab fa-youtube"></i></a></li>
             <li class="px-2 text-white hover:bg-green-900 rounded-2xl"><a href="https://www.instagram.com/daarurrohmahmedia?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"><i class="fab fa-instagram"></i></a></li>
           </ul>
