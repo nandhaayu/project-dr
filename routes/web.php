@@ -35,6 +35,7 @@ Route::get('/pendaftaran',[HomeController::class, 'pendaftaran'])->name('pendaft
 Route::get('/galeri',[HomeController::class, 'galeri'])->name('galeri');
 Route::get('/galeri/{id}', [HomeController::class, 'show'])->name('show.singlePost');
 Route::get('/kontak',[HomeController::class, 'kontak'])->name('kontak');
+Route::get('/posts/search', [PostController::class, 'search'])->name('posts.search');
 
 Route::get('/beranda', function () {
     return view('beranda');
@@ -104,5 +105,4 @@ Route::middleware('auth')->group(function () {
     Route::get('/berandaAdmin/edit/{id}', [BerandaController::class, 'edit'])->name('beranda.edit');
     Route::put('/berandaAdmin/update/{id}', [BerandaController::class, 'update'])->name('beranda.update');
     Route::delete('/berandaAdmin/delete/{id}', [BerandaController::class, 'destroy'])->name('beranda.destroy');
-    Route::get('/posts/search', [PostController::class, 'search'])->name('posts.search');
 });

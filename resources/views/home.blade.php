@@ -28,17 +28,21 @@
         <!-- Left Column: Artikel -->
         <div class="lg:w-2/3 w-full px-4">
           <div class="mb-4">
-            <h2 class="text-2xl font-bold text-gray-900 border-b-4 border-green-500 inline-block pb-2">
+            <h2 class="text-2xl font-bold text-gray-900 border-b-4 border-green-500 w-full inline-block pb-2">
               <i class="fa-solid fa-photo-film px-2"></i>Galeri Terkini
             </h2>
           </div>
         
           @foreach ($posts as $d)
           <div class="mb-6 flex flex-col sm:flex-row items-start gap-4 p-6 shadow-sm">
-            <img src="{{ asset('assets/images/' . $d->image) }}" alt="Foto Artikel 1" class="w-full sm:w-72 h-44 object-cover rounded-lg mb-4 sm:mb-0">
+            <a href="{{ route('show.singlePost', $d->id) }}}}">
+              <img src="{{ asset('assets/images/' . $d->image) }}" alt="Foto Artikel 1" class="w-full sm:w-72 h-44 object-cover rounded-lg mb-4 sm:mb-0">
+            </a>
             <div class="flex-1">
-              <h3 class="font-bold text-gray-900 mb-2">{{ $d['title'] }}</h3>
-              <p class="text-gray-700 leading-relaxed mb-2 text-sm">{!! $d['body'] !!}</p>
+              <a href="{{ route('show.singlePost', $d->id) }}">
+                <h3 class="font-bold text-gray-900 mb-2">{{ $d['title'] }}</h3>
+              </a>
+              <p class="text-gray-700 leading-relaxed mb-2 text-sm">{!! Illuminate\Support\Str::words(strip_tags($d->body), 25, '...') !!}</p>
               <a href="{{ route('show.singlePost', $d->id) }}" class="text-green-500 hover:underline text-sm">Baca Selengkapnya</a>
             </div>
           </div>
