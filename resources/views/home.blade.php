@@ -63,9 +63,9 @@
                   type="text" 
                   name="query" 
                   placeholder="Cari berita atau artikel..." 
-                  class="w-full px-4 py-2 border-0 focus:outline-none focus:ring-2 focus:ring-teal-500 rounded-l-lg"
+                  class="w-full px-4 py-2 border-0 focus:outline-none focus:ring-2 focus:ring-green-500 rounded-l-lg"
                   value="{{ request('query') }}"> <!-- Menampilkan query saat ini -->
-                <button type="submit" class="px-4 py-2 bg-teal-500 text-white hover:bg-teal-600 rounded-r-lg">
+                <button type="submit" class="px-4 py-2 bg-green-500 text-white hover:bg-green-600 rounded-r-lg">
                   Cari
                 </button>
               </form>
