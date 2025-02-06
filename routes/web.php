@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BerandaController;
+use App\Http\Controllers\BiografiSyaikhunaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KontakController;
@@ -31,6 +32,7 @@ Route::get('/kurikulum',[HomeController::class, 'kurikulum'])->name('kurikulum')
 Route::get('/rutinitas',[HomeController::class, 'rutinitas'])->name('rutinitas');
 Route::get('/rutinitasUmum',[HomeController::class, 'rutinitasUmum'])->name('rutinitas.umum');
 Route::get('/syaikhuna',[HomeController::class, 'syaikhuna'])->name('syaikhuna');
+Route::get('/BiografiSyaikhuna',[HomeController::class, 'biografiSyaikhuna'])->name('biografi.syaikhuna');
 Route::get('/pendaftaran',[HomeController::class, 'pendaftaran'])->name('pendaftaran');
 Route::get('/pendaftaranAdmin/{file}/download', [HomeController::class, 'download'])->name('pendaftaran.download');
 Route::get('/pendaftaran',[HomeController::class, 'pendaftaran'])->name('pendaftaran');
@@ -83,6 +85,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/syaikhunaAdmin/edit/{id}', [SyaikhunaController::class, 'edit'])->name('syaikhuna.edit');
     Route::put('/syaikhunaAdmin/update/{id}', [SyaikhunaController::class, 'update'])->name('syaikhuna.update');
     Route::delete('/syaikhunaAdmin/delete/{id}', [SyaikhunaController::class, 'destroy'])->name('syaikhuna.destroy');
+    Route::get('/biografiSyaikhunaAdmin', [BiografiSyaikhunaController::class, 'biografiSyaikhunaAdmin'])->name('biografi.syaikhuna.admin');
+    Route::get('/biografiSyaikhunaAdmin/create', [BiografiSyaikhunaController::class, 'create'])->name('biografi.syaikhuna.create');
+    Route::post('/biografiSyaikhunaAdmin/store', [BiografiSyaikhunaController::class, 'store'])->name('biografi.syaikhuna.store');
+    Route::get('/biografiSyaikhunaAdmin/edit/{id}', [BiografiSyaikhunaController::class, 'edit'])->name('biografi.syaikhuna.edit');
+    Route::put('/biografiSyaikhunaAdmin/update/{id}', [BiografiSyaikhunaController::class, 'update'])->name('biografi.syaikhuna.update');
+    Route::delete('/biografiSyaikhunaAdmin/delete/{id}', [BiografiSyaikhunaController::class, 'destroy'])->name('biografi.syaikhuna.destroy');
     Route::get('/pendaftaranAdmin', [PendaftaranController::class, 'pendaftaranAdmin'])->name('pendaftaran.admin');
     Route::get('/pendaftaranAdmin/create', [PendaftaranController::class, 'create'])->name('pendaftaran.create');
     Route::post('/pendaftaranAdmin/store', [PendaftaranController::class, 'store'])->name('pendaftaran.store');

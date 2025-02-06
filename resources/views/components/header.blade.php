@@ -38,12 +38,12 @@
                 <x-nav-link href="#" :active="request()->is('syaikhuna')">Syaikhuna <i class="fa-solid fa-caret-down ml-1"></i></x-nav-link>
                 <div class="absolute hidden group-hover:block bg-white shadow-lg mt-2 py-2 w-64">
                   <a href="/syaikhuna" class="block px-4 py-2 text-sm font-semibold text-black hover:bg-green-300">Biografi Syaikhuna</a>
-                  <a href="/syaikhuna" class="block px-4 py-2 text-sm font-semibold text-black hover:bg-green-300">Biografi Syaikhuna 2</a>
+                  <a href="/BiografiSyaikhuna" class="block px-4 py-2 text-sm font-semibold text-black hover:bg-green-300">Biografi Syaikhuna 2</a>
               </div>
               </div>
               <x-nav-link href="/pendaftaran" :active="request()->is('pendaftaran')">Pendaftaran</x-nav-link>
               <x-nav-link href="/galeri" :active="request()->is('galeri')">Galeri</x-nav-link>
-              <x-nav-link href="#" :active="request()->is('artikel')">Artikel</x-nav-link>
+              <x-nav-link href="/artikel" :active="request()->is('artikel')">Artikel</x-nav-link>
               <x-nav-link href="/kontak" :active="request()->is('kontak')">Kontak</x-nav-link>
             </div>
           </div>

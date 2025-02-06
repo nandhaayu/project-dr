@@ -85,14 +85,29 @@
             </li>
         </ul>
     </li>
-    <li class="sidebar-item">
-        <a class="sidebar-link hover:text-green-700" href="{{ route('syaikhuna.admin') }}" aria-expanded="false">
-            <span>
-                <i class="fa-solid fa-user mr-2"></i>
-            </span>
-            <span class="hide-menu">Syaikhuna</span>
-        </a>
-    </li>
+    <li class="sidebar-item group">
+      <a class="sidebar-link flex items-center justify-between" href="#" aria-expanded="false">
+          <span class="flex items-center">
+              <i class="fa-regular fa-id-card"></i>
+              <span class="hide-menu ml-2">Syaikhuna</span>
+          </span>
+          <i class="ti ti-chevron-down transition-transform duration-300 group-hover:rotate-180"></i>
+      </a>
+  
+      <!-- Dropdown Sub-Menu -->
+      <ul class="sidebar-submenu hidden group-hover:block ml-6 mt-2 space-y-2">
+          <li>
+              <a href="{{ route('syaikhuna.admin') }}" class="sidebar-link text-sm text-gray-600 hover:text-green-700">
+                  Syaikhuna
+              </a>
+          </li>
+          <li>
+              <a href="{{ route('biografi.syaikhuna.admin') }}" class="sidebar-link text-sm text-gray-600 hover:text-green-700">
+                  Biografi Syaikhuna
+              </a>
+          </li>
+      </ul>
+    </li> 
     <li class="sidebar-item">
         <a class="sidebar-link hover:text-green-700" href="{{ route('pendaftaran.admin') }}" aria-expanded="false">
             <span>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Beranda;
+use App\Models\BiografiSyaikhuna;
 use App\Models\kontak;
 use App\Models\Kurikulum;
 use App\Models\Pendaftaran;
@@ -44,6 +45,10 @@ class HomeController extends Controller
     public function syaikhuna () {
         $syaikhuna = Syaikhuna::all();
         return view('syaikhuna', compact('syaikhuna'));
+    }
+    public function biografiSyaikhuna () {
+        $syaikhuna = BiografiSyaikhuna::all();
+        return view('biografiSyaikhuna', compact('syaikhuna'));
     }
     public function pendaftaran () {
         $pendaftaran = Pendaftaran::all();
