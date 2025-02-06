@@ -9,6 +9,7 @@ use App\Models\Pendaftaran;
 use App\Models\Post;
 use App\Models\Profil;
 use App\Models\Rutinitas;
+use App\Models\RutinitasUmum;
 use App\Models\Slide;
 use App\Models\Syaikhuna;
 use Illuminate\Http\Request;
@@ -35,6 +36,10 @@ class HomeController extends Controller
     public function rutinitas () {
         $rutinitas = Rutinitas::all();
         return view('rutinitas', compact('rutinitas'));
+    }
+    public function rutinitasUmum () {
+        $rutinitas = RutinitasUmum::all();
+        return view('rutinitasUmum', compact('rutinitas'));
     }
     public function syaikhuna () {
         $syaikhuna = Syaikhuna::all();

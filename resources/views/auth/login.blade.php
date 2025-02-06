@@ -51,9 +51,9 @@
             </form>
         </div>
 
-        <p class="text-gray-600 text-sm mt-4 text-center">
+        {{-- <p class="text-gray-600 text-sm mt-4 text-center">
             Belum punya akun? <a href="{{ route('registrasi.tampil') }}" class="text-blue-500 hover:underline">Daftar di sini</a>
-        </p>
+        </p> --}}
     </div>
 </body>
 </html>

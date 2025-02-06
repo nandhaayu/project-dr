@@ -66,7 +66,12 @@
                 </li>
                 <li>
                     <a href="{{ route('rutinitas.admin') }}" class="sidebar-link text-sm text-gray-600 hover:text-green-700">
-                        Rutinitas Kegiatan
+                        Rutinitas Kegiatan Santri
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('rutinitas.umum.admin') }}" class="sidebar-link text-sm text-gray-600 hover:text-green-700">
+                        Rutinitas Kegiatan Umum
                     </a>
                 </li>
             </ul>

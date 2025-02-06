@@ -3,9 +3,9 @@
 <div class="container-fluid">
   <div class="card">
     <div class="card-body">
-      <h5 class="card-title fw-semibold mb-4">Tambah Data Rutinitas Santri</h5>
+      <h5 class="card-title fw-semibold mb-4">Tambah Data Rutinitas Umum</h5>
       
-      <form action="{{ route('rutinitas.store') }}" method="POST" enctype="multipart/form-data">
+      <form action="{{ route('rutinitas.umum.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
           <label for="judl" class="form-label">Judul</label>
@@ -24,7 +24,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Simpan</button>
-        <a href="{{ route('rutinitas.admin') }}" class="btn btn-secondary">Batal</a>
+        <a href="{{ route('rutinitas.umum.admin') }}" class="btn btn-secondary">Batal</a>
       </form>
     </div>
   </div>
