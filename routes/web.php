@@ -36,8 +36,10 @@ Route::get('/BiografiSyaikhuna',[HomeController::class, 'biografiSyaikhuna'])->n
 Route::get('/pendaftaran',[HomeController::class, 'pendaftaran'])->name('pendaftaran');
 Route::get('/pendaftaranAdmin/{file}/download', [HomeController::class, 'download'])->name('pendaftaran.download');
 Route::get('/pendaftaran',[HomeController::class, 'pendaftaran'])->name('pendaftaran');
-Route::get('/galeri',[HomeController::class, 'galeri'])->name('galeri');
-Route::get('/galeri/{id}', [HomeController::class, 'show'])->name('show.singlePost');
+Route::get('/artikel',[HomeController::class, 'artikel'])->name('artikel');
+Route::get('/artikel/{id}', [HomeController::class, 'show'])->name('show.singlePost');
+// Route::get('/galeri',[HomeController::class, 'galeri'])->name('galeri');
+// Route::get('/galeri/{id}', [HomeController::class, 'show'])->name('show.singlePost');
 Route::get('/kontak',[HomeController::class, 'kontak'])->name('kontak');
 Route::get('/posts/search', [PostController::class, 'search'])->name('posts.search');
 

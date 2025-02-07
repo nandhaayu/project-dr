@@ -68,10 +68,14 @@ class HomeController extends Controller
             abort(404, 'File not found');
         }
     }
-    public function galeri() {
+    public function artikel() {
         $post = Post::orderBy('created_at', 'desc')->get();
-        return view('galeri', compact('post'));
+        return view('artikel', compact('post'));
     }
+    // public function galeri() {
+    //     $post = Post::orderBy('created_at', 'desc')->get();
+    //     return view('galeri', compact('post'));
+    // }
     public function show($id)
     {
         $post = Post::where('id', $id)->firstOrFail();
