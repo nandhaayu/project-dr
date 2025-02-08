@@ -24,9 +24,33 @@
         </div>
 
         <div class="mb-3">
+          <label for="nama" class="form-label">Nama</label>
+          <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama" required>
+          @error('nama')
+            <div class="invalid-feedback">{{ $message }}</div>
+          @enderror
+        </div>
+
+        <div class="mb-3">
             <label for="foto" class="form-label">Foto</label>
             <input type="file" class="form-control" id="foto" name="foto" accept="image/*" required>
             @error('foto')
+            <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
+          <label for="nama_1" class="form-label">Nama</label>
+          <input type="text" class="form-control" id="nama_1" name="nama_1" placeholder="Masukkan nama" required>
+          @error('nama_1')
+            <div class="invalid-feedback">{{ $message }}</div>
+          @enderror
+        </div>
+
+        <div class="mb-3">
+            <label for="foto_1" class="form-label">Foto 2</label>
+            <input type="file" class="form-control" id="foto_1" name="foto_1" accept="image/*" required>
+            @error('foto_1')
             <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>

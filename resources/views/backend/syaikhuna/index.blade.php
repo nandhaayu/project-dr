@@ -12,6 +12,9 @@
           <thead>
             <tr>
               <th>Judul</th>
+              <th>Nama</th>
+              <th>Gambar</th>
+              <th>Nama</th>
               <th>Gambar</th>
               <th>Deskripsi</th>
               <th class="w-40">Aksi</th>
@@ -21,7 +24,10 @@
             @if($syaikhuna)
             <tr>
               <td>{{ $syaikhuna->judul }}</td>
+              <td>{{ $syaikhuna->nama }}</td>
               <td><img src="{{ asset('storage/' . $syaikhuna->foto) }}" alt="project-image" class="rounded" style="width: 100%; max-width: 100px; height: auto;"></td>
+              <td>{{ $syaikhuna->nama_1 }}</td>
+              <td><img src="{{ asset('storage/' . $syaikhuna->foto_1) }}" alt="project-image" class="rounded" style="width: 100%; max-width: 100px; height: auto;"></td>
               <td>{!! $syaikhuna->deskripsi !!}</td>
               <td>
                   <a href="{{ route('syaikhuna.edit', $syaikhuna->id) }}" class="btn btn-warning btn-sm">Edit</a>
@@ -31,7 +37,7 @@
           </tr>
             @else
                 <tr>
-                    <td colspan="4" class="text-center">Data tidak ditemukan</td>
+                    <td colspan="7" class="text-center">Data tidak ditemukan</td>
                 </tr>
             @endif
           </tbody>

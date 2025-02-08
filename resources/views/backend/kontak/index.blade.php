@@ -15,7 +15,7 @@
               <th>Telepon</th>
               <th>Email</th>
               <th>Jam Buka</th>
-              <th>Link Maps</th>
+              {{-- <th>Link Maps</th> --}}
               <th class="w-40">Aksi</th>
             </tr>
           </thead>
@@ -26,7 +26,7 @@
               <td>{!! $kontak->telepon !!}</td>
               <td>{{ $kontak->email  }}</td>
               <td>{!! $kontak->jam !!}</td>
-              <td>{{ $kontak->link_maps }}</td>
+              {{-- <td>{{ $kontak->link_maps }}</td> --}}
               <td>
                   <a href="{{ route('kontak.edit', $kontak->id) }}" class="btn btn-warning btn-sm">Edit</a>
                   <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $kontak->id }}">Hapus</button>

@@ -88,11 +88,19 @@
             </a>
           </li>   
           <li class="sidebar-item">
-            <a class="sidebar-link" href="{{ route('post.admin') }}" aria-expanded="false">
+            <a class="sidebar-link" href="{{ route('galeri.admin') }}" aria-expanded="false">
               <span>
                 <i class="fa-solid fa-images"></i>
               </span>
               <span class="hide-menu">Galeri</span>
+            </a>
+          </li>   
+          <li class="sidebar-item">
+            <a class="sidebar-link" href="{{ route('post.admin') }}" aria-expanded="false">
+              <span>
+                <i class="fa-solid fa-images"></i>
+              </span>
+              <span class="hide-menu">Artikel</span>
             </a>
           </li>   
           <li class="sidebar-item">

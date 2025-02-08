@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Beranda;
 use App\Models\BiografiSyaikhuna;
+use App\Models\Galeri;
 use App\Models\kontak;
 use App\Models\Kurikulum;
 use App\Models\Pendaftaran;
@@ -72,10 +73,10 @@ class HomeController extends Controller
         $post = Post::orderBy('created_at', 'desc')->get();
         return view('artikel', compact('post'));
     }
-    // public function galeri() {
-    //     $post = Post::orderBy('created_at', 'desc')->get();
-    //     return view('galeri', compact('post'));
-    // }
+    public function galeri() {
+        $galeri = Galeri::orderBy('created_at', 'desc')->get();
+        return view('galeri', compact('galeri'));
+    }
     public function show($id)
     {
         $post = Post::where('id', $id)->firstOrFail();

@@ -117,11 +117,19 @@
         </a>
     </li>
     <li class="sidebar-item">
-        <a class="sidebar-link hover:text-green-700" href="{{ route('post.admin') }}" aria-expanded="false">
+        <a class="sidebar-link hover:text-green-700" href="{{ route('galeri.admin') }}" aria-expanded="false">
             <span>
                 <i class="fa-solid fa-images mr-2"></i>
             </span>
             <span class="hide-menu">Galeri</span>
+        </a>
+    </li>
+    <li class="sidebar-item">
+        <a class="sidebar-link hover:text-green-700" href="{{ route('post.admin') }}" aria-expanded="false">
+            <span>
+                <i class="fa-solid fa-images mr-2"></i>
+            </span>
+            <span class="hide-menu">Artikel</span>
         </a>
     </li>
     <li class="sidebar-item">
