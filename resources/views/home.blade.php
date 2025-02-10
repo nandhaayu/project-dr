@@ -1,5 +1,6 @@
 <x-layout>
   @include('components.banner')
+  <!-- untuk menampilkan video youtube dan profil singkat -->
   <section id="about" class="py-12">
     <div class="max-w-6xl mx-auto px-8">
       <h2 class="mb-3 text-2xl w-full font-bold text-gray-900 border-b-4 border-green-500 inline-block pb-2"><i class="fa-regular fa-address-card px-2"></i>Tentang Daarur Rohmah</h2>

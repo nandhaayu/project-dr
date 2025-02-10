@@ -72,20 +72,11 @@
                 <div x-show="openSubMenu" @click.away="openSubMenu = false" class="mt-2 space-y-1 bg-green-200 rounded-md shadow-lg">
                     <a href="/profil" class="block px-3 py-2 text-base font-medium {{ Request::is('profil') ? 'bg-green-800 text-white' : 'text-green-700 hover:bg-green-900 hover:text-white' }}">Profil</a>
                     <a href="/kurikulum" class="block px-3 py-2 text-base font-medium {{ Request::is('kurikulum') ? 'bg-green-800 text-white' : 'text-green-700 hover:bg-green-900 hover:text-white' }}">Kurikulum (Tahfidz & Kitab)</a>
-                    <a href="/rutinitas" class="block px-3 py-2 text-base font-medium {{ Request::is('rutinitas') ? 'bg-green-800 text-white' : 'text-green-700 hover:bg-green-900 hover:text-white' }}">Rutinitas (Jadwal Kegiatan)</a>
+                    <a href="/rutinitas" class="block px-3 py-2 text-base font-medium {{ Request::is('rutinitas') ? 'bg-green-800 text-white' : 'text-green-700 hover:bg-green-900 hover:text-white' }}">Rutinitas (Jadwal Kegiatan Santri)</a>
+                    <a href="/rutinitasUmum" class="block px-3 py-2 text-base font-medium {{ Request::is('rutinitasUmum') ? 'bg-green-800 text-white' : 'text-green-700 hover:bg-green-900 hover:text-white' }}">Rutinitas (Jadwal Kegiatan Umum)</a>
                 </div>
               </div>
-              <div x-data="{ openSubMenu: false }" class="relative">
-                <button @click="openSubMenu = !openSubMenu" class="w-full flex rounded-md px-3 py-2 text-base font-medium {{ Request::is('/syaikhuna') ? 'bg-green-700 text-white' : 'bg-green-300 hover:bg-green-700 hover:text-white' }}">
-                    Syaikhuna <i class="fa-solid fa-caret-down ml-1 py-1"></i>
-                </button>
-    
-                <!-- Sub-menu items -->
-                <div x-show="openSubMenu" @click.away="openSubMenu = false" class="mt-2 space-y-1 bg-green-200 rounded-md shadow-lg">
-                    <a href="/syaikhuna" class="block px-3 py-2 text-base font-medium {{ Request::is('syaikhuna') ? 'bg-green-800 text-white' : 'text-green-700 hover:bg-green-900 hover:text-white' }}">Syaikhuna</a>
-                    <a href="/syaikhuna" class="block px-3 py-2 text-base font-medium {{ Request::is('syaikhuna') ? 'bg-green-800 text-white' : 'text-green-700 hover:bg-green-900 hover:text-white' }}">Syaikhuna 2</a>
-                </div>
-              </div>
+              <a href="/syaikhuna" class="block rounded-md {{ request()->is('syaikhuna') ? 'bg-green-700' : 'bg-green-300' }} hover:bg-green-700 hover:text-white px-3 py-2 text-base font-medium">Syaikhuna</a>
               <a href="/pendaftaran" class="block rounded-md {{ request()->is('pendaftaran') ? 'bg-green-700' : 'bg-green-300' }} hover:bg-green-700 hover:text-white px-3 py-2 text-base font-medium">Pendaftaran</a>
               <a href="/galeri" class="block rounded-md {{ request()->is('galeri') ? 'bg-green-700' : 'bg-green-300' }} hover:bg-green-700 hover:text-white px-3 py-2 text-base font-medium">Galeri</a>
               <a href="#" class="block rounded-md {{ request()->is('artikel') ? 'bg-green-700' : 'bg-green-300' }} hover:bg-green-700 hover:text-white px-3 py-2 text-base font-medium">Artikel</a>
