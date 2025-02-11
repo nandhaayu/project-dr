@@ -26,21 +26,23 @@
             <div class="ml-10 flex items-baseline space-x-4">
               <x-nav-link href="/" :active="request()->is('/')">Beranda</x-nav-link>
               <div class="relative group">
-                <x-nav-link href="#" :active="request()->is('kami')">Tentang Kami <i class="fa-solid fa-caret-down ml-1"></i></x-nav-link>
+                <x-nav-link href="#" :active="request()->is('profil') || request()->is('kurikulum') || request()->is('rutinitas') || request()->is('rutinitasUmum') || request()->is('tentang-kami*')">
+                    Tentang Kami <i class="fa-solid fa-caret-down ml-1"></i>
+                </x-nav-link>
                 <div class="absolute hidden group-hover:block bg-white shadow-lg mt-2 py-2 w-64">
-                    <a href="/profil" class="block px-4 py-2 text-sm font-semibold text-black hover:bg-green-300">Profil</a>
-                    <a href="/kurikulum" class="block px-4 py-2 text-sm font-semibold text-black hover:bg-green-300">Kurikulum (Tahfidz & Kitab)</a>
-                    <a href="/rutinitas" class="block px-4 py-2 text-sm font-semibold text-black hover:bg-green-300">Rutinitas (Jadwal Kegiatan Santri)</a>
-                    <a href="/rutinitasUmum" class="block px-4 py-2 text-sm font-semibold text-black hover:bg-green-300">Rutinitas (Jadwal Kegiatan Umum)</a>
+                    <a href="/profil" class="block px-4 py-2 text-sm font-semibold text-black hover:bg-green-300 {{ request()->is('profil') ? 'bg-green-300' : '' }}">Profil</a>
+                    <a href="/kurikulum" class="block px-4 py-2 text-sm font-semibold text-black hover:bg-green-300 {{ request()->is('kurikulum') ? 'bg-green-300' : '' }}">Kurikulum (Tahfidz & Kitab)</a>
+                    <a href="/rutinitas" class="block px-4 py-2 text-sm font-semibold text-black hover:bg-green-300 {{ request()->is('rutinitas') ? 'bg-green-300' : '' }}">Rutinitas (Jadwal Kegiatan Santri)</a>
+                    <a href="/rutinitasUmum" class="block px-4 py-2 text-sm font-semibold text-black hover:bg-green-300 {{ request()->is('rutinitasUmum') ? 'bg-green-300' : '' }}">Rutinitas (Jadwal Kegiatan Umum)</a>
                 </div>
-              </div>            
-              <x-nav-link href="/syaikhuna" :active="request()->is('syaikhuna')">Syaikhuna</x-nav-link>
-              <x-nav-link href="/pendaftaran" :active="request()->is('pendaftaran')">Pendaftaran</x-nav-link>
-              <x-nav-link href="/galeri" :active="request()->is('galeri')">Galeri</x-nav-link>
-              <x-nav-link href="/artikel" :active="request()->is('artikel')">Artikel</x-nav-link>
-              <x-nav-link href="/kontak" :active="request()->is('kontak')">Kontak</x-nav-link>
-            </div>
-          </div>
+                </div>            
+                  <x-nav-link href="/syaikhuna" :active="request()->is('syaikhuna')">Syaikhuna</x-nav-link>
+                  <x-nav-link href="/pendaftaran" :active="request()->is('pendaftaran')">Pendaftaran</x-nav-link>
+                  <x-nav-link href="/galeri" :active="request()->is('galeri')">Galeri</x-nav-link>
+                  <x-nav-link href="/artikel" :active="request()->is('artikel') || request()->is('artikel/*')">Artikel</x-nav-link>                
+                  <x-nav-link href="/kontak" :active="request()->is('kontak')">Kontak</x-nav-link>
+                </div>
+              </div>
         </div>
         <div class="-mr-2 flex md:hidden">
           <!-- Mobile menu button -->
@@ -64,22 +66,36 @@
           <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
               <a href="/" class="block rounded-md {{ request()->is('/') ? 'bg-green-700' : 'bg-green-300' }} hover:bg-green-700 hover:text-white px-3 py-2 text-base font-medium"">Beranda</a>
               <div x-data="{ openSubMenu: false }" class="relative">
-                <button @click="openSubMenu = !openSubMenu" class="w-full flex rounded-md px-3 py-2 text-base font-medium {{ Request::is('/profil') ? 'bg-green-700 text-white' : 'bg-green-300 hover:bg-green-700 hover:text-white' }}">
+                <button @click="openSubMenu = !openSubMenu" class="w-full flex rounded-md px-3 py-2 text-base font-medium 
+                    {{ Request::is('profil') || Request::is('kurikulum') || Request::is('rutinitas') || Request::is('rutinitasUmum') ? 'bg-green-700 text-white' : 'bg-green-300 hover:bg-green-700 hover:text-white' }}">
                     Tentang Kami <i class="fa-solid fa-caret-down ml-1 py-1"></i>
                 </button>
-    
+            
                 <!-- Sub-menu items -->
                 <div x-show="openSubMenu" @click.away="openSubMenu = false" class="mt-2 space-y-1 bg-green-200 rounded-md shadow-lg">
-                    <a href="/profil" class="block px-3 py-2 text-base font-medium {{ Request::is('profil') ? 'bg-green-800 text-white' : 'text-green-700 hover:bg-green-900 hover:text-white' }}">Profil</a>
-                    <a href="/kurikulum" class="block px-3 py-2 text-base font-medium {{ Request::is('kurikulum') ? 'bg-green-800 text-white' : 'text-green-700 hover:bg-green-900 hover:text-white' }}">Kurikulum (Tahfidz & Kitab)</a>
-                    <a href="/rutinitas" class="block px-3 py-2 text-base font-medium {{ Request::is('rutinitas') ? 'bg-green-800 text-white' : 'text-green-700 hover:bg-green-900 hover:text-white' }}">Rutinitas (Jadwal Kegiatan Santri)</a>
-                    <a href="/rutinitasUmum" class="block px-3 py-2 text-base font-medium {{ Request::is('rutinitasUmum') ? 'bg-green-800 text-white' : 'text-green-700 hover:bg-green-900 hover:text-white' }}">Rutinitas (Jadwal Kegiatan Umum)</a>
+                    <a href="/profil" class="block px-3 py-2 text-base font-medium 
+                        {{ Request::is('profil') ? 'bg-green-800 text-white' : 'text-green-700 hover:bg-green-900 hover:text-white' }}">
+                        Profil
+                    </a>
+                    <a href="/kurikulum" class="block px-3 py-2 text-base font-medium 
+                        {{ Request::is('kurikulum') ? 'bg-green-800 text-white' : 'text-green-700 hover:bg-green-900 hover:text-white' }}">
+                        Kurikulum (Tahfidz & Kitab)
+                    </a>
+                    <a href="/rutinitas" class="block px-3 py-2 text-base font-medium 
+                        {{ Request::is('rutinitas') ? 'bg-green-800 text-white' : 'text-green-700 hover:bg-green-900 hover:text-white' }}">
+                        Rutinitas (Jadwal Kegiatan Santri)
+                    </a>
+                    <a href="/rutinitasUmum" class="block px-3 py-2 text-base font-medium 
+                        {{ Request::is('rutinitasUmum') ? 'bg-green-800 text-white' : 'text-green-700 hover:bg-green-900 hover:text-white' }}">
+                        Rutinitas (Jadwal Kegiatan Umum)
+                    </a>
                 </div>
-              </div>
+            </div>
+            
               <a href="/syaikhuna" class="block rounded-md {{ request()->is('syaikhuna') ? 'bg-green-700' : 'bg-green-300' }} hover:bg-green-700 hover:text-white px-3 py-2 text-base font-medium">Syaikhuna</a>
               <a href="/pendaftaran" class="block rounded-md {{ request()->is('pendaftaran') ? 'bg-green-700' : 'bg-green-300' }} hover:bg-green-700 hover:text-white px-3 py-2 text-base font-medium">Pendaftaran</a>
               <a href="/galeri" class="block rounded-md {{ request()->is('galeri') ? 'bg-green-700' : 'bg-green-300' }} hover:bg-green-700 hover:text-white px-3 py-2 text-base font-medium">Galeri</a>
-              <a href="#" class="block rounded-md {{ request()->is('artikel') ? 'bg-green-700' : 'bg-green-300' }} hover:bg-green-700 hover:text-white px-3 py-2 text-base font-medium">Artikel</a>
+              <a href="/artikel" class="block rounded-md {{ request()->is('artikel') || request()->is('artikel/*') ? 'bg-green-700' : 'bg-green-300' }} hover:bg-green-700 hover:text-white px-3 py-2 text-base font-medium">Artikel</a>
               <a href="/kontak" class="block rounded-md {{ request()->is('kontak') ? 'bg-green-700' : 'bg-green-300' }} hover:bg-green-700 hover:text-white px-3 py-2 text-base font-medium">Kontak</a>
           </div>
       </div>
