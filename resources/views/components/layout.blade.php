@@ -8,10 +8,10 @@
     @vite('resources/css/app.css')
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <title>PONPES DAARUR RAHMAH</title>
-    <link rel="icon" href="assets/img/logo-PPDR.png" type="image/png" />
-    <link href="assets/css/fontawesome/css/fontawesome.css" rel="stylesheet" />
-    <link href="assets/css/fontawesome/css/brands.css" rel="stylesheet" />
-    <link href="assets/css/fontawesome/css/solid.css" rel="stylesheet" />
+    <link rel="icon" href="{{ asset('assets/img/logo-PPDR.png') }}" type="image/png" />
+    <link href="{{ asset('assets/css/fontawesome/css/fontawesome.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/css/fontawesome/css/brands.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/css/fontawesome/css/solid.css') }}" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body class="h-full">
