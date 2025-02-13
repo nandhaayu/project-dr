@@ -8,81 +8,87 @@ use Illuminate\Support\Facades\Storage;
 
 class SlideController extends Controller
 {
-    // Menyimpan profil baru
+    // Menyimpan slide baru
     public function store(Request $request)
     {
-        $request->validate([
-            'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',  // Validasi untuk foto
+        $validated = $request->validate([
+            'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',  
         ]);
 
         // Mengupload foto dan menyimpan path
         $fotoPath = $request->file('foto')->store('images', 'public');
 
+        if (!$fotoPath) {
+            return back()->withErrors(['foto' => 'Gagal mengunggah gambar']);
+        }
+
         Slide::create([
-            'foto' => $fotoPath,  // Menyimpan path foto
+            'foto' => $fotoPath,
         ]);
 
-        return redirect()->route('slide.admin')->with('success', 'slide berhasil dibuat');
+        return redirect()->route('slide.admin')->with('success', 'Slide berhasil dibuat');
     }
 
+    // Memperbarui slide
     public function update(Request $request, $id)
     {
-        // Validasi input
-        $validatedData = $request->validate([
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',  // Validasi untuk file gambar
+        $validated = $request->validate([
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',  
         ]);
 
-        // Mencari slide berdasarkan ID
         $slide = Slide::findOrFail($id);
 
-        // Jika ada file foto yang diunggah
         if ($request->hasFile('foto')) {
-            // Menghapus foto lama dari penyimpanan jika ada
-            if (!empty($slide->foto) && Storage::exists('public/' . $slide->foto)) {
+            // Menghapus foto lama jika ada
+            if ($slide->foto && Storage::exists('public/' . $slide->foto)) {
                 Storage::delete('public/' . $slide->foto);
             }
 
-            // Mengunggah foto baru
+            // Mengupload foto baru
             $fotoPath = $request->file('foto')->store('images', 'public');
-            $slide->foto = $fotoPath;  // Memperbarui path foto di database
+
+            if (!$fotoPath) {
+                return back()->withErrors(['foto' => 'Gagal mengunggah gambar']);
+            }
+
+            $slide->foto = $fotoPath;
         }
 
-        // Menyimpan perubahan ke database
         $slide->save();
 
-        // Redirect dengan pesan sukses
         return redirect()->route('slide.admin')->with('success', 'Slide berhasil diperbarui');
     }
 
-    // Menampilkan profil di halaman admin
+    // Menampilkan semua slide di halaman admin
     public function slideAdmin()
     {
-        $slide = Slide::all();  // Mengambil profil pertama
+        $slide = Slide::all();  
         return view('backend.slide.index', compact('slide'));
     }
 
-    // Menampilkan form untuk membuat profil baru
+    // Menampilkan form tambah slide
     public function create()
     {
         return view('backend.slide.create');
     }
 
+    // Menampilkan form edit slide
     public function edit($id)
     {
-        $slide = Slide::findOrFail($id);  // Mengambil data profil berdasarkan ID
-        return view('backend.slide.edit', compact('slide'));  // Mengirimkan profil ke view
+        $slide = Slide::findOrFail($id);  
+        return view('backend.slide.edit', compact('slide'));
     }
-    
 
-    // Menghapus profil
-    public function destroy(Slide $id)
+    // Menghapus slide
+    public function destroy(Slide $slide)
     {
-        // Menghapus foto dari penyimpanan
-        Storage::delete('public/' . $id->foto);
-        
-        // Menghapus data profil
-        $id->delete();
+        // Menghapus foto dari penyimpanan jika ada
+        if ($slide->foto && Storage::exists('public/' . $slide->foto)) {
+            Storage::delete('public/' . $slide->foto);
+        }
 
-        return redirect()->route('slide.admin')->with('success', 'Data berhasil dihapus');
+        $slide->delete();
+
+        return redirect()->route('slide.admin')->with('success', 'Slide berhasil dihapus');
     }
 }
