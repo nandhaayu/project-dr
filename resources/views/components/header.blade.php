@@ -172,7 +172,7 @@
             <!-- Dropdown Tentang Kami -->
             <div x-data="{ openSubMenu: {{ request()->is('profil') || request()->is('kurikulum') || request()->is('rutinitas') || request()->is('rutinitasUmum') ? 'true' : 'false' }} }">
                 <button @click="openSubMenu = !openSubMenu" class="w-full flex justify-between rounded-md px-3 py-2 text-base font-medium hover:bg-green-700 hover:text-white 
-                    {{ request()->is('profil') || request()->is('kurikulum') || request()->is('rutinitas') || request()->is('rutinitasUmum') ? 'bg-green-700 text-white' : 'bg-green-300' }}">
+                    {{ request()->is('profil') || request()->is('kurikulum') || request()->is('rutinitas') || request()->is('rutinitasUmum') ? 'bg-green-700 text-white'bug }}">
                     Tentang Kami <i class="fa-solid fa-caret-down ml-1 py-1"></i>
                 </button>
 
