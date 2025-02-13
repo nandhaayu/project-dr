@@ -41,7 +41,6 @@
                   <x-nav-link href="/galeri" :active="request()->is('galeri')">Galeri</x-nav-link>
                   <x-nav-link href="/artikel" :active="request()->is('artikel') || request()->is('artikel/*')">Artikel</x-nav-link>                
                   <x-nav-link href="/kontak" :active="request()->is('kontak')">Kontak</x-nav-link>
-                  <x-nav-link href="/kontak" :active="request()->is('kontak')">coba[]</x-nav-link>
                 </div>
               </div>
         </div>
