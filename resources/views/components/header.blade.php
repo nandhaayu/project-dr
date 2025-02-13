@@ -166,11 +166,13 @@
       <!-- Mobile Menu -->
       <div x-show="isOpen" class="md:hidden fixed top-16 left-0 w-full bg-white shadow-lg transition-all duration-300">
           <div class="space-y-1 px-4 py-4">
+            <!-- Beranda -->
             <a href="/" class="block rounded-md px-3 py-2 text-base font-medium hover:bg-green-700 hover:text-white {{ request()->is('/') ? 'bg-green-700 text-white' : '' }}">Beranda</a>
 
             <!-- Dropdown Tentang Kami -->
             <div x-data="{ openSubMenu: {{ request()->is('profil') || request()->is('kurikulum') || request()->is('rutinitas') || request()->is('rutinitasUmum') ? 'true' : 'false' }} }">
-                <button @click="openSubMenu = !openSubMenu" class="w-full flex rounded-md px-3 py-2 text-base font-medium bg-green-300 hover:bg-green-700 hover:text-white">
+                <button @click="openSubMenu = !openSubMenu" class="w-full flex justify-between rounded-md px-3 py-2 text-base font-medium hover:bg-green-700 hover:text-white 
+                    {{ request()->is('profil') || request()->is('kurikulum') || request()->is('rutinitas') || request()->is('rutinitasUmum') ? 'bg-green-700 text-white' : 'bg-green-300' }}">
                     Tentang Kami <i class="fa-solid fa-caret-down ml-1 py-1"></i>
                 </button>
 
@@ -183,11 +185,12 @@
                 </div>
             </div>
 
-            <a href="/syaikhuna" class="block rounded-md px-3 py-2 text-base font-medium hover:bg-green-700 hover:text-white">Syaikhuna</a>
-            <a href="/pendaftaran" class="block rounded-md px-3 py-2 text-base font-medium hover:bg-green-700 hover:text-white">Pendaftaran</a>
-            <a href="/galeri" class="block rounded-md px-3 py-2 text-base font-medium hover:bg-green-700 hover:text-white">Galeri</a>
-            <a href="/artikel" class="block rounded-md px-3 py-2 text-base font-medium hover:bg-green-700 hover:text-white">Artikel</a>
-            <a href="/kontak" class="block rounded-md px-3 py-2 text-base font-medium hover:bg-green-700 hover:text-white">Kontak</a>
+            <!-- Menu Lainnya -->
+            <a href="/syaikhuna" class="block rounded-md px-3 py-2 text-base font-medium hover:bg-green-700 hover:text-white {{ request()->is('syaikhuna') ? 'bg-green-700 text-white' : '' }}">Syaikhuna</a>
+            <a href="/pendaftaran" class="block rounded-md px-3 py-2 text-base font-medium hover:bg-green-700 hover:text-white {{ request()->is('pendaftaran') ? 'bg-green-700 text-white' : '' }}">Pendaftaran</a>
+            <a href="/galeri" class="block rounded-md px-3 py-2 text-base font-medium hover:bg-green-700 hover:text-white {{ request()->is('galeri') ? 'bg-green-700 text-white' : '' }}">Galeri</a>
+            <a href="/artikel" class="block rounded-md px-3 py-2 text-base font-medium hover:bg-green-700 hover:text-white {{ request()->is('artikel') ? 'bg-green-700 text-white' : '' }}">Artikel</a>
+            <a href="/kontak" class="block rounded-md px-3 py-2 text-base font-medium hover:bg-green-700 hover:text-white {{ request()->is('kontak') ? 'bg-green-700 text-white' : '' }}">Kontak</a>
           </div>
       </div>
   </div>
