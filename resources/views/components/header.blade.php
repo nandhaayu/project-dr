@@ -126,23 +126,26 @@
           <div class="hidden md:block">
               <div class="ml-4 flex items-center md:ml-6">
                   <div class="ml-10 flex items-baseline space-x-4">
-                      <x-nav-link href="/" :active="request()->is('/')">Beranda</x-nav-link>
-                      <div class="relative group">
-                          <x-nav-link href="#">
-                              Tentang Kami <i class="fa-solid fa-caret-down ml-1"></i>
-                          </x-nav-link>
-                          <div class="absolute hidden group-hover:block bg-white shadow-lg mt-2 py-2 w-64">
-                              <a href="/profil" class="block px-4 py-2 text-sm font-semibold text-black hover:bg-green-300">Profil</a>
-                              <a href="/kurikulum" class="block px-4 py-2 text-sm font-semibold text-black hover:bg-green-300">Kurikulum</a>
-                              <a href="/rutinitas" class="block px-4 py-2 text-sm font-semibold text-black hover:bg-green-300">Rutinitas Santri</a>
-                              <a href="/rutinitasUmum" class="block px-4 py-2 text-sm font-semibold text-black hover:bg-green-300">Rutinitas Umum</a>
-                          </div>
-                      </div>            
-                      <x-nav-link href="/syaikhuna">Syaikhuna</x-nav-link>
-                      <x-nav-link href="/pendaftaran">Pendaftaran</x-nav-link>
-                      <x-nav-link href="/galeri">Galeri</x-nav-link>
-                      <x-nav-link href="/artikel">Artikel</x-nav-link>
-                      <x-nav-link href="/kontak">Kontak</x-nav-link>
+                    <x-nav-link href="/" :active="request()->is('/')">Beranda</x-nav-link>
+
+                    <!-- Dropdown Tentang Kami -->
+                    <div class="relative group">
+                        <x-nav-link href="#" :active="request()->is('profil') || request()->is('kurikulum') || request()->is('rutinitas') || request()->is('rutinitasUmum')">
+                            Tentang Kami <i class="fa-solid fa-caret-down ml-1"></i>
+                        </x-nav-link>
+                        <div class="absolute hidden group-hover:block bg-white shadow-lg mt-2 py-2 w-64">
+                            <a href="/profil" class="block px-4 py-2 text-sm font-semibold text-black hover:bg-green-300 {{ request()->is('profil') ? 'bg-green-300' : '' }}">Profil</a>
+                            <a href="/kurikulum" class="block px-4 py-2 text-sm font-semibold text-black hover:bg-green-300 {{ request()->is('kurikulum') ? 'bg-green-300' : '' }}">Kurikulum</a>
+                            <a href="/rutinitas" class="block px-4 py-2 text-sm font-semibold text-black hover:bg-green-300 {{ request()->is('rutinitas') ? 'bg-green-300' : '' }}">Rutinitas Santri</a>
+                            <a href="/rutinitasUmum" class="block px-4 py-2 text-sm font-semibold text-black hover:bg-green-300 {{ request()->is('rutinitasUmum') ? 'bg-green-300' : '' }}">Rutinitas Umum</a>
+                        </div>
+                        </div>
+
+                        <x-nav-link href="/syaikhuna" :active="request()->is('syaikhuna')">Syaikhuna</x-nav-link>
+                        <x-nav-link href="/pendaftaran" :active="request()->is('pendaftaran')">Pendaftaran</x-nav-link>
+                        <x-nav-link href="/galeri" :active="request()->is('galeri')">Galeri</x-nav-link>
+                        <x-nav-link href="/artikel" :active="request()->is('artikel') || request()->is('artikel/*')">Artikel</x-nav-link>
+                        <x-nav-link href="/kontak" :active="request()->is('kontak')">Kontak</x-nav-link>
                   </div>
               </div>
           </div>
@@ -163,27 +166,28 @@
       <!-- Mobile Menu -->
       <div x-show="isOpen" class="md:hidden fixed top-16 left-0 w-full bg-white shadow-lg transition-all duration-300">
           <div class="space-y-1 px-4 py-4">
-              <a href="/" class="block rounded-md px-3 py-2 text-base font-medium hover:bg-green-700 hover:text-white">Beranda</a>
+            <a href="/" class="block rounded-md px-3 py-2 text-base font-medium hover:bg-green-700 hover:text-white {{ request()->is('/') ? 'bg-green-700 text-white' : '' }}">Beranda</a>
 
-              <div x-data="{ openSubMenu: false }">
-                  <button @click="openSubMenu = !openSubMenu" class="w-full flex rounded-md px-3 py-2 text-base font-medium bg-green-300 hover:bg-green-700 hover:text-white">
-                      Tentang Kami <i class="fa-solid fa-caret-down ml-1 py-1"></i>
-                  </button>
+            <!-- Dropdown Tentang Kami -->
+            <div x-data="{ openSubMenu: {{ request()->is('profil') || request()->is('kurikulum') || request()->is('rutinitas') || request()->is('rutinitasUmum') ? 'true' : 'false' }} }">
+                <button @click="openSubMenu = !openSubMenu" class="w-full flex rounded-md px-3 py-2 text-base font-medium bg-green-300 hover:bg-green-700 hover:text-white">
+                    Tentang Kami <i class="fa-solid fa-caret-down ml-1 py-1"></i>
+                </button>
 
-                  <!-- Sub-menu items -->
-                  <div x-show="openSubMenu" class="overflow-hidden transition-all duration-300 max-h-0" :class="{'max-h-60': openSubMenu}">
-                      <a href="/profil" class="block px-3 py-2 text-base font-medium text-green-700 hover:bg-green-900 hover:text-white">Profil</a>
-                      <a href="/kurikulum" class="block px-3 py-2 text-base font-medium text-green-700 hover:bg-green-900 hover:text-white">Kurikulum</a>
-                      <a href="/rutinitas" class="block px-3 py-2 text-base font-medium text-green-700 hover:bg-green-900 hover:text-white">Rutinitas Santri</a>
-                      <a href="/rutinitasUmum" class="block px-3 py-2 text-base font-medium text-green-700 hover:bg-green-900 hover:text-white">Rutinitas Umum</a>
-                  </div>
-              </div>
+                <!-- Sub-menu items -->
+                <div x-show="openSubMenu" class="overflow-hidden transition-all duration-300">
+                    <a href="/profil" class="block px-3 py-2 text-base font-medium {{ request()->is('profil') ? 'bg-green-800 text-white' : 'text-green-700 hover:bg-green-900 hover:text-white' }}">Profil</a>
+                    <a href="/kurikulum" class="block px-3 py-2 text-base font-medium {{ request()->is('kurikulum') ? 'bg-green-800 text-white' : 'text-green-700 hover:bg-green-900 hover:text-white' }}">Kurikulum</a>
+                    <a href="/rutinitas" class="block px-3 py-2 text-base font-medium {{ request()->is('rutinitas') ? 'bg-green-800 text-white' : 'text-green-700 hover:bg-green-900 hover:text-white' }}">Rutinitas Santri</a>
+                    <a href="/rutinitasUmum" class="block px-3 py-2 text-base font-medium {{ request()->is('rutinitasUmum') ? 'bg-green-800 text-white' : 'text-green-700 hover:bg-green-900 hover:text-white' }}">Rutinitas Umum</a>
+                </div>
+            </div>
 
-              <a href="/syaikhuna" class="block rounded-md px-3 py-2 text-base font-medium hover:bg-green-700 hover:text-white">Syaikhuna</a>
-              <a href="/pendaftaran" class="block rounded-md px-3 py-2 text-base font-medium hover:bg-green-700 hover:text-white">Pendaftaran</a>
-              <a href="/galeri" class="block rounded-md px-3 py-2 text-base font-medium hover:bg-green-700 hover:text-white">Galeri</a>
-              <a href="/artikel" class="block rounded-md px-3 py-2 text-base font-medium hover:bg-green-700 hover:text-white">Artikel</a>
-              <a href="/kontak" class="block rounded-md px-3 py-2 text-base font-medium hover:bg-green-700 hover:text-white">Kontak</a>
+            <a href="/syaikhuna" class="block rounded-md px-3 py-2 text-base font-medium hover:bg-green-700 hover:text-white">Syaikhuna</a>
+            <a href="/pendaftaran" class="block rounded-md px-3 py-2 text-base font-medium hover:bg-green-700 hover:text-white">Pendaftaran</a>
+            <a href="/galeri" class="block rounded-md px-3 py-2 text-base font-medium hover:bg-green-700 hover:text-white">Galeri</a>
+            <a href="/artikel" class="block rounded-md px-3 py-2 text-base font-medium hover:bg-green-700 hover:text-white">Artikel</a>
+            <a href="/kontak" class="block rounded-md px-3 py-2 text-base font-medium hover:bg-green-700 hover:text-white">Kontak</a>
           </div>
       </div>
   </div>
