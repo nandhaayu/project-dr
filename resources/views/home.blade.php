@@ -30,7 +30,7 @@
         <div class="lg:w-2/3 w-full px-4">
           <div class="mb-4">
             <h2 class="text-2xl font-bold text-gray-900 border-b-4 border-green-500 w-full inline-block pb-2">
-              <i class="fa-solid fa-photo-film px-2"></i>Galeri Terkini
+              <i class="fa-solid fa-photo-film px-2"></i>Artikel Terkini
             </h2>
           </div>
         
