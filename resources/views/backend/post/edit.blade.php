@@ -4,7 +4,7 @@
 <div class="container-fluid">
   <div class="card">
     <div class="card-body">
-      <h5 class="card-title fw-semibold mb-4">Edit Data Galeri</h5>
+      <h5 class="card-title fw-semibold mb-4">Edit Data Artikel</h5>
       
       <form action="{{ route('post.update', $id) }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -36,7 +36,7 @@
             <label for="image" class="form-label">Foto</label>
             <input type="file" class="form-control mb-3" id="image" name="image" accept="image/*">
             @if(!empty($id->image))
-              <img src="{{ url('assets/images/'.$id->image) }}" alt="Current Image" class="rounded" style="width: 100%; max-width: 100px; height: auto;">
+              <img src="{{ url('storage/'.$id->image) }}" alt="Current Image" class="rounded" style="width: 100%; max-width: 100px; height: auto;">
             @endif 
         </div>
 

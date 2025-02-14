@@ -3,7 +3,7 @@
 <div class="container-fluid">
   <div class="card">
     <div class="card-body">
-      <h5 class="card-title fw-semibold mb-4">Tambah Data Galeri</h5>
+      <h5 class="card-title fw-semibold mb-4">Tambah Data Artikel</h5>
       
       <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
