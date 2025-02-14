@@ -39,14 +39,14 @@ class PendaftaranController extends Controller
         $foto = 'nophoto.jpg';
         if ($request->hasFile('foto')) {
             // Menyimpan foto di folder 'public/pendaftaran/images'
-            $foto = $request->file('foto')->store('pendaftaran/images', 'public');
+            $foto = $request->file('foto')->store('storage/pendaftaran/images', 'public');
         }
 
         // Menyimpan file dokumen jika ada yang diupload
         if ($request->hasFile('file')) {
             $fileName = 'file-' . uniqid() . '.' . $request->file->extension();
             // Menyimpan file di folder 'public/pendaftaran/files'
-            $request->file->move(public_path('pendaftaran/files'), $fileName);
+            $request->file->move(public_path('storage/pendaftaran/files'), $fileName);
         } else {
             $fileName = null;
         }
@@ -98,7 +98,7 @@ class PendaftaranController extends Controller
             }
             
             // Simpan foto baru menggunakan store()
-            $fotoFileName = $request->file('foto')->store('pendaftaran/images', 'public');
+            $fotoFileName = $request->file('foto')->store('storage/pendaftaran/images', 'public');
         } else {
             // Jika tidak ada foto baru, gunakan foto lama
             $fotoFileName = $fotoLama;
