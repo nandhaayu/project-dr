@@ -67,9 +67,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/kurikulumAdmin', [KurikulumController::class, 'kurikulumAdmin'])->name('kurikulum.admin');
     Route::get('/kurikulumAdmin/create', [KurikulumController::class, 'create'])->name('kurikulum.create');
     Route::post('/kurikulumAdmin/store', [KurikulumController::class, 'store'])->name('kurikulum.store');
-    Route::get('/kurikulumAdmin/edit/{id}', [KurikulumController::class, 'edit'])->name('kurikulum.edit');
-    Route::put('/kurikulumAdmin/update/{id}', [KurikulumController::class, 'update'])->name('kurikulum.update');
-    Route::delete('/kurikulumAdmin/delete/{id}', [KurikulumController::class, 'destroy'])->name('kurikulum.destroy');
+    Route::get('/kurikulumAdmin/edit/{kurikulum}', [KurikulumController::class, 'edit'])->name('kurikulum.edit');
+    Route::put('/kurikulumAdmin/update/{kurikulum}', [KurikulumController::class, 'update'])->name('kurikulum.update');
+    Route::delete('/kurikulumAdmin/delete/{kurikulum}', [KurikulumController::class, 'destroy'])->name('kurikulum.destroy');
     Route::get('/galeriAdmin', [GaleriController::class, 'galeriAdmin'])->name('galeri.admin');
     Route::get('/galeriAdmin/create', [GaleriController::class, 'create'])->name('galeri.create');
     Route::post('/galeriAdmin/store', [GaleriController::class, 'store'])->name('galeri.store');

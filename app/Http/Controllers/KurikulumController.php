@@ -8,100 +8,86 @@ use Illuminate\Support\Facades\DB;
 
 class KurikulumController extends Controller
 {
-    function kurikulumAdmin () {
+    public function kurikulumAdmin() {
         $kurikulum = Kurikulum::all();
         return view('backend.kurikulum.index', compact('kurikulum'));
     }
 
-    function create () {
+    public function create() {
         return view('backend.kurikulum.create');
     }
 
     public function store(Request $request)
     {
-        // melakukan validasi data
-        $request->validate([
-            'judul' => 'required|max:45',
-            'deskripsi' => 'required',
-            'foto' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
-        ],
-        [
-            'name.required' => 'Nama wajib diisi',
-            'name.max' => 'Nama maksimal 45 karakter',
-            'deskripsi.required' => 'jenis wajib diisi',
-            'foto.max' => 'Foto maksimal 2 MB',
-            'foto.mimes' => 'File ekstensi hanya bisa jpg,png,jpeg,gif, svg',
-            'foto.image' => 'File harus berbentuk image'
-        ]);
-        
-        //jika file foto ada yang terupload
-        if(!empty($request->foto)){
-            //maka proses berikut yang dijalankan
-            $fileName = 'foto-'.uniqid().'.'.$request->foto->extension();
-            //setelah tau fotonya sudah masuk maka tempatkan ke public
-            $request->foto->move(public_path('assets/images'), $fileName);
-        } else {
-            $fileName = 'nophoto.jpg';
-        }
-        
-        //tambah data produk
-        DB::table('kurikulums')->insert([
-            'judul'=>$request->judul,
-            'deskripsi' => $request->deskripsi,
-            'foto'=>$fileName,
-        ]);
-        
-        return redirect()->route('kurikulum.admin');
-    }
-
-    public function edit(Kurikulum $id) {
-        return view('backend.kurikulum.edit', compact('id'));
-    }
-
-    public function update(Request $request, string $id) {
+        // Validasi data
         $request->validate([
             'judul' => 'required|max:45',
             'deskripsi' => 'required',
             'foto' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-        ],
-        [
-            'judul.required' => 'Judul Wajib diisi',
-            'deskripsi.required' => 'deskripsi wajib diisi',
+        ], [
+            'judul.required' => 'Judul wajib diisi',
+            'judul.max' => 'Judul maksimal 45 karakter',
+            'deskripsi.required' => 'Deskripsi wajib diisi',
             'foto.max' => 'Foto maksimal 2 MB',
-            'foto.mimes' => 'File ekstensi hanya bisa jpg,png,jpeg,gif, svg',
+            'foto.mimes' => 'File ekstensi hanya bisa jpg,png,jpeg,gif,svg',
             'foto.image' => 'File harus berbentuk image'
         ]);
 
-        //foto lama
-        $fotoLama = DB::table('kurikulums')->select('foto')->where('id',$id)->get();
-        foreach($fotoLama as $f1){
-            $fotoLama = $f1->foto;
-        }
-    
-        //jika foto sudah ada yang terupload
-        if(!empty($request->foto)){
-            //maka proses selanjutnya
-            if(!empty($fotoLama->foto)) unlink(public_path('assets/images'.$fotoLama->foto));
-            //proses ganti foto
-            $fileName = 'foto-'.$request->id.'.'.$request->foto->extension();
-            //setelah tau fotonya sudah masuk maka tempatkan ke public
+        // Proses unggah foto
+        $fileName = 'nophoto.jpg';
+        if ($request->hasFile('foto')) {
+            $fileName = 'foto-' . uniqid() . '.' . $request->foto->extension();
             $request->foto->move(public_path('assets/images'), $fileName);
-        } else{
-            $fileName = $fotoLama;
         }
-    
-        //update data produk
-        DB::table('kurikulums')->where('id',$id)->update([
-            'judul'=>$request->judul,
+        
+        // Simpan data ke database
+        Kurikulum::create([
+            'judul' => $request->judul,
             'deskripsi' => $request->deskripsi,
-            'foto'=>$fileName,
+            'foto' => $fileName,
         ]);
-                
-        return redirect()->route('kurikulum.admin');
+        
+        return redirect()->route('kurikulum.admin')->with('success', 'Kurikulum berhasil ditambahkan');
     }
 
-    public function destroy(kurikulum $id) {
-        $id->delete();
-        return redirect()->route('kurikulum.admin')->with('succes', 'Data berhasil dihapus');
+    public function edit(Kurikulum $kurikulum) {
+        return view('backend.kurikulum.edit', compact('kurikulum'));
+    }
+
+    public function update(Request $request, Kurikulum $kurikulum)
+    {
+        $request->validate([
+            'judul' => 'required|max:45',
+            'deskripsi' => 'required',
+            'foto' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+        ]);
+
+        // Proses unggah foto
+        $fileName = $kurikulum->foto;
+        if ($request->hasFile('foto')) {
+            if ($kurikulum->foto && $kurikulum->foto !== 'nophoto.jpg' && file_exists(public_path('assets/images/' . $kurikulum->foto))) {
+                unlink(public_path('assets/images/' . $kurikulum->foto));
+            }
+            $fileName = 'foto-' . uniqid() . '.' . $request->foto->extension();
+            $request->foto->move(public_path('assets/images'), $fileName);
+        }
+
+        // Update data
+        $kurikulum->update([
+            'judul' => $request->judul,
+            'deskripsi' => $request->deskripsi,
+            'foto' => $fileName,
+        ]);
+
+        return redirect()->route('kurikulum.admin')->with('success', 'Kurikulum berhasil diperbarui');
+    }
+
+    public function destroy(Kurikulum $kurikulum) {
+        if ($kurikulum->foto && $kurikulum->foto !== 'nophoto.jpg' && file_exists(public_path('assets/images/' . $kurikulum->foto))) {
+            unlink(public_path('assets/images/' . $kurikulum->foto));
+        }
+        $kurikulum->delete();
+
+        return redirect()->route('kurikulum.admin')->with('success', 'Data berhasil dihapus');
     }
 }
