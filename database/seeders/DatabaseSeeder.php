@@ -14,7 +14,6 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call(ProfilSeeder::class);
-        $this->call(KurikulumSeeder::class);
         User::factory()->create([
             'name' => 'admin',
             'username' => 'admin',
