@@ -12,7 +12,7 @@
           @foreach ($kurikulum as $d)
               <div class="bg-white p-8 rounded-lg shadow-lg mb-10 text-center">
                   <h2 class="font-bold text-gray-900 mb-4">{{ $d->judul }}</h2>
-                  <img src="{{ asset('assets/images/' . $d->foto) }}" 
+                  <img src="{{ asset('storage/' . $d->foto) }}" 
                       alt="gambar" 
                       class="w-full h-auto rounded-lg mb-6 mx-auto" 
                       style="width: 100%; max-width: 400px; height: auto;">

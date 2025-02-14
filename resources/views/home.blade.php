@@ -76,7 +76,7 @@
               <!-- Berita 1 -->
               @foreach ($syaikhuna as $d)
               <div class="p-4 shadow-sm text-center">
-                <img src="{{ asset('storage/' . $d->foto) }}" alt="Berita 1" class="w-100 h-full object-cover rounded-lg mb-3">
+                <img src="{{ asset('storage/' . $d->foto) }}" alt="Berita 1" class="w-full h-auto object-cover rounded-lg mb-3">
                 <h3 class="font-semibold text-gray-800">Habib Syahir Sodiq Alhindwan, S.Pd., Lc</h3>
                 <p class="text-gray-600 text-sm mt-2">-Pengasuh Pondok Pesantren Daarur Rohmah-</p>
                 <p class="text-gray-600 text-sm mt-2">{!! Illuminate\Support\Str::words(strip_tags($d->deskripsi), 20, '...') !!}</p>
