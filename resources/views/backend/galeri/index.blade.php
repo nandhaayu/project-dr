@@ -23,15 +23,7 @@
               <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $d->judul }}</td>
-                <td>
-                  @php
-                    $imagePath = asset('assets/images/' . $d->foto);
-                    if (!file_exists(public_path('assets/images/' . $d->foto))) {
-                        $imagePath = asset('assets/images/nophoto.jpg'); // Gambar default jika tidak ditemukan
-                    }
-                  @endphp
-                  <img src="{{ $imagePath }}" alt="Galeri Image" class="rounded" style="width: 100px; height: auto;">
-                </td>
+                <td><img src="{{ asset('storage/' . $d->foto) }}" alt="project-image" class="rounded" style="width: 100%; max-width: 100px; height: auto;"></td>
                 <td>
                   <a href="{{ route('galeri.edit', $d->id) }}" class="btn btn-warning btn-sm">Edit</a>
                   <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $d->id }}">Hapus</button>

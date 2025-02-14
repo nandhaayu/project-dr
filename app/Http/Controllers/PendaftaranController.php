@@ -19,7 +19,7 @@ class PendaftaranController extends Controller
 
     public function store(Request $request)
     {
-        // melakukan validasi data
+        // Melakukan validasi data
         $request->validate([
             'judul' => 'required|max:45',
             'deskripsi' => 'required',
@@ -29,49 +29,46 @@ class PendaftaranController extends Controller
         [
             'judul.required' => 'Nama wajib diisi',
             'judul.max' => 'Nama maksimal 45 karakter',
-            'deskripsi.required' => 'jenis wajib diisi',
+            'deskripsi.required' => 'Deskripsi wajib diisi',
             'foto.max' => 'Foto maksimal 2 MB',
             'foto.mimes' => 'File ekstensi hanya bisa jpg,png,jpeg,gif, svg',
             'foto.image' => 'File harus berbentuk image'
         ]);
-        
-         // Menyimpan file foto jika ada yang diupload
+
+        // Proses unggah foto
+        $foto = 'nophoto.jpg';
         if ($request->hasFile('foto')) {
-            $fotoFileName = 'foto-' . uniqid() . '.' . $request->foto->extension();
-            // Menyimpan foto di folder 'public/assets/images'
-            $request->foto->move(public_path('assets/images'), $fotoFileName);
-        } else {
-            // Foto default jika tidak ada foto yang diupload
-            $fotoFileName = 'nophoto.jpg';
+            // Menyimpan foto di folder 'public/pendaftaran/images'
+            $foto = $request->file('foto')->store('pendaftaran/images', 'public');
         }
 
         // Menyimpan file dokumen jika ada yang diupload
         if ($request->hasFile('file')) {
             $fileName = 'file-' . uniqid() . '.' . $request->file->extension();
-            // Menyimpan file di folder 'public/assets/files'
-            $request->file->move(public_path('assets/files'), $fileName);
+            // Menyimpan file di folder 'public/pendaftaran/files'
+            $request->file->move(public_path('pendaftaran/files'), $fileName);
         } else {
-            // Bisa disesuaikan jika file tidak diupload (misalnya null atau pesan error tambahan)
             $fileName = null;
         }
-        
-        //tambah data produk
+
+        // Menambahkan data pendaftaran
         DB::table('pendaftarans')->insert([
-            'judul'=>$request->judul,
+            'judul' => $request->judul,
             'deskripsi' => $request->deskripsi,
-            'foto'=>$fotoFileName,
+            'foto' => $foto,
             'file' => $fileName,
         ]);
-        
+
         return redirect()->route('pendaftaran.admin');
     }
-
 
     public function edit(pendaftaran $id) {
         return view('backend.pendaftaran.edit', compact('id'));
     }
 
-    public function update(Request $request, string $id) {
+    public function update(Request $request, string $id)
+    {
+        // Melakukan validasi data
         $request->validate([
             'judul' => 'required|max:45',
             'deskripsi' => 'required',
@@ -79,7 +76,7 @@ class PendaftaranController extends Controller
             'file' => 'nullable|mimes:docx,pdf|max:2048',
         ],
         [
-            'judul.required' => 'Judul Wajib diisi',
+            'judul.required' => 'Judul wajib diisi',
             'deskripsi.required' => 'Deskripsi wajib diisi',
             'foto.max' => 'Foto maksimal 2 MB',
             'foto.mimes' => 'File ekstensi hanya bisa jpg,png,jpeg,gif, svg',
@@ -93,31 +90,29 @@ class PendaftaranController extends Controller
         $fotoLama = $pendaftaran->foto;
         $fileLama = $pendaftaran->file;
     
-        // Jika ada foto yang diupload, proses upload foto baru
+        // Proses unggah foto jika ada yang diupload
         if ($request->hasFile('foto')) {
             // Hapus foto lama jika ada
-            if ($fotoLama && file_exists(public_path('assets/images/' . $fotoLama))) {
-                unlink(public_path('assets/images/' . $fotoLama));
+            if ($fotoLama && file_exists(public_path('storage/pendaftaran/images/' . $fotoLama))) {
+                unlink(public_path('storage/pendaftaran/images/' . $fotoLama));
             }
             
-            // Proses foto baru
-            $fotoFileName = 'foto-' . uniqid() . '.' . $request->foto->extension();
-            $request->foto->move(public_path('assets/images'), $fotoFileName);
+            // Simpan foto baru menggunakan store()
+            $fotoFileName = $request->file('foto')->store('pendaftaran/images', 'public');
         } else {
             // Jika tidak ada foto baru, gunakan foto lama
             $fotoFileName = $fotoLama;
         }
     
-        // Jika ada file yang diupload (misalnya dokumen), proses upload file baru
+        // Proses unggah file jika ada yang diupload
         if ($request->hasFile('file')) {
             // Hapus file lama jika ada
-            if ($fileLama && file_exists(public_path('assets/files/' . $fileLama))) {
-                unlink(public_path('assets/files/' . $fileLama));
+            if ($fileLama && file_exists(public_path('storage/pendaftaran/files/' . $fileLama))) {
+                unlink(public_path('storage/pendaftaran/files/' . $fileLama));
             }
     
-            // Proses file baru
-            $fileName = 'file-' . uniqid() . '.' . $request->file->extension();
-            $request->file->move(public_path('assets/files'), $fileName);
+            // Simpan file baru menggunakan store()
+            $fileName = $request->file('file')->store('pendaftaran/files', 'public');
         } else {
             // Jika tidak ada file baru, gunakan file lama
             $fileName = $fileLama;
@@ -132,7 +127,7 @@ class PendaftaranController extends Controller
         ]);
     
         return redirect()->route('pendaftaran.admin')->with('success', 'Data berhasil diperbarui');
-    }
+    }    
 
     public function destroy(pendaftaran $id) {
         $id->delete();

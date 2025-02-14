@@ -49,7 +49,7 @@
             @enderror
             @if(!empty($id->foto))
               <div class="mt-2">
-                <img src="{{ url('assets/images/'.$id->foto) }}" alt="Foto Pendaftaran" class="rounded" style="width: 100px; height: auto;">
+                <img src="{{ url('storage/'.$id->foto) }}" alt="Foto Pendaftaran" class="rounded" style="width: 100px; height: auto;">
               </div>
             @else
               <small class="form-text text-muted">Tidak ada foto sebelumnya.</small>

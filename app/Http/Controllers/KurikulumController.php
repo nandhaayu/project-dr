@@ -34,17 +34,16 @@ class KurikulumController extends Controller
         ]);
 
         // Proses unggah foto
-        $fileName = 'nophoto.jpg';
+        $foto = 'nophoto.jpg';
         if ($request->hasFile('foto')) {
-            $fileName = 'foto-' . uniqid() . '.' . $request->foto->extension();
-            $request->foto->move(public_path('assets/images'), $fileName);
+            $foto = $request->file('foto')->store('kurikulum', 'public');
         }
         
         // Simpan data ke database
         Kurikulum::create([
             'judul' => $request->judul,
             'deskripsi' => $request->deskripsi,
-            'foto' => $fileName,
+            'foto' => $foto,
         ]);
         
         return redirect()->route('kurikulum.admin')->with('success', 'Kurikulum berhasil ditambahkan');
@@ -63,28 +62,24 @@ class KurikulumController extends Controller
         ]);
 
         // Proses unggah foto
-        $fileName = $kurikulum->foto;
+        $foto = $kurikulum->foto;
         if ($request->hasFile('foto')) {
-            if ($kurikulum->foto && $kurikulum->foto !== 'nophoto.jpg' && file_exists(public_path('assets/images/' . $kurikulum->foto))) {
-                unlink(public_path('assets/images/' . $kurikulum->foto));
-            }
-            $fileName = 'foto-' . uniqid() . '.' . $request->foto->extension();
-            $request->foto->move(public_path('assets/images'), $fileName);
+            $foto = $request->file('foto')->store('kurikulum', 'public');
         }
 
         // Update data
         $kurikulum->update([
             'judul' => $request->judul,
             'deskripsi' => $request->deskripsi,
-            'foto' => $fileName,
+            'foto' => $foto,
         ]);
 
         return redirect()->route('kurikulum.admin')->with('success', 'Kurikulum berhasil diperbarui');
     }
 
     public function destroy(Kurikulum $kurikulum) {
-        if ($kurikulum->foto && $kurikulum->foto !== 'nophoto.jpg' && file_exists(public_path('assets/images/' . $kurikulum->foto))) {
-            unlink(public_path('assets/images/' . $kurikulum->foto));
+        if ($kurikulum->foto && $kurikulum->foto !== 'nophoto.jpg' && file_exists(storage_path('app/public/' . $kurikulum->foto))) {
+            unlink(storage_path('app/public/' . $kurikulum->foto));
         }
         $kurikulum->delete();
 

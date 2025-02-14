@@ -20,35 +20,34 @@ class GaleriController extends Controller
 
     public function store(Request $request)
     {
-        // melakukan validasi data
+        // Melakukan validasi data
         $request->validate([
             'judul' => 'required|max:45',
             'foto' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
         ],
         [
-            'name.required' => 'Nama wajib diisi',
-            'name.max' => 'Nama maksimal 45 karakter',
+            'judul.required' => 'Nama wajib diisi',
+            'judul.max' => 'Nama maksimal 45 karakter',
             'foto.max' => 'Foto maksimal 2 MB',
             'foto.mimes' => 'File ekstensi hanya bisa jpg,png,jpeg,gif, svg',
             'foto.image' => 'File harus berbentuk image'
         ]);
-        
-        //jika file foto ada yang terupload
-        if(!empty($request->foto)){
-            //maka proses berikut yang dijalankan
-            $fileName = 'foto-'.uniqid().'.'.$request->foto->extension();
-            //setelah tau fotonya sudah masuk maka tempatkan ke public
-            $request->foto->move(public_path('assets/images'), $fileName);
+
+        // Proses unggah foto jika ada yang diupload
+        if ($request->hasFile('foto')) {
+            // Menyimpan foto menggunakan store() dan menempatkannya di folder 'public/pendaftaran/images'
+            $fileName = $request->file('foto')->store('galeri', 'public');
         } else {
+            // Foto default jika tidak ada foto yang diupload
             $fileName = 'nophoto.jpg';
         }
-        
-        //tambah data produk
+
+        // Menambahkan data ke tabel galeris
         DB::table('galeris')->insert([
-            'judul'=>$request->judul,
-            'foto'=>$fileName,
+            'judul' => $request->judul,
+            'foto' => $fileName,
         ]);
-        
+
         return redirect()->route('galeri.admin');
     }
 
@@ -56,43 +55,44 @@ class GaleriController extends Controller
         return view('backend.galeri.edit', compact('id'));
     }
 
-    public function update(Request $request, string $id) {
+    public function update(Request $request, string $id)
+    {
+        // Melakukan validasi data
         $request->validate([
             'judul' => 'required|max:45',
             'foto' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
         ],
         [
-            'judul.required' => 'Judul Wajib diisi',
+            'judul.required' => 'Judul wajib diisi',
+            'judul.max' => 'Judul maksimal 45 karakter',
             'foto.max' => 'Foto maksimal 2 MB',
             'foto.mimes' => 'File ekstensi hanya bisa jpg,png,jpeg,gif, svg',
             'foto.image' => 'File harus berbentuk image'
         ]);
 
-        //foto lama
-        $fotoLama = DB::table('galeris')->select('foto')->where('id',$id)->get();
-        foreach($fotoLama as $f1){
-            $fotoLama = $f1->foto;
+        // Mengambil data foto lama
+        $galeri = DB::table('galeris')->where('id', $id)->first();
+        $fotoLama = $galeri->foto;
+
+        // Proses unggah foto jika ada
+        $foto = $fotoLama;
+        if ($request->hasFile('foto')) {
+            // Menghapus foto lama jika ada
+            if ($fotoLama && file_exists(public_path('storage/galeri/' . $fotoLama))) {
+                unlink(public_path('storage/galeri/' . $fotoLama));
+            }
+
+            // Simpan foto baru menggunakan store() dan simpan di folder 'public/galeri'
+            $foto = $request->file('foto')->store('galeri', 'public');
         }
-    
-        //jika foto sudah ada yang terupload
-        if(!empty($request->foto)){
-            //maka proses selanjutnya
-            if(!empty($fotoLama->foto)) unlink(public_path('assets/images'.$fotoLama->foto));
-            //proses ganti foto
-            $fileName = 'foto-'.$request->id.'.'.$request->foto->extension();
-            //setelah tau fotonya sudah masuk maka tempatkan ke public
-            $request->foto->move(public_path('assets/images'), $fileName);
-        } else{
-            $fileName = $fotoLama;
-        }
-    
-        //update data produk
-        DB::table('galeris')->where('id',$id)->update([
-            'judul'=>$request->judul,
-            'foto'=>$fileName,
+
+        // Update data galeri di database
+        DB::table('galeris')->where('id', $id)->update([
+            'judul' => $request->judul,
+            'foto' => $foto,
         ]);
-                
-        return redirect()->route('galeri.admin');
+
+        return redirect()->route('galeri.admin')->with('success', 'Galeri berhasil diperbarui');
     }
 
     public function destroy(galeri $id) {
