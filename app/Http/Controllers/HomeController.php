@@ -58,7 +58,7 @@ class HomeController extends Controller
     public function download(Pendaftaran $file)
     {
         // Tentukan path file yang akan diunduh berdasarkan nama file yang ada di database
-        $filePath = public_path('assets/files/' . $file->file);
+        $filePath = public_path('storage/pendaftaran/files/' . $file->file);
     
         // Pastikan file ada di dalam server
         if (file_exists($filePath)) {
