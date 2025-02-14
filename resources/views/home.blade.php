@@ -37,7 +37,7 @@
           @foreach ($posts as $d)
           <div class="mb-6 flex flex-col sm:flex-row items-start gap-4 p-6 shadow-sm">
             <a href="{{ route('show.singlePost', $d->id) }}}}">
-              <img src="{{ asset('assets/images/' . $d->image) }}" alt="Foto Artikel 1" class="w-full sm:w-72 h-44 object-cover rounded-lg mb-4 sm:mb-0">
+              <img src="{{ asset('storage/' . $d->image) }}" alt="Foto Artikel 1" class="w-full sm:w-72 h-44 object-cover rounded-lg mb-4 sm:mb-0">
             </a>
             <div class="flex-1">
               <a href="{{ route('show.singlePost', $d->id) }}">

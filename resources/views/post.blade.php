@@ -12,7 +12,7 @@
                             <!-- Featured Image -->
                             <a href="{{ route('show.singlePost', $d->id) }}">
                                 <img 
-                                    src="{{ asset('assets/images/' . $d->image) }}" 
+                                    src="{{ asset('storage/' . $d->image) }}" 
                                     alt="{{ $d['title'] }}" 
                                     class="w-full h-48 object-cover">
                             </a>
