@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  <link rel="icon" href="{{ asset('assets/img/logo-PPDR.png') }}" type="image/png" />
   @vite('resources/css/app.css')
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <link rel="stylesheet" href="{{ asset('backend/css/styles.min.css') }}" />

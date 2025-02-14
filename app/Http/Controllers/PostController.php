@@ -41,7 +41,7 @@ class PostController extends Controller
         // Jika file image ada yang terupload
         if (!empty($request->image)) {
             $fileName = 'image-' . uniqid() . '.' . $request->image->extension();
-            $request->image->move(public_path('assets/images'), $fileName);
+            $request->image->move(public_path('storage/artikel'), $fileName);
         } else {
             $fileName = 'nophoto.jpg';
         }
@@ -88,11 +88,11 @@ class PostController extends Controller
     // Jika ada image baru yang di-upload
     if (!empty($request->image)) {
         // Hapus image lama jika ada
-        if (!empty($imageLama->image)) unlink(public_path('assets/images/' . $imageLama->image));
+        if (!empty($imageLama->image)) unlink(public_path('storage/artikel/' . $imageLama->image));
 
         // Simpan image baru
         $fileName = 'image-' . $id . '.' . $request->image->extension();
-        $request->image->move(public_path('assets/images'), $fileName);
+        $request->image->move(public_path('storage/artikel'), $fileName);
     } else {
         $fileName = $imageLama->image; // Gunakan image lama jika tidak ada image baru
     }
