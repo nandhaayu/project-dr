@@ -112,7 +112,7 @@ class PendaftaranController extends Controller
             }
     
             // Simpan file baru menggunakan store()
-            $fileName = $request->file('file')->store('pendaftaran/files', 'public');
+            $fileName = $request->file('file')->store('storage/pendaftaran/files', 'public');
         } else {
             // Jika tidak ada file baru, gunakan file lama
             $fileName = $fileLama;
