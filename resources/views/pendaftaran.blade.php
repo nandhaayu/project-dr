@@ -18,10 +18,10 @@
                 </p>
                 <!-- Link Download Pamflet -->
                 <div class="mt-6 text-center">
-                    <a href="{{ route('pendaftaran.download', $d) }}" class="bg-teal-500 text-white py-2 px-4 rounded-lg hover:bg-teal-600 transition duration-300">
+                    <a href="{{ route('pendaftaran.download', $d->id) }}" class="bg-teal-500 text-white py-2 px-4 rounded-lg hover:bg-teal-600 transition duration-300">
                         Unduh Pamflet Pendaftaran
                     </a>
-                </div>
+                </div>                
             </div>
             @endforeach
         </div>

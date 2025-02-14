@@ -15,6 +15,7 @@ use App\Models\RutinitasUmum;
 use App\Models\Slide;
 use App\Models\Syaikhuna;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -55,19 +56,23 @@ class HomeController extends Controller
         $pendaftaran = Pendaftaran::all();
         return view('pendaftaran', compact('pendaftaran'));
     }
-    public function download(Pendaftaran $file)
+    public function download($id)
     {
-        // Tentukan path file yang akan diunduh berdasarkan nama file yang ada di database
-        $filePath = public_path('storage/pendaftaran/files/' . $file->file);
-    
-        // Pastikan file ada di dalam server
-        if (file_exists($filePath)) {
-            // Jika file ada, kembalikan response untuk mendownload file
-            return response()->download($filePath, $file->file); // Nama asli file
-        } else {
-            // Jika file tidak ditemukan, kembalikan error 404
-            abort(404, 'File not found');
+        // Ambil data file berdasarkan ID
+        $pendaftaran = DB::table('pendaftarans')->where('id', $id)->first();
+
+        // Pastikan file ada
+        if ($pendaftaran && $pendaftaran->file) {
+            $filePath = public_path('storage/pendaftaran/files/' . $pendaftaran->file);
+            
+            // Pastikan file ada di dalam server
+            if (file_exists($filePath)) {
+                return response()->download($filePath, $pendaftaran->file); // Menggunakan nama file asli
+            }
         }
+
+        // Jika file tidak ditemukan, tampilkan error 404
+        abort(404, 'File tidak ditemukan');
     }
     public function artikel() {
         $post = Post::orderBy('created_at', 'desc')->get();

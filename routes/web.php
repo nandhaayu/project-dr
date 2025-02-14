@@ -35,7 +35,7 @@ Route::get('/rutinitasUmum',[HomeController::class, 'rutinitasUmum'])->name('rut
 Route::get('/syaikhuna',[HomeController::class, 'syaikhuna'])->name('syaikhuna');
 Route::get('/BiografiSyaikhuna',[HomeController::class, 'biografiSyaikhuna'])->name('biografi.syaikhuna');
 Route::get('/pendaftaran',[HomeController::class, 'pendaftaran'])->name('pendaftaran');
-Route::get('/pendaftaranAdmin/{file}/download', [HomeController::class, 'download'])->name('pendaftaran.download');
+Route::get('/pendaftaran/{id}/download', [HomeController::class, 'download'])->name('pendaftaran.download');
 Route::get('/pendaftaran',[HomeController::class, 'pendaftaran'])->name('pendaftaran');
 Route::get('/artikel',[HomeController::class, 'artikel'])->name('artikel');
 Route::get('/artikel/{id}', [HomeController::class, 'show'])->name('show.singlePost');
