@@ -13,7 +13,7 @@
                                 | {{ $post->created_at->format('j F Y') }}
                             </div>
                             <p class="text-gray-700 font-light leading-relaxed mb-2">{!! $post->body !!}</p>
-                            <a href="/artikel" class="font-medium text-green-500 hover:underline mt-4">&laquo; Back to posts</a>
+                            <a href="/artikel" class="font-medium text-green-500 hover:underline mt-4">&laquo; Kembali Ke Artikel</a>
                         </div>
                 </div>
 
