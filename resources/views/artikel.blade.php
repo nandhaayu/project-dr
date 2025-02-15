@@ -22,7 +22,7 @@
                         <!-- Excerpt -->
                         <p class="text-gray-700 font-light text-sm">{!! Illuminate\Support\Str::words(strip_tags($d->body), 25, '...') !!}</p>
                         <!-- Read More -->
-                        <a href="{{ route('show.singlePost', $d->id) }}" class="mt-4 text-sm inline-block text-green-500 hover:underline">Read more &raquo;</a>
+                        <a href="{{ route('show.singlePost', $d->id) }}" class="mt-4 text-sm inline-block text-green-500 hover:underline">Baca Selengkapnya &raquo;</a>
                     </div>
                 </article>
                 @endforeach
