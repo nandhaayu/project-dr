@@ -80,7 +80,7 @@
                 <h3 class="font-semibold text-gray-800">{{ $syaikhuna->nama }}</h3>
                 <p class="text-gray-600 text-sm mt-2">-Pengasuh Pondok Pesantren Darur Rohmah-</p>
                 <p class="text-gray-600 text-sm mt-2">{!! Str::words($syaikhuna->deskripsi, 70, '...') !!}</p>
-                <a href="{{ route('syaikhuna') }}" class="relative z-10 text-green-500 hover:underline text-sm">Baca Selengkapnya</a>
+                <a href="{{ route('syaikhuna') }}" class="text-green-500 hover:underline text-sm">Baca Selengkapnya</a>
               </div>
               @endif
               <div class="p-4 shadow-sm">
