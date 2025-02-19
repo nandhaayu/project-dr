@@ -79,7 +79,7 @@
                 <img src="{{ asset('storage/' . $d->foto) }}" alt="Berita 1" class="w-full h-auto object-cover rounded-lg mb-3">
                 <h3 class="font-semibold text-gray-800">{{ $d->nama }}</h3>
                 <p class="text-gray-600 text-sm mt-2">-Pengasuh Pondok Pesantren Darur Rohmah-</p>
-                <p class="text-gray-600 text-sm mt-2">{!! Str::words($d->deskripsi, 20, '...') !!}</p>
+                <p class="text-gray-600 text-sm mt-2">{!! Str::words($d->deskripsi, 70, '...') !!}</p>
                 <a href="{{ route('syaikhuna') }}" class="text-green-500 hover:underline text-sm">Baca Selengkapnya</a>
               </div>
               @endforeach
