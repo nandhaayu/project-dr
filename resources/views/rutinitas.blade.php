@@ -5,7 +5,7 @@
             <div class="text-center mb-12">
                 <h2 class="text-2xl font-bold text-center text-gray-900 mb-8">Rutinitas Kegiatan Santri</h2>
                 <p class="text-gray-700 leading-relaxed">
-                    Santri di Pondok Pesantren Daarur Rohmah terlibat dalam berbagai kegiatan yang mendukung pembentukan karakter dan pengembangan diri mereka.
+                    Santri di Pondok Pesantren Darur Rohmah terlibat dalam berbagai kegiatan yang mendukung pembentukan karakter dan pengembangan diri mereka.
                     Beberapa kegiatan yang rutin dilakukan antara lain :
                 </p>
             </div>

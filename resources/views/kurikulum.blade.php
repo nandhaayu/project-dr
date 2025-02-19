@@ -4,7 +4,7 @@
           <div class="text-center mb-12">
               <h2 class="text-2xl font-bold text-gray-900 mb-4">Kurikulum Pendidikan</h2>
               <p class="text-gray-700 leading-relaxed">
-                  Program Pendidikan Pondok Pesantren Daarur Rohmah memiliki dua program utama yang menjadi fokus utama dalam pendidikan:
+                  Program Pendidikan Pondok Pesantren Darur Rohmah memiliki dua program utama yang menjadi fokus utama dalam pendidikan:
               </p>
           </div>
 

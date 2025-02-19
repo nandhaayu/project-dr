@@ -3,7 +3,7 @@
   <!-- untuk menampilkan video youtube dan profil singkat -->
   <section id="about" class="py-12">
     <div class="max-w-6xl mx-auto px-8">
-      <h2 class="mb-3 text-2xl sm:text-xl md:text-3xl w-full font-bold text-gray-900 border-b-4 border-green-500 inline-block pb-2"><i class="fa-regular fa-address-card px-2"></i>Tentang Daarur Rohmah</h2>
+      <h2 class="mb-3 text-2xl sm:text-xl md:text-3xl w-full font-bold text-gray-900 border-b-4 border-green-500 inline-block pb-2"><i class="fa-regular fa-address-card px-2"></i>Tentang Darur Rohmah</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div class="text-center">
               @if ($beranda)

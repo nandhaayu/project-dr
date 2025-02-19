@@ -5,8 +5,7 @@
             <div class="text-center mb-12">
                 <h2 class="text-2xl font-bold text-center text-gray-900 mb-8">Rutinitas Kegiatan Umum</h2>
                 <p class="text-gray-700 leading-relaxed">
-                    Santri di Pondok Pesantren Daarur Rohmah terlibat dalam berbagai kegiatan yang mendukung pembentukan karakter dan pengembangan diri mereka.
-                    Beberapa kegiatan yang rutin dilakukan antara lain :
+                    Pondok Pesantren Darur Rohmah tidak hanya menjadi pusat pendidikan bagi santri, tetapi juga aktif dalam berbagai kegiatan yang melibatkan masyarakat sekitar. Kegiatan-kegiatan ini bertujuan untuk mempererat hubungan antara pesantren dan masyarakat serta menanamkan nilai-nilai kebersamaan dan kepedulian sosial. Berikut adalah beberapa kegiatan umum yang rutin dilaksanakan:
                 </p>
             </div>
             <!-- Jadwal Harian -->

@@ -6,7 +6,7 @@
             <div class="text-center mb-12">
                 <h2 class="text-2xl font-bold text-gray-900 mb-4">Pendaftaran Santri Baru</h2>
                 <p class="text-gray-700 leading-relaxed">
-                    Pondok Pesantren Darruh Rahmah membuka pendaftaran santri baru tahun ajaran 2024/2025. Segera daftarkan diri Anda dan jadilah bagian dari generasi yang berilmu, berakhlak, dan siap menghadapi tantangan zaman modern.
+                    Pondok Pesantren Darur Rahmah membuka pendaftaran santri baru. Segera daftarkan diri Anda dan jadilah bagian dari generasi yang berilmu, berakhlak, dan siap menghadapi tantangan zaman modern.
                 </p>
             </div>
             @foreach ($pendaftaran as $d)

@@ -29,8 +29,8 @@
                         <div class="absolute hidden group-hover:block bg-white shadow-lg mt-2 py-2 w-64">
                             <a href="/profil" class="block px-4 py-2 text-sm font-semibold text-black hover:bg-green-300 {{ request()->is('profil') ? 'bg-green-300' : '' }}">Profil</a>
                             <a href="/kurikulum" class="block px-4 py-2 text-sm font-semibold text-black hover:bg-green-300 {{ request()->is('kurikulum') ? 'bg-green-300' : '' }}">Kurikulum</a>
-                            <a href="/rutinitas" class="block px-4 py-2 text-sm font-semibold text-black hover:bg-green-300 {{ request()->is('rutinitas') ? 'bg-green-300' : '' }}">Rutinitas Santri</a>
-                            <a href="/rutinitasUmum" class="block px-4 py-2 text-sm font-semibold text-black hover:bg-green-300 {{ request()->is('rutinitasUmum') ? 'bg-green-300' : '' }}">Rutinitas Umum</a>
+                            <a href="/rutinitas" class="block px-4 py-2 text-sm font-semibold text-black hover:bg-green-300 {{ request()->is('rutinitas') ? 'bg-green-300' : '' }}">Rutinitas Kegiatan Santri</a>
+                            <a href="/rutinitasUmum" class="block px-4 py-2 text-sm font-semibold text-black hover:bg-green-300 {{ request()->is('rutinitasUmum') ? 'bg-green-300' : '' }}">Rutinitas Kegiatan Umum</a>
                         </div>
                         </div>
 
@@ -74,8 +74,8 @@
                 <div x-show="openSubMenu" class="overflow-hidden transition-all duration-300">
                     <a href="/profil" class="block px-3 py-2 text-base font-medium {{ request()->is('profil') ? 'bg-green-800 text-white' : 'text-green-700 hover:bg-green-900 hover:text-white' }}">Profil</a>
                     <a href="/kurikulum" class="block px-3 py-2 text-base font-medium {{ request()->is('kurikulum') ? 'bg-green-800 text-white' : 'text-green-700 hover:bg-green-900 hover:text-white' }}">Kurikulum</a>
-                    <a href="/rutinitas" class="block px-3 py-2 text-base font-medium {{ request()->is('rutinitas') ? 'bg-green-800 text-white' : 'text-green-700 hover:bg-green-900 hover:text-white' }}">Rutinitas Santri</a>
-                    <a href="/rutinitasUmum" class="block px-3 py-2 text-base font-medium {{ request()->is('rutinitasUmum') ? 'bg-green-800 text-white' : 'text-green-700 hover:bg-green-900 hover:text-white' }}">Rutinitas Umum</a>
+                    <a href="/rutinitas" class="block px-3 py-2 text-base font-medium {{ request()->is('rutinitas') ? 'bg-green-800 text-white' : 'text-green-700 hover:bg-green-900 hover:text-white' }}">Rutinitas Kegiatan Santri</a>
+                    <a href="/rutinitasUmum" class="block px-3 py-2 text-base font-medium {{ request()->is('rutinitasUmum') ? 'bg-green-800 text-white' : 'text-green-700 hover:bg-green-900 hover:text-white' }}">Rutinitas Kegiatan Umum</a>
                 </div>
             </div>
 
