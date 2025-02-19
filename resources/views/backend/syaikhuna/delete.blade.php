@@ -1,4 +1,4 @@
-<div class="modal fade" id="exampleModal{{$syaikhuna->id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="exampleModal{{$d->id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -12,7 +12,7 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
-          <form action="{{ route('syaikhuna.destroy', $syaikhuna->id) }}" method="POST" style="display:inline;">
+          <form action="{{ route('syaikhuna.destroy', $d->id) }}" method="POST" style="display:inline;">
             @csrf
             @method('DELETE')
             <button type="submit" class="btn btn-danger">Delete</button>

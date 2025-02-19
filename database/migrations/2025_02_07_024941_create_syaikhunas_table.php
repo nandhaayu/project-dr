@@ -16,8 +16,6 @@ return new class extends Migration
             $table->string('judul');
             $table->string('nama')->nullable();
             $table->string('foto')->nullable();
-            $table->string('nama_1')->nullable();
-            $table->string('foto_1')->nullable();
             $table->text('deskripsi')->nullable();
             $table->timestamps();
         });

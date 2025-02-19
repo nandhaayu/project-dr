@@ -19,19 +19,19 @@
           @enderror
         </div>
         
+        <div class="mb-3">
+          <label for="nama" class="form-label">Nama</label>
+          <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" value="{{ $syaikhuna->nama }}">
+          @error('nama')
+            <div class="invalid-feedback">{{ $message }}</div>
+          @enderror
+        </div>
+
         <!-- Input Deskripsi -->
         <div class="mb-3">
           <label for="deskripsi" class="form-label">Deskripsi</label>
           <textarea class="form-control @error('deskripsi') is-invalid @enderror" id="summernote" name="deskripsi" rows="4">{{ $syaikhuna->deskripsi }}</textarea>
           @error('deskripsi')
-            <div class="invalid-feedback">{{ $message }}</div>
-          @enderror
-        </div>
-
-        <div class="mb-3">
-          <label for="nama" class="form-label">Nama</label>
-          <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" value="{{ $syaikhuna->nama }}">
-          @error('nama')
             <div class="invalid-feedback">{{ $message }}</div>
           @enderror
         </div>
@@ -42,23 +42,6 @@
           <input type="file" class="form-control mb-3" id="foto" name="foto" accept="image/*">
           @if(!empty($syaikhuna->foto))
             <img src="{{ asset('storage/' . $syaikhuna->foto) }}" alt="Foto Syaikhuna" class="rounded" style="width: 100%; max-width: 100px; height: auto;">
-          @endif
-        </div>
-
-        <div class="mb-3">
-          <label for="nama_1" class="form-label">Nama</label>
-          <input type="text" class="form-control @error('nama_1') is-invalid @enderror" id="nama_1" name="nama_1" value="{{ $syaikhuna->nama_1 }}">
-          @error('nama_1')
-            <div class="invalid-feedback">{{ $message }}</div>
-          @enderror
-        </div>
-
-        <!-- Input Foto -->
-        <div class="mb-3">
-          <label for="foto_1" class="form-label">Foto 2</label>
-          <input type="file" class="form-control mb-3" id="foto_1" name="foto_1" accept="image/*">
-          @if(!empty($syaikhuna->foto_1))
-            <img src="{{ asset('storage/' . $syaikhuna->foto_1) }}" alt="Foto Syaikhuna" class="rounded" style="width: 100%; max-width: 100px; height: auto;">
           @endif
         </div>
 
