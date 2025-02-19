@@ -15,7 +15,7 @@
             <div>
               @if ($profil)
                 <p class="text-gray-600 mb-3 text-sm">
-                    {!! Illuminate\Support\Str::words(strip_tags($profil->deskripsi), 100, '...') !!}
+                  {!! Str::words($profil->deskripsi, 170, '...') !!}
                 </p>
               @endif
               <a href="{{ route('profil') }}" class="text-sm inline-block bg-green-500 text-white px-2 py-2 rounded-lg hover:bg-green-700 transition">Baca Selengkapnya</a>
