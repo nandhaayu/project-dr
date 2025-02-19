@@ -21,7 +21,7 @@ class HomeController extends Controller
 {
     public function beranda () {
         $profil = Profil::first();
-        $syaikhuna = Syaikhuna::all();
+        $syaikhuna = Syaikhuna::first();
         $posts = Post::orderBy('created_at', 'desc')->take(4)->get();
         $slide = Slide::all();
         $beranda = Beranda::first();

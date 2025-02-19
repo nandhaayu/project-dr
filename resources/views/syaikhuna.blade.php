@@ -17,9 +17,9 @@
                         {!! $d->deskripsi !!}
                     </p>
                     <!-- Quotes dari Syaikhuna -->
-                    <blockquote class="mt-8 bg-teal-100 border-l-4 border-teal-500 text-teal-900 p-4 italic rounded-lg">
+                    {{-- <blockquote class="mt-8 bg-teal-100 border-l-4 border-teal-500 text-teal-900 p-4 italic rounded-lg">
                         "Ilmu itu cahaya, dan cahaya tidak akan masuk ke dalam hati yang dipenuhi dengan kegelapan dunia. Bersihkan hati, fokuskan diri untuk mencari ilmu, dan amalkan setiap ilmu yang didapat."
-                    </blockquote>
+                    </blockquote> --}}
                 </div>
             </div>
         </div>
