@@ -78,7 +78,7 @@
               <div class="p-4 shadow-sm text-center">
                 <img src="{{ asset('storage/' . $syaikhuna->foto) }}" alt="Berita 1" class="w-full h-auto object-cover rounded-lg mb-3">
                 <h3 class="font-semibold text-gray-800">{{ $syaikhuna->nama }}</h3>
-                <p class="text-gray-600 text-sm mt-2 mt-2">-Pengasuh Pondok Pesantren Darur Rohmah-</p>
+                <p class="text-gray-600 text-sm mt-2 mb-2">-Pengasuh Pondok Pesantren Darur Rohmah-</p>
                 {{-- <p class="text-gray-600 text-sm mt-2">{!! Str::words($syaikhuna->deskripsi, 70, '...') !!}</p>
                 <a href="{{ route('syaikhuna') }}" class="text-green-500 text-sm">Baca Selengkapnya</a> --}}
               </div>
