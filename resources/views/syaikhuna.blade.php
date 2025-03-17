@@ -7,7 +7,7 @@
                 <!-- Left: Gambar Syaikhuna -->
                 <div class="lg:w-1/3 bg-white p-6 rounded-lg shadow-lg">
                     <img src="{{ asset('storage/' . $d->foto) }}" alt="Foto Syaikhuna" class="w-full h-auto rounded-lg mb-2">
-                    <p class="text-gray-700 text-center font-semibold mb-6">{{ $d->nama ?? 'Nama Foto' }}</p>
+                    <p class="text-gray-700 text-center font-semibold mb-2">{{ $d->nama ?? 'Nama Foto' }}</p>
                 </div>
 
                 <!-- Right: Biografi Syaikhuna -->
