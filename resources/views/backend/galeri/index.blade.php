@@ -39,6 +39,10 @@
           </tbody>
         </table>
       </div>
+      <!-- Pagination -->
+      <div class="mt-4 flex justify-center">
+        {{ $galeri->links('pagination::tailwind') }}
+      </div>
     </div>
   </div>
 </div>

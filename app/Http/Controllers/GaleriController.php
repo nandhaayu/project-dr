@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 class GaleriController extends Controller
 {
     function galeriAdmin () {
-        $galeri = Galeri::all();
+        $galeri = Galeri::orderBy('created_at', 'desc')->paginate(5);
         return view('backend.galeri.index', compact('galeri'));
     }
 

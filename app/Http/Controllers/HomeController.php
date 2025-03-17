@@ -75,11 +75,11 @@ class HomeController extends Controller
         abort(404, 'File tidak ditemukan');
     }
     public function artikel() {
-        $post = Post::orderBy('created_at', 'desc')->get();
+        $post = Post::orderBy('created_at', 'desc')->paginate(6);
         return view('artikel', compact('post'));
     }
     public function galeri() {
-        $galeri = Galeri::orderBy('created_at', 'desc')->get();
+        $galeri = Galeri::orderBy('created_at', 'desc')->paginate(6);
         return view('galeri', compact('galeri'));
     }
     public function show($id)

@@ -13,6 +13,10 @@
                 </article>
                 @endforeach
             </div>
+            <!-- Pagination -->
+            <div class="mt-8 flex justify-center">
+                {{ $galeri->links('pagination::tailwind') }}
+            </div>
         </div>
     </section>
 </x-layout>

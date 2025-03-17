@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 class PostController extends Controller
 {
     function postAdmin () {
-        $post = Post::all();
+        $post = Post::orderBy('created_at', 'desc')->paginate(5);
         return view('backend.post.index', compact('post'));
     }
 

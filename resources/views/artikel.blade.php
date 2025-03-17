@@ -27,6 +27,10 @@
                 </article>
                 @endforeach
             </div>
+            <!-- Pagination -->
+            <div class="mt-8 flex justify-center">
+                {{ $post->links('pagination::tailwind') }}
+            </div>
         </div>
     </section>
 </x-layout>

@@ -35,6 +35,10 @@
           </tbody>
         </table>
       </div>
+      <!-- Pagination -->
+      <div class="mt-4 flex justify-center">
+        {{ $post->links('pagination::tailwind') }}
+      </div>
     </div>
   </div>
 </div>
