@@ -82,7 +82,7 @@
                 {{-- <p class="text-gray-600 text-sm mt-2">{!! Str::words($syaikhuna->deskripsi, 70, '...') !!}</p>
                 <a href="{{ route('syaikhuna') }}" class="text-green-500 text-sm">Baca Selengkapnya</a> --}}
                 <p class="text-gray-700 leading-relaxed mb-2 text-sm">
-                  {!! Illuminate\Support\Str::words(strip_tags($syaikhuna->deskripsi ?? 'Deskripsi tidak tersedia'), 45, '...') !!}
+                  {!! Illuminate\Support\Str::words(strip_tags($syaikhuna->deskripsi ?? 'Deskripsi tidak tersedia'), 25, '...') !!}
                 </p>
                 <a href="{{ url('/syaikhuna') }}" class="text-green-500 text-sm font-medium hover:underline">Baca Selengkapnya</a>
               </div>
