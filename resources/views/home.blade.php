@@ -3,7 +3,7 @@
   <!-- untuk menampilkan video youtube dan profil singkat -->
   <section id="about" class="py-12">
     <div class="max-w-6xl mx-auto px-8">
-      <h2 class="mb-3 text-2xl sm:text-xl md:text-3xl w-full font-bold text-gray-900 border-b-4 border-green-500 inline-block pb-2"><i class="fa-regular fa-address-card px-2"></i>Tentang Darur Rohmah</h2>
+      <h2 class="mb-2 text-2xl sm:text-xl md:text-3xl w-full font-bold text-gray-900 border-b-4 border-green-500 inline-block pb-2"><i class="fa-regular fa-address-card px-2"></i>Tentang Darur Rohmah</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div class="text-center">
               @if ($beranda)
@@ -14,12 +14,68 @@
             </div>
             <div>
               @if ($profil)
-                <p class="text-gray-600 mb-3 text-sm">
-                  {!! Str::words($profil->deskripsi, 190, '...') !!}
-                </p>
+                  <p class="text-gray-600 mb-3 text-sm text-justify">
+                      <!-- Tabel Informasi -->
+                      <div class="w-full rounded-lg mb-2">
+                        <table class="w-full">
+                            <tbody>
+                                <tr>
+                                    <td class="font-semibold w-1/3 align-top">
+                                        <div class="flex items-center gap-2">
+                                            <i class="fas fa-map-marker-alt"></i> Alamat
+                                        </div>
+                                    </td>
+                                    <td class="p-2">: Kedung, Buaran, Kec. Mayong, Kab. Jepara, Jawa Tengah 59465, Indonesia</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-semibold align-top">
+                                        <div class="flex items-center gap-2">
+                                            <i class="fas fa-calendar-alt"></i> Didirikan
+                                        </div>
+                                    </td>
+                                    <td class="p-2">: 2010</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-semibold align-top">
+                                        <div class="flex items-center gap-2">
+                                            <i class="fas fa-user"></i> Pengasuh
+                                        </div>
+                                    </td>
+                                    <td class="p-2">: Habib Syahir Sodiq Alhindwan, S.Pd., Lc</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-semibold align-top">
+                                        <div class="flex items-center gap-2">
+                                            <i class="fas fa-phone"></i> Kontak
+                                        </div>
+                                    </td>
+                                    <td class="p-2">
+                                        <a href="tel:085600775094" class="text-blue-600 hover:underline">: 0856-0077-5094</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="font-semibold align-top">
+                                        <div class="flex items-center gap-2">
+                                            <i class="fas fa-globe text-purple-500"></i> Website
+                                        </div>
+                                    </td>
+                                    <td class="p-2">
+                                        <a href="https://ponpesdarurrohmah.com" target="_blank" class="text-blue-600 hover:underline">: ponpesdarurrohmah.com</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>                    
+                      
+                      {!! Str::words($profil->deskripsi, 70, '...') !!}
+                  </p>
               @endif
-              <a href="{{ route('profil') }}" class="text-sm inline-block bg-green-500 text-white px-2 py-2 rounded-lg hover:bg-green-700 transition">Baca Selengkapnya</a>
-            </div>
+          
+              <a href="{{ route('profil') }}" class="text-sm inline-block bg-green-500 text-white px-2 py-2 rounded-lg hover:bg-green-700 transition">
+                  Baca Selengkapnya
+              </a>
+          </div>
+          
         </div>
     </div>
   </section>
