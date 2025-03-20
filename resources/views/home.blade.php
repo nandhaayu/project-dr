@@ -16,7 +16,7 @@
               @if ($profil)
                   <!-- Tabel Informasi -->
                   <div class="w-full rounded-lg mb-2 overflow-x-auto">
-                    <table class="w-full table-fixed border-separate border-spacing-y-2 text-sm">
+                    <table class="w-full table-fixed border-separate border-spacing-y-2">
                         <tbody>
                             <tr>
                                 <td class="font-semibold w-[180px] sm:w-[200px] align-top whitespace-nowrap text-left">
@@ -77,9 +77,11 @@
                   </p>
               @endif
           
-              <a href="{{ route('profil') }}" class="text-sm inline-block bg-green-500 text-white px-2 py-2 rounded-lg hover:bg-green-700 transition">
+              <div class="mt-2">
+                <a href="{{ route('profil') }}" class="text-sm inline-block bg-green-500 text-white px-2 py-2 rounded-lg hover:bg-green-700 transition">
                   Baca Selengkapnya
               </a>
+              </div>
           </div>
                     
         </div>
