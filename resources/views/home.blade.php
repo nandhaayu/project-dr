@@ -17,60 +17,61 @@
                   <p class="text-gray-600 mb-3 text-sm text-justify">
                       <!-- Tabel Informasi -->
                       <div class="w-full rounded-lg mb-2 overflow-x-auto">
-                        <table class="w-full min-w-[300px] border-separate border-spacing-y-2">
+                        <table class="w-full table-fixed border-separate border-spacing-y-2">
                             <tbody>
                                 <tr>
-                                    <td class="font-semibold w-[150px] sm:w-[200px] align-top">
+                                    <td class="font-semibold w-[180px] sm:w-[200px] align-top whitespace-nowrap text-left">
                                         <div class="flex items-center gap-2">
                                             <i class="fas fa-map-marker-alt"></i>
                                             <span>Alamat</span>
                                         </div>
                                     </td>
-                                    <td class="px-2">: Kedung, Buaran, Kec. Mayong, Kab. Jepara, Jawa Tengah 59465, Indonesia</td>
+                                    <td class="px-2 text-left">: Kedung, Buaran, Kec. Mayong, Kab. Jepara, Jawa Tengah 59465, Indonesia</td>
                                 </tr>
                                 <tr>
-                                    <td class="font-semibold w-[150px] sm:w-[200px] align-top">
+                                    <td class="font-semibold w-[180px] sm:w-[200px] align-top whitespace-nowrap text-left">
                                         <div class="flex items-center gap-2">
                                             <i class="fas fa-calendar-alt"></i>
                                             <span>Didirikan</span>
                                         </div>
                                     </td>
-                                    <td class="px-2">: 2010</td>
+                                    <td class="px-2 text-left">: 2010</td>
                                 </tr>
                                 <tr>
-                                    <td class="font-semibold w-[150px] sm:w-[200px] align-top">
+                                    <td class="font-semibold w-[180px] sm:w-[200px] align-top whitespace-nowrap text-left">
                                         <div class="flex items-center gap-2">
                                             <i class="fas fa-user"></i>
                                             <span>Pengasuh</span>
                                         </div>
                                     </td>
-                                    <td class="px-2">: Habib Syahir Sodiq Alhindwan, S.Pd., Lc</td>
+                                    <td class="px-2 text-left">: Habib Syahir Sodiq Alhindwan, S.Pd., Lc</td>
                                 </tr>
                                 <tr>
-                                    <td class="font-semibold w-[150px] sm:w-[200px] align-top">
+                                    <td class="font-semibold w-[180px] sm:w-[200px] align-top whitespace-nowrap text-left">
                                         <div class="flex items-center gap-2">
                                             <i class="fas fa-phone"></i>
                                             <span>Kontak</span>
                                         </div>
                                     </td>
-                                    <td class="px-2">
-                                        <a href="https://wa.me/6285712225557" class="text-blue-600 hover:underline">: 0856-0077-5094</a>
+                                    <td class="px-2 text-left">
+                                        <a href="https://wa.me/6285712225557" target="_blank" class="text-blue-600 hover:underline">: 0856-0077-5094</a>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="font-semibold w-[150px] sm:w-[200px] align-top">
+                                    <td class="font-semibold w-[180px] sm:w-[200px] align-top whitespace-nowrap text-left">
                                         <div class="flex items-center gap-2">
                                             <i class="fas fa-globe"></i>
                                             <span>Website</span>
                                         </div>
                                     </td>
-                                    <td class="px-2">
+                                    <td class="px-2 text-left">
                                         <a href="https://ponpesdarurrohmah.com" target="_blank" class="text-blue-600 hover:underline">: ponpesdarurrohmah.com</a>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
-                      </div>
+                    </div>
+                    
                     
                       {!! Str::words($profil->deskripsi, 70, '...') !!}
                   </p>
