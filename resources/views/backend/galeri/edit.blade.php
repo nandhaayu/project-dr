@@ -17,13 +17,24 @@
         </div>
 
         <div class="mb-3">
-            <label for="foto" class="form-label">Foto</label>
-            <input type="file" class="form-control mb-3" id="foto" name="foto" accept="image/*">
-            @if(!empty($id->foto))
-              <img src="{{url('storage')}}/{{$id->foto}}" alt=""class="rounded" style="width: 100%; max-width: 100px; height: auto;">
-            @endif 
-        </div>
-
+          <label for="foto" class="form-label">Foto</label>
+          <input type="file" class="form-control mb-3" id="foto" name="foto[]" accept="image/*" multiple>
+      
+          <!-- Tampilkan foto lama jika ada -->
+          @php
+              $fotoArray = is_string($id->foto) ? json_decode($id->foto, true) : $id->foto;
+          @endphp
+          @if (!empty($fotoArray))
+              <div class="d-flex flex-wrap gap-2">
+                  @foreach ($fotoArray as $foto)
+                      <div class="position-relative">
+                          <img src="{{ url('storage/' . $foto) }}" class="rounded border" style="width: 100px; height: auto;">
+                      </div>
+                  @endforeach
+              </div>
+          @endif
+      </div>
+    
         <button type="submit" class="btn btn-primary">Simpan</button>
         <a href="{{ route('galeri.admin') }}" class="btn btn-secondary">Batal</a>
       </form>

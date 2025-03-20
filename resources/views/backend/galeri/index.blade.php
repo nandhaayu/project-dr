@@ -79,12 +79,13 @@
                       $fotos = is_array($d->foto) ? $d->foto : json_decode($d->foto, true);
                   @endphp
                   
-                  <div class="d-flex gap-2">
-                    @foreach ($fotos as $foto)
-                      <img src="{{ asset('storage/' . $foto) }}" alt="project-image" class="rounded" style="width: 100px; height: auto;">
-                    @endforeach
+                  <div class="d-flex flex-wrap gap-2">
+                      @foreach ($fotos as $foto)
+                          <img src="{{ asset('storage/' . $foto) }}" alt="project-image" class="rounded" style="width: 100px; height: auto;">
+                      @endforeach
                   </div>
-                </td>
+              </td>
+              
                 <td>
                   <a href="{{ route('galeri.edit', $d->id) }}" class="btn btn-warning btn-sm">Edit</a>
                   <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $d->id }}">Hapus</button>
