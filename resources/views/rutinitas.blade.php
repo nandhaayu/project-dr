@@ -11,17 +11,16 @@
             </div>
             <!-- Jadwal Harian -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
                 @foreach ($rutinitas as $d)
-                <div class="bg-white p-6 rounded-lg shadow-lg">
+                <div class="bg-white p-6 rounded-lg shadow-lg text-justify">
                     <h3 class="font-semibold text-teal-800 mb-4">{{ $d->judul }}</h3>
                     <p class="text-gray-600 space-y-2">
                         {!! $d->deskripsi !!}
                     </p>
                 </div>
                 @endforeach
-
             </div>
+            
         </div>
     </section>
 </x-layout>

@@ -14,66 +14,66 @@
             </div>
             <div>
               @if ($profil)
+                  <!-- Tabel Informasi -->
+                  <div class="w-full rounded-lg mb-2 overflow-x-auto">
+                    <table class="w-full table-fixed border-separate border-spacing-y-2 text-sm">
+                        <tbody>
+                            <tr>
+                                <td class="font-semibold w-[180px] sm:w-[200px] align-top whitespace-nowrap text-left">
+                                    <div class="flex items-center gap-2">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        <span>Alamat</span>
+                                    </div>
+                                </td>
+                                <td class="px-2 text-left">: Kedung, Buaran, Kec. Mayong, Kab. Jepara, Jawa Tengah 59465, Indonesia</td>
+                            </tr>
+                            <tr>
+                                <td class="font-semibold w-[180px] sm:w-[200px] align-top whitespace-nowrap text-left">
+                                    <div class="flex items-center gap-2">
+                                        <i class="fas fa-calendar-alt"></i>
+                                        <span>Didirikan</span>
+                                    </div>
+                                </td>
+                                <td class="px-2 text-left">: 2010</td>
+                            </tr>
+                            <tr>
+                                <td class="font-semibold w-[180px] sm:w-[200px] align-top whitespace-nowrap text-left">
+                                    <div class="flex items-center gap-2">
+                                        <i class="fas fa-user"></i>
+                                        <span>Pengasuh</span>
+                                    </div>
+                                </td>
+                                <td class="px-2 text-left">: Habib Syahir Sodiq Alhindwan, S.Pd., Lc</td>
+                            </tr>
+                            <tr>
+                                <td class="font-semibold w-[180px] sm:w-[200px] align-top whitespace-nowrap text-left">
+                                    <div class="flex items-center gap-2">
+                                        <i class="fas fa-phone"></i>
+                                        <span>Kontak</span>
+                                    </div>
+                                </td>
+                                <td class="px-2 text-left">
+                                    <a href="https://wa.me/6285712225557" target="_blank" class="text-blue-600 hover:underline">: 0856-0077-5094</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="font-semibold w-[180px] sm:w-[200px] align-top whitespace-nowrap text-left">
+                                    <div class="flex items-center gap-2">
+                                        <i class="fas fa-globe"></i>
+                                        <span>Website</span>
+                                    </div>
+                                </td>
+                                <td class="px-2 text-left">
+                                    <a href="https://ponpesdarurrohmah.com" target="_blank" class="text-blue-600 hover:underline">: ponpesdarurrohmah.com</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                  </div>
+
+                  <!-- Deskripsi -->
                   <p class="text-gray-600 mb-3 text-sm text-justify">
-                      <!-- Tabel Informasi -->
-                      <div class="w-full rounded-lg mb-2 overflow-x-auto">
-                        <table class="w-full table-fixed border-separate border-spacing-y-2">
-                            <tbody>
-                                <tr>
-                                    <td class="font-semibold w-[180px] sm:w-[200px] align-top whitespace-nowrap text-left">
-                                        <div class="flex items-center gap-2">
-                                            <i class="fas fa-map-marker-alt"></i>
-                                            <span>Alamat</span>
-                                        </div>
-                                    </td>
-                                    <td class="px-2 text-left">: Kedung, Buaran, Kec. Mayong, Kab. Jepara, Jawa Tengah 59465, Indonesia</td>
-                                </tr>
-                                <tr>
-                                    <td class="font-semibold w-[180px] sm:w-[200px] align-top whitespace-nowrap text-left">
-                                        <div class="flex items-center gap-2">
-                                            <i class="fas fa-calendar-alt"></i>
-                                            <span>Didirikan</span>
-                                        </div>
-                                    </td>
-                                    <td class="px-2 text-left">: 2010</td>
-                                </tr>
-                                <tr>
-                                    <td class="font-semibold w-[180px] sm:w-[200px] align-top whitespace-nowrap text-left">
-                                        <div class="flex items-center gap-2">
-                                            <i class="fas fa-user"></i>
-                                            <span>Pengasuh</span>
-                                        </div>
-                                    </td>
-                                    <td class="px-2 text-left">: Habib Syahir Sodiq Alhindwan, S.Pd., Lc</td>
-                                </tr>
-                                <tr>
-                                    <td class="font-semibold w-[180px] sm:w-[200px] align-top whitespace-nowrap text-left">
-                                        <div class="flex items-center gap-2">
-                                            <i class="fas fa-phone"></i>
-                                            <span>Kontak</span>
-                                        </div>
-                                    </td>
-                                    <td class="px-2 text-left">
-                                        <a href="https://wa.me/6285712225557" target="_blank" class="text-blue-600 hover:underline">: 0856-0077-5094</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="font-semibold w-[180px] sm:w-[200px] align-top whitespace-nowrap text-left">
-                                        <div class="flex items-center gap-2">
-                                            <i class="fas fa-globe"></i>
-                                            <span>Website</span>
-                                        </div>
-                                    </td>
-                                    <td class="px-2 text-left">
-                                        <a href="https://ponpesdarurrohmah.com" target="_blank" class="text-blue-600 hover:underline">: ponpesdarurrohmah.com</a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    
-                    
-                      {!! Str::words($profil->deskripsi, 70, '...') !!}
+                    {!! Str::words($profil->deskripsi, 70, '...') !!}
                   </p>
               @endif
           
@@ -105,8 +105,10 @@
               <a href="{{ route('show.singlePost', $d->id) }}">
                 <h3 class="font-bold text-gray-900 mb-2">{{ $d['title'] }}</h3>
               </a>
-              <p class="text-gray-700 leading-relaxed mb-2 text-sm">{!! Illuminate\Support\Str::words(strip_tags($d->body), 25, '...') !!}</p>
-              <a href="{{ route('show.singlePost', $d->id) }}" class="text-green-500 hover:underline text-sm">Baca Selengkapnya</a>
+              <p class="text-gray-700 leading-relaxed mb-2 text-sm text-justify">{!! Illuminate\Support\Str::words(strip_tags($d->body), 25, '...') !!}</p>
+              <div class="mt-2">
+                <a href="{{ route('show.singlePost', $d->id) }}" class="text-green-500 hover:underline text-sm">Baca Selengkapnya</a>
+              </div>
             </div>
           </div>
           @endforeach

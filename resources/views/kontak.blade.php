@@ -17,7 +17,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             
             <!-- Alamat -->
-            <div class="bg-white p-6 rounded-lg shadow-lg">
+            <div class="bg-white p-6 rounded-lg shadow-lg text-justify">
                 <h3 class="text-xl font-semibold text-gray-800 mb-4"><i class="fa-solid fa-location-dot"></i> Alamat</h3>
                 <p class="text-gray-600">{!! $kontak->alamat !!}</p>
             </div>

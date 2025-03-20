@@ -7,7 +7,7 @@
                 <div class="lg:w-2/3 bg-white p-6 rounded-lg shadow-lg">
                     <img src="{{ asset('storage/'. $profil->foto) }}" alt="Foto Pondok Pesantren Darruh Rahmah" class="w-full rounded-lg mb-6" style="object-position: center; object-fit:cover; max-height: 400px">
                     <h2 class="text-2xl font-bold text-gray-900 mb-4">{{ $profil->judul }}</h2>
-                    <p class="text-gray-700 leading-relaxed">
+                    <p class="text-gray-700 leading-relaxed text-justify">
                         {!! $profil->deskripsi !!}
                     </p>
                 </div>
