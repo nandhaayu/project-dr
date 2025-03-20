@@ -45,7 +45,7 @@
 .marquee {
   display: flex;
   gap: 40px; /* Memberi jarak antar teks */
-  animation: marquee 15s linear infinite;
+  animation: marquee 30s linear infinite;
   min-width: 100%; /* Pastikan cukup lebar agar teks tidak terpotong */
 }
 </style>
