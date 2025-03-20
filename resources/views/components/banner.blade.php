@@ -18,38 +18,39 @@
 
 <section class="bg-gray-800 text-white py-2 px-4 flex items-center overflow-hidden">
   <!-- Animasi Pengumuman -->
-  <div class="marquee-container relative overflow-hidden w-full">
-    <div class="marquee flex items-center">
-      <p class="text-md font-bold mx-8 flex items-center">
-        <i class="fas fa-mosque text-yellow-400 mr-2"></i> Pondok Pesantren Darur Rohmah
-      </p>
-      <p class="text-md font-bold mx-8 flex items-center">
-        <i class="fas fa-map-marker-alt text-red-500 mr-2"></i> Kedung, Buaran, Kec. Mayong, Jepara, Jawa Tengah 59465
-      </p>
-    </div>
+  <div class="relative w-full overflow-hidden">
+      <div class="marquee flex items-center whitespace-nowrap">
+          <!-- Teks Pondok Pesantren -->
+          <p class="text-m md:text-md font-bold mx-4 flex items-center">
+              <i class="fas fa-mosque text-yellow-400 mr-2"></i> Pondok Pesantren Darur Rohmah
+          </p>
+          <!-- Teks Lokasi (Hanya muncul di desktop) -->
+          <p class="text-m md:text-md font-bold mx-4 hidden md:block items-center">
+              <i class="fas fa-map-marker-alt text-red-500 mr-2"></i> Kedung, Buaran, Kec. Mayong, Jepara, Jawa Tengah 59465
+          </p>
+      </div>
   </div>
 </section>
 
 <style>
-  @keyframes marquee {
-      from {
-          transform: translateX(100%);
-      }
-      to {
-          transform: translateX(-100%);
-      }
+@keyframes marquee {
+  from {
+      transform: translateX(100%);
   }
+  to {
+      transform: translateX(-100%);
+  }
+}
 
-  .marquee {
-      display: flex;
-      white-space: nowrap;
-      animation: marquee 20s linear infinite; /* Animasi lebih pelan */
-  }
-
-  .marquee p {
-      margin-right: 40px; /* Jarak antar teks */
-  }
+.marquee {
+  display: flex;
+  gap: 40px; /* Memberi jarak antar teks */
+  animation: marquee 15s linear infinite;
+  min-width: 100%; /* Pastikan cukup lebar agar teks tidak terpotong */
+}
 </style>
+
+
 
 
 <script>
