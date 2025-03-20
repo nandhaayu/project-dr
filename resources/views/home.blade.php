@@ -12,7 +12,7 @@
               </div>
               @endif
             </div>
-            <div>
+            <div class="text-justify">
               @if ($profil)
                   <!-- Tabel Informasi -->
                   <div class="w-full rounded-lg mb-2 overflow-x-auto">
