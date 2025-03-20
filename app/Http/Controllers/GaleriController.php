@@ -18,38 +18,65 @@ class GaleriController extends Controller
         return view('backend.galeri.create');
     }
 
+    // public function store(Request $request)
+    // {
+    //     // Melakukan validasi data
+    //     $request->validate([
+    //         'judul' => 'required|max:45',
+    //         'foto' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
+    //     ],
+    //     [
+    //         'judul.required' => 'Nama wajib diisi',
+    //         'judul.max' => 'Nama maksimal 45 karakter',
+    //         'foto.max' => 'Foto maksimal 2 MB',
+    //         'foto.mimes' => 'File ekstensi hanya bisa jpg,png,jpeg,gif, svg',
+    //         'foto.image' => 'File harus berbentuk image'
+    //     ]);
+
+    //     // Proses unggah foto jika ada yang diupload
+    //     if ($request->hasFile('foto')) {
+    //         // Menyimpan foto menggunakan store() dan menempatkannya di folder 'public/pendaftaran/images'
+    //         $fileName = $request->file('foto')->store('galeri', 'public');
+    //     } else {
+    //         // Foto default jika tidak ada foto yang diupload
+    //         $fileName = 'nophoto.jpg';
+    //     }
+
+    //     // Menambahkan data ke tabel galeris
+    //     DB::table('galeris')->insert([
+    //         'judul' => $request->judul,
+    //         'foto' => $fileName,
+    //     ]);
+
+    //     return redirect()->route('galeri.admin');
+    // }
+
     public function store(Request $request)
-    {
-        // Melakukan validasi data
-        $request->validate([
-            'judul' => 'required|max:45',
-            'foto' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg',
-        ],
-        [
-            'judul.required' => 'Nama wajib diisi',
-            'judul.max' => 'Nama maksimal 45 karakter',
-            'foto.max' => 'Foto maksimal 2 MB',
-            'foto.mimes' => 'File ekstensi hanya bisa jpg,png,jpeg,gif, svg',
-            'foto.image' => 'File harus berbentuk image'
-        ]);
+{
+    $request->validate([
+        'judul' => 'required|max:45',
+        'foto.*' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+    ]);
 
-        // Proses unggah foto jika ada yang diupload
-        if ($request->hasFile('foto')) {
-            // Menyimpan foto menggunakan store() dan menempatkannya di folder 'public/pendaftaran/images'
-            $fileName = $request->file('foto')->store('galeri', 'public');
-        } else {
-            // Foto default jika tidak ada foto yang diupload
-            $fileName = 'nophoto.jpg';
+    $fotoPaths = [];
+
+    if ($request->hasFile('foto')) {
+        foreach ($request->file('foto') as $foto) {
+            $fotoPaths[] = $foto->store('galeri', 'public');
         }
-
-        // Menambahkan data ke tabel galeris
-        DB::table('galeris')->insert([
-            'judul' => $request->judul,
-            'foto' => $fileName,
-        ]);
-
-        return redirect()->route('galeri.admin');
     }
+
+    DB::table('galeris')->insert([
+        'judul' => $request->judul,
+        'foto' => json_encode($fotoPaths), // ✅ Simpan sebagai JSON string
+        'created_at' => now(),
+        'updated_at' => now(),
+    ]);
+
+    return redirect()->route('galeri.admin');
+}
+
+
 
     public function edit(galeri $id) {
         return view('backend.galeri.edit', compact('id'));

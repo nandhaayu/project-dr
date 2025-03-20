@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('galeris', function (Blueprint $table) {
-            $table->id();
-            $table->string('judul');
-            $table->text('foto')->nullable()->change();
-            $table->timestamps();
+        Schema::table('galeris', function (Blueprint $table) {
+            //
         });
     }
 
@@ -25,7 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('galeris', function (Blueprint $table) {
-            $table->string('foto', 255)->nullable()->change();
+            //
         });
     }
 };

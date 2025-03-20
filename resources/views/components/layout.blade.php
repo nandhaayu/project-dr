@@ -14,7 +14,7 @@
     <link href="{{ asset('assets/css/fontawesome/css/solid.css') }}" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
-<body class="h-full">
+<body class="grid min-h-screen grid-rows-[auto_1fr_auto] bg-gray-100">
 
   <x-navbar></x-navbar>
   <x-header></x-header>

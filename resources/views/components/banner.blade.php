@@ -16,6 +16,42 @@
   </div>
 </section>
 
+<section class="bg-gray-800 text-white py-2 px-4 flex items-center overflow-hidden">
+  <!-- Animasi Pengumuman -->
+  <div class="marquee-container relative overflow-hidden w-full">
+    <div class="marquee flex items-center">
+      <p class="text-md font-bold mx-8 flex items-center">
+        <i class="fas fa-mosque text-yellow-400 mr-2"></i> Pondok Pesantren Darur Rohmah
+      </p>
+      <p class="text-md font-bold mx-8 flex items-center">
+        <i class="fas fa-map-marker-alt text-red-500 mr-2"></i> Kedung, Buaran, Kec. Mayong, Jepara, Jawa Tengah 59465
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes marquee {
+      from {
+          transform: translateX(100%);
+      }
+      to {
+          transform: translateX(-100%);
+      }
+  }
+
+  .marquee {
+      display: flex;
+      white-space: nowrap;
+      animation: marquee 20s linear infinite; /* Animasi lebih pelan */
+  }
+
+  .marquee p {
+      margin-right: 40px; /* Jarak antar teks */
+  }
+</style>
+
+
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     let currentSlide = 0;
@@ -51,42 +87,3 @@
     }, 5000);
   });
 </script>
-
-
-
-{{-- <section class="relative w-full h-[300px] md:h-screen">
-  <!-- Container for slides -->
-  <div class="relative overflow-hidden w-full h-full">
-    @foreach ($slide as $d)
-    <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-100" id="slide1">
-      <img src="{{ asset('storage/' . $d->foto) }}" alt="Slide 1" class="w-full md:h-full h-[300px] object-cover">
-    </div>
-    @endforeach
-
-  </div>
-
-  <!-- Navigation buttons -->
-  <div class="absolute inset-x-0 bottom-5 flex justify-center space-x-3">
-    <button onclick="showSlide(1)" class="bg-white w-4 h-4 rounded-full"></button>
-    <button onclick="showSlide(2)" class="bg-white w-4 h-4 rounded-full"></button>
-    <button onclick="showSlide(3)" class="bg-white w-4 h-4 rounded-full"></button>
-  </div>
-</section>
-
-<script>
-  let currentSlide = 1;
-
-  function showSlide(slideIndex) {
-    const slides = document.querySelectorAll('[id^="slide"]');
-    slides.forEach((slide, index) => {
-      slide.style.opacity = (index + 1 === slideIndex) ? '1' : '0';
-    });
-    currentSlide = slideIndex;
-  }
-
-  // Auto slide every 5 seconds
-  setInterval(() => {
-    currentSlide = (currentSlide % 3) + 1;
-    showSlide(currentSlide);
-  }, 5000);
-</script> --}}

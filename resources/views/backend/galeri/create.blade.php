@@ -15,13 +15,20 @@
           @enderror
         </div>
 
-        <div class="mb-3">
+        {{-- <div class="mb-3">
             <label for="foto" class="form-label">Foto</label>
             <input type="file" class="form-control" id="foto" name="foto" accept="image/*" required>
             @error('foto')
             <div class="invalid-feedback">{{ $message }}</div>
             @enderror
-        </div>
+        </div> --}}
+        <div class="mb-3">
+          <label for="foto" class="form-label">Foto</label>
+          <input type="file" class="form-control @error('foto') is-invalid @enderror" id="foto" name="foto[]" accept="image/*" multiple>
+          @error('foto')
+          <div class="invalid-feedback">{{ $message }}</div>
+          @enderror
+      </div>       
 
         <button type="submit" class="btn btn-primary">Simpan</button>
         <a href="{{ route('galeri.admin') }}" class="btn btn-secondary">Batal</a>
