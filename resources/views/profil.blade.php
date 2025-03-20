@@ -4,7 +4,7 @@
             <div class="flex flex-col lg:flex-row gap-8">
                 <!-- Left: Gambar dan Deskripsi -->
                 @if ($profil)
-                <div class="lg:w-2/3 bg-white p-6 rounded-lg shadow-lg">
+                <div class="lg:w-2/3 bg-white p-6 rounded-lg shadow-lg text-justify">
                     <img src="{{ asset('storage/'. $profil->foto) }}" alt="Foto Pondok Pesantren Darruh Rahmah" class="w-full rounded-lg mb-6" style="object-position: center; object-fit:cover; max-height: 400px">
                     <h2 class="text-2xl font-bold text-gray-900 mb-4">{{ $profil->judul }}</h2>
                     <p class="text-gray-700 leading-relaxed text-justify">
