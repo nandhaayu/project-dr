@@ -26,7 +26,7 @@
           </p>
           <!-- Teks Lokasi (Hanya muncul di desktop) -->
           <p class="text-m md:text-md font-bold mx-4 hidden md:block items-center">
-              <i class="fas fa-map-marker-alt text-red-500 mr-2"></i> Kedung, Buaran, Kec. Mayong, Jepara, Jawa Tengah 59465
+              <i class="fas fa-map-marker-alt text-red-500 mr-2"></i> Kedung, Buaran, Kecamatan Mayong, Kabupaten Jepara, Jawa Tengah 59465, Indonesia
           </p>
       </div>
   </div>
