@@ -75,13 +75,19 @@ class ProfilController extends Controller
     // Menampilkan form untuk membuat profil baru
     public function create()
     {
-        return view('backend.profil.create');
+        $jumlahNotifikasi = Pendaftar::where('status', 'pending')->count();
+        $pendaftars = Pendaftar::orderBy('created_at', 'desc')->get();
+
+        return view('backend.profil.create', compact('jumlahNotifikasi', 'pendaftars'));
     }
 
     public function edit($id)
     {
         $profil = Profil::findOrFail($id);  // Mengambil data profil berdasarkan ID
-        return view('backend.profil.edit', compact('profil'));  // Mengirimkan profil ke view
+        $jumlahNotifikasi = Pendaftar::where('status', 'pending')->count();
+        $pendaftars = Pendaftar::orderBy('created_at', 'desc')->get();
+
+        return view('backend.profil.edit', compact('profil', 'jumlahNotifikasi', 'pendaftars'));  // Mengirimkan profil ke view
     }
     
 

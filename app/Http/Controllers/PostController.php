@@ -20,7 +20,11 @@ class PostController extends Controller
     }
 
     function create () {
-        return view('backend.post.create');
+
+        $jumlahNotifikasi = Pendaftar::where('status', 'pending')->count();
+        $pendaftars = Pendaftar::orderBy('created_at', 'desc')->get();
+
+        return view('backend.post.create', compact('jumlahNotifikasi', 'pendaftars'));
     }
 
     public function store(Request $request)
@@ -64,7 +68,11 @@ class PostController extends Controller
     }
 
     public function edit(Post $id) {
-        return view('backend.post.edit', compact('id'));
+
+        $jumlahNotifikasi = Pendaftar::where('status', 'pending')->count();
+        $pendaftars = Pendaftar::orderBy('created_at', 'desc')->get();
+
+        return view('backend.post.edit', compact('id', 'jumlahNotifikasi', 'pendaftars'));
     }
 
     public function update(Request $request, string $id)

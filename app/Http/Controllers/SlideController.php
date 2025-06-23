@@ -73,14 +73,20 @@ class SlideController extends Controller
     // Menampilkan form tambah slide
     public function create()
     {
-        return view('backend.slide.create');
+        $jumlahNotifikasi = Pendaftar::where('status', 'pending')->count();
+        $pendaftars = Pendaftar::orderBy('created_at', 'desc')->get();
+
+        return view('backend.slide.create', compact('jumlahNotifikasi', 'pendaftars'));
     }
 
     // Menampilkan form edit slide
     public function edit($id)
     {
-        $slide = Slide::findOrFail($id);  
-        return view('backend.slide.edit', compact('slide'));
+        $slide = Slide::findOrFail($id);
+        $jumlahNotifikasi = Pendaftar::where('status', 'pending')->count();
+        $pendaftars = Pendaftar::orderBy('created_at', 'desc')->get();
+
+        return view('backend.slide.edit', compact('slide', 'jumlahNotifikasi', 'pendaftars'));
     }
 
     // Menghapus slide

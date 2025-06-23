@@ -20,7 +20,11 @@ class GaleriController extends Controller
     }
 
     function create () {
-        return view('backend.galeri.create');
+
+        $jumlahNotifikasi = Pendaftar::where('status', 'pending')->count();
+        $pendaftars = Pendaftar::orderBy('created_at', 'desc')->get();
+
+        return view('backend.galeri.create', compact('jumlahNotifikasi', 'pendaftars'));
     }
 
     public function store(Request $request)
@@ -50,7 +54,11 @@ class GaleriController extends Controller
 
 
     public function edit(galeri $id) {
-        return view('backend.galeri.edit', compact('id'));
+
+        $jumlahNotifikasi = Pendaftar::where('status', 'pending')->count();
+        $pendaftars = Pendaftar::orderBy('created_at', 'desc')->get();
+
+        return view('backend.galeri.edit', compact('id', 'jumlahNotifikasi', 'pendaftars'));
     }
 
 

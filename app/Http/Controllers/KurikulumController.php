@@ -18,7 +18,11 @@ class KurikulumController extends Controller
     }
 
     public function create() {
-        return view('backend.kurikulum.create');
+
+        $jumlahNotifikasi = Pendaftar::where('status', 'pending')->count();
+        $pendaftars = Pendaftar::orderBy('created_at', 'desc')->get();
+
+        return view('backend.kurikulum.create', compact('jumlahNotifikasi', 'pendaftars'));
     }
 
     public function store(Request $request)
@@ -54,7 +58,11 @@ class KurikulumController extends Controller
     }
 
     public function edit(Kurikulum $kurikulum) {
-        return view('backend.kurikulum.edit', compact('kurikulum'));
+
+        $jumlahNotifikasi = Pendaftar::where('status', 'pending')->count();
+        $pendaftars = Pendaftar::orderBy('created_at', 'desc')->get();
+
+        return view('backend.kurikulum.edit', compact('kurikulum', 'jumlahNotifikasi', 'pendaftars'));
     }
 
     public function update(Request $request, Kurikulum $kurikulum)
