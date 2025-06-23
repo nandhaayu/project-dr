@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kurikulum;
+use App\Models\Pendaftar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -10,7 +11,10 @@ class KurikulumController extends Controller
 {
     public function kurikulumAdmin() {
         $kurikulum = Kurikulum::all();
-        return view('backend.kurikulum.index', compact('kurikulum'));
+        $jumlahNotifikasi = Pendaftar::where('status', 'pending')->count();
+        $pendaftars = Pendaftar::orderBy('created_at', 'desc')->get();
+
+        return view('backend.kurikulum.index', compact('kurikulum', 'jumlahNotifikasi', 'pendaftars'));
     }
 
     public function create() {

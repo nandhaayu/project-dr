@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pendaftar;
 use App\Models\Rutinitas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -10,7 +11,10 @@ class RutinitasController extends Controller
 {
     function rutinitasAdmin () {
         $rutinitas = Rutinitas::all();
-        return view('backend.rutinitas.index', compact('rutinitas'));
+        $jumlahNotifikasi = Pendaftar::where('status', 'pending')->count();
+        $pendaftars = Pendaftar::orderBy('created_at', 'desc')->get();
+
+        return view('backend.rutinitas.index', compact('rutinitas', 'jumlahNotifikasi', 'pendaftars'));
     }
 
     function create () {

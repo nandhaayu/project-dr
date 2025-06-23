@@ -21,9 +21,17 @@
                 <img src="{{ asset('storage/' . $d->foto) }}" alt="slide Foto" class="rounded" style="width: 100%; max-width: 100px; height: auto;">
               </td>
               <td>
-                <a href="{{ route('slide.edit', $d->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $d->id }}">Hapus</button>
-                @include('backend.slide.delete')
+                <div class="d-flex flex-wrap gap-1">
+                  <a href="{{ route('slide.edit', $d->id) }}" class="btn btn-warning btn-sm">
+                    <i class="fa-solid fa-pen-to-square"></i> Edit
+                  </a>
+                  
+                  <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $d->id }}">
+                    <i class="fa-solid fa-trash"></i> Hapus
+                  </button>
+
+                  @include('backend.slide.delete')
+                </div>
               </td>
             </tr>
             @endforeach

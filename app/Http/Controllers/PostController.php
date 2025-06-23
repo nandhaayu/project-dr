@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pendaftar;
 use App\Models\Post;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -12,7 +13,10 @@ class PostController extends Controller
 {
     function postAdmin () {
         $post = Post::orderBy('created_at', 'desc')->paginate(5);
-        return view('backend.post.index', compact('post'));
+        $jumlahNotifikasi = Pendaftar::where('status', 'pending')->count();
+        $pendaftars = Pendaftar::orderBy('created_at', 'desc')->get();
+
+        return view('backend.post.index', compact('post', 'jumlahNotifikasi', 'pendaftars'));
     }
 
     function create () {

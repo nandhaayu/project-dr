@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pendaftar;
 use App\Models\Syaikhuna;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -10,7 +11,10 @@ class SyaikhunaController extends Controller
 {
     function syaikhunaAdmin() {
         $syaikhuna = Syaikhuna::all(); // Mengambil semua data
-        return view('backend.syaikhuna.index', compact('syaikhuna'));
+        $jumlahNotifikasi = Pendaftar::where('status', 'pending')->count();
+        $pendaftars = Pendaftar::orderBy('created_at', 'desc')->get();
+
+        return view('backend.syaikhuna.index', compact('syaikhuna', 'jumlahNotifikasi', 'pendaftars'));
     }
 
     function create() {

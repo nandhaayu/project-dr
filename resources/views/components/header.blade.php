@@ -32,10 +32,19 @@
                             <a href="/rutinitas" class="block px-4 py-2 text-sm font-semibold text-black hover:bg-green-300 {{ request()->is('rutinitas') ? 'bg-green-300' : '' }}">Rutinitas Kegiatan Santri</a>
                             <a href="/rutinitasUmum" class="block px-4 py-2 text-sm font-semibold text-black hover:bg-green-300 {{ request()->is('rutinitasUmum') ? 'bg-green-300' : '' }}">Rutinitas Kegiatan Umum</a>
                         </div>
-                        </div>
+                    </div>
 
                         <x-nav-link href="/syaikhuna" :active="request()->is('syaikhuna')">Syaikhuna</x-nav-link>
-                        <x-nav-link href="/pendaftaran" :active="request()->is('pendaftaran')">Pendaftaran</x-nav-link>
+                        <div class="relative group">
+                            <x-nav-link href="#" :active="request()->is('pendaftaran') || request()->is('pendaftaran') || request()->is('daftarSekarang')">
+                                Pendaftaran <i class="fa-solid fa-caret-down ml-1"></i>
+                            </x-nav-link>
+                            <div class="absolute hidden group-hover:block bg-white shadow-lg mt-2 py-2 w-64">
+                                <a href="/pendaftaran" class="block px-4 py-2 text-sm font-semibold text-black hover:bg-green-300 {{ request()->is('pendaftaran') ? 'bg-green-300' : '' }}">Info Pendaftaran</a>
+                                <a href="/daftarSekarang" class="block px-4 py-2 text-sm font-semibold text-black hover:bg-green-300 {{ request()->is('daftarSekarang') ? 'bg-green-300' : '' }}">Daftar Sekarang</a>
+                            </div>
+                        </div>
+                        {{-- <x-nav-link href="/pendaftaran" :active="request()->is('pendaftaran')">Pendaftaran</x-nav-link> --}}
                         <x-nav-link href="/galeri" :active="request()->is('galeri')">Galeri</x-nav-link>
                         <x-nav-link href="/artikel" :active="request()->is('artikel') || request()->is('artikel/*')">Artikel</x-nav-link>
                         <x-nav-link href="/kontak" :active="request()->is('kontak')">Kontak</x-nav-link>

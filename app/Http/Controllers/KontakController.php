@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\kontak;
+use App\Models\Pendaftar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -10,7 +11,10 @@ class KontakController extends Controller
 {
     function kontakAdmin () {
         $kontak = kontak::first();
-        return view('backend.kontak.index', compact('kontak'));
+        $jumlahNotifikasi = Pendaftar::where('status', 'pending')->count();
+        $pendaftars = Pendaftar::orderBy('created_at', 'desc')->get();
+
+        return view('backend.kontak.index', compact('kontak', 'jumlahNotifikasi', 'pendaftars'));
     }
 
     function create () {

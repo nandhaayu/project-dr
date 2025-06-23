@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pendaftar;
 use App\Models\Profil;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -65,7 +66,10 @@ class ProfilController extends Controller
     public function profilAdmin()
     {
         $profil = Profil::first();  // Mengambil profil pertama
-        return view('backend.profil.index', compact('profil'));
+        $jumlahNotifikasi = Pendaftar::where('status', 'pending')->count();
+        $pendaftars = Pendaftar::orderBy('created_at', 'desc')->get();
+
+        return view('backend.profil.index', compact('profil', 'jumlahNotifikasi', 'pendaftars'));
     }
 
     // Menampilkan form untuk membuat profil baru

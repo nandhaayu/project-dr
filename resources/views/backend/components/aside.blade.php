@@ -142,6 +142,18 @@
             </a>
         </li>
         <li class="sidebar-item">
+            <a class="sidebar-link hover:text-green-700 {{ Request::is('pendaftars') ? 'text-green-700 font-bold' : '' }}" href="{{ route('pendaftars.index') }}">
+              <i class="fa-solid fa-user-plus mr-2"></i>
+              <span class="hide-menu">Pendaftar</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
+            <a class="sidebar-link hover:text-green-700 {{ Request::is('santris') ? 'text-green-700 font-bold' : '' }}" href="{{ route('santris.index') }}">
+              <i class="fa-solid fa-users mr-2"></i>
+              <span class="hide-menu">Santri</span>
+          </a>
+        </li>
+        <li class="sidebar-item">
             <a class="sidebar-link hover:text-green-700 {{ Request::is('berandaAdmin') ? 'text-green-700 font-bold' : '' }}" href="{{ route('beranda.admin') }}">
                 <i class="fa-solid fa-house-chimney mr-2"></i>
                 <span class="hide-menu">Beranda</span>
@@ -151,7 +163,7 @@
             <a class="sidebar-link hover:text-green-700 flex items-center justify-between 
                 {{ Request::is('profilAdmin') || Request::is('kurikulumAdmin') || Request::is('rutinitasAdmin') || Request::is('rutinitasUmumAdmin') ? 'text-green-700 font-bold' : '' }}" href="#">
                 <span class="flex items-center">
-                    <i class="fa-regular fa-id-card mr-2"></i>
+                    <i class="fa-solid fa-landmark mr-2"></i>
                     <span class="hide-menu">Tentang Kami</span>
                 </span>
                 <i class="ti ti-chevron-down transition-transform duration-300 group-hover:rotate-180"></i>
@@ -192,13 +204,13 @@
         </li>
         <li class="sidebar-item">
             <a class="sidebar-link hover:text-green-700 {{ Request::is('pendaftaranAdmin') ? 'text-green-700 font-bold' : '' }}" href="{{ route('pendaftaran.admin') }}">
-                <i class="fa-solid fa-clipboard mr-2"></i>
+                <i class="fa-solid fa-circle-info mr-2"></i>
                 <span class="hide-menu">Pendaftaran</span>
             </a>
         </li>
         <li class="sidebar-item">
             <a class="sidebar-link hover:text-green-700 {{ Request::is('galeriAdmin') ? 'text-green-700 font-bold' : '' }}" href="{{ route('galeri.admin') }}">
-                <i class="fa-solid fa-images mr-2"></i>
+                <i class="fa-solid fa-image mr-2"></i>
                 <span class="hide-menu">Galeri</span>
             </a>
         </li>
