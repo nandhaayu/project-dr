@@ -18,7 +18,11 @@ class RutinitasUmumController extends Controller
     }
 
     function create () {
-        return view('backend.rutinitasUmum.create');
+
+        $jumlahNotifikasi = Pendaftar::where('status', 'pending')->count();
+        $pendaftars = Pendaftar::orderBy('created_at', 'desc')->get();
+
+        return view('backend.rutinitasUmum.create', compact('jumlahNotifikasi', 'pendaftars'));
     }
 
     public function store(Request $request)
@@ -45,7 +49,11 @@ class RutinitasUmumController extends Controller
     }
 
     public function edit(RutinitasUmum $id) {
-        return view('backend.rutinitasUmum.edit', compact('id'));
+
+        $jumlahNotifikasi = Pendaftar::where('status', 'pending')->count();
+        $pendaftars = Pendaftar::orderBy('created_at', 'desc')->get();
+
+        return view('backend.rutinitasUmum.edit', compact('id', 'jumlahNotifikasi', 'pendaftars'));
     }
 
     public function update(Request $request, string $id) {

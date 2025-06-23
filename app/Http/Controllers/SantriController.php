@@ -25,7 +25,10 @@ class SantriController extends Controller
 
     public function create()
     {
-        return view('backend.santri.create');
+        $jumlahNotifikasi = Pendaftar::where('status', 'pending')->count();
+        $pendaftars = Pendaftar::orderBy('created_at', 'desc')->get();
+
+        return view('backend.santri.create', compact('jumlahNotifikasi', 'pendaftars'));
     }
 
     public function store(Request $request)
@@ -74,13 +77,19 @@ class SantriController extends Controller
     public function show($id)
     {
         $santri = Santri::findOrFail($id);
-        return view('backend.santri.show', compact('santri'));
+        $jumlahNotifikasi = Pendaftar::where('status', 'pending')->count();
+        $pendaftars = Pendaftar::orderBy('created_at', 'desc')->get();
+
+        return view('backend.santri.show', compact('santri', 'jumlahNotifikasi', 'pendaftars'));
     }
 
     public function edit($id)
     {
         $santri = Santri::findOrFail($id);
-        return view('backend.santri.edit', compact('santri'));
+        $jumlahNotifikasi = Pendaftar::where('status', 'pending')->count();
+        $pendaftars = Pendaftar::orderBy('created_at', 'desc')->get();
+
+        return view('backend.santri.edit', compact('santri', 'jumlahNotifikasi', 'pendaftars'));
     }
 
     public function update(Request $request, $id)

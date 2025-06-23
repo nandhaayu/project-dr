@@ -72,13 +72,19 @@ class BerandaController extends Controller
         // Menampilkan form untuk membuat profil baru
         public function create()
         {
-            return view('backend.beranda.create');
+            $jumlahNotifikasi = Pendaftar::where('status', 'pending')->count();
+            $pendaftars = Pendaftar::orderBy('created_at', 'desc')->get();
+            
+            return view('backend.beranda.create', compact('jumlahNotifikasi', 'pendaftars'));
         }
     
         public function edit($id)
         {
             $beranda = Beranda::findOrFail($id);  // Mengambil data beranda berdasarkan ID
-            return view('backend.beranda.edit', compact('beranda'));  // Mengirimkan beranda ke view
+            $jumlahNotifikasi = Pendaftar::where('status', 'pending')->count();
+            $pendaftars = Pendaftar::orderBy('created_at', 'desc')->get();
+
+            return view('backend.beranda.edit', compact('beranda', 'jumlahNotifikasi', 'pendaftars'));  // Mengirimkan beranda ke view
         }
         
     

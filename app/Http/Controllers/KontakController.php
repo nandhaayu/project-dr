@@ -18,7 +18,11 @@ class KontakController extends Controller
     }
 
     function create () {
-        return view('backend.kontak.create');
+
+        $jumlahNotifikasi = Pendaftar::where('status', 'pending')->count();
+        $pendaftars = Pendaftar::orderBy('created_at', 'desc')->get();
+
+        return view('backend.kontak.create', compact('jumlahNotifikasi', 'pendaftars'));
     }
 
     public function store(Request $request)
@@ -53,7 +57,11 @@ class KontakController extends Controller
 
 
     public function edit(kontak $id) {
-        return view('backend.kontak.edit', compact('id'));
+
+        $jumlahNotifikasi = Pendaftar::where('status', 'pending')->count();
+        $pendaftars = Pendaftar::orderBy('created_at', 'desc')->get();
+
+        return view('backend.kontak.edit', compact('id', 'jumlahNotifikasi', 'pendaftars'));
     }
 
     public function update(Request $request, string $id)

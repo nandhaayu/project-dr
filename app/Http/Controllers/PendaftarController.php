@@ -46,7 +46,10 @@ class PendaftarController extends Controller
     public function show($id)
     {
         $pendaftar = Pendaftar::findOrFail($id);
-        return view('backend.pendaftar.show', compact('pendaftar'));
+        $jumlahNotifikasi = Pendaftar::where('status', 'pending')->count();
+        $pendaftars = Pendaftar::orderBy('created_at', 'desc')->get();
+
+        return view('backend.pendaftar.show', compact('pendaftar', 'jumlahNotifikasi', 'pendaftars'));
     }
 
     public function tolak($id)

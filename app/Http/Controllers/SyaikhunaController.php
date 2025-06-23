@@ -18,7 +18,11 @@ class SyaikhunaController extends Controller
     }
 
     function create() {
-        return view('backend.syaikhuna.create');
+
+        $jumlahNotifikasi = Pendaftar::where('status', 'pending')->count();
+        $pendaftars = Pendaftar::orderBy('created_at', 'desc')->get();
+
+        return view('backend.syaikhuna.create', compact('jumlahNotifikasi', 'pendaftars'));
     }
 
     public function store(Request $request)
@@ -48,7 +52,10 @@ class SyaikhunaController extends Controller
     public function edit($id)
     {
         $syaikhuna = Syaikhuna::findOrFail($id);
-        return view('backend.syaikhuna.edit', compact('syaikhuna'));
+        $jumlahNotifikasi = Pendaftar::where('status', 'pending')->count();
+        $pendaftars = Pendaftar::orderBy('created_at', 'desc')->get();
+
+        return view('backend.syaikhuna.edit', compact('syaikhuna', 'jumlahNotifikasi', 'pendaftars'));
     }
 
     public function update(Request $request, $id)
