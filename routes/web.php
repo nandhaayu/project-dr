@@ -9,10 +9,12 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\KurikulumController;
 use App\Http\Controllers\PendaftaranController;
+use App\Http\Controllers\PendaftarController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\RutinitasController;
 use App\Http\Controllers\RutinitasUmumController;
+use App\Http\Controllers\SantriController;
 use App\Http\Controllers\SlideController;
 use App\Http\Controllers\SyaikhunaController;
 use App\Models\Category;
@@ -35,6 +37,7 @@ Route::get('/rutinitasUmum',[HomeController::class, 'rutinitasUmum'])->name('rut
 Route::get('/syaikhuna',[HomeController::class, 'syaikhuna'])->name('syaikhuna');
 Route::get('/BiografiSyaikhuna',[HomeController::class, 'biografiSyaikhuna'])->name('biografi.syaikhuna');
 Route::get('/pendaftaran',[HomeController::class, 'pendaftaran'])->name('pendaftaran');
+Route::get('/daftarSekarang',[HomeController::class, 'daftarSekarang'])->name('daftar.sekarang');
 Route::get('/pendaftaran/{id}/download', [HomeController::class, 'download'])->name('pendaftaran.download');
 Route::get('/pendaftaran',[HomeController::class, 'pendaftaran'])->name('pendaftaran');
 Route::get('/artikel',[HomeController::class, 'artikel'])->name('artikel');
@@ -53,6 +56,9 @@ Route::get('/registrasi', [AuthController::class, 'tampilRegistrasi'])->name('re
 Route::post('/registrasi/submit', [AuthController::class, 'submitRegistrasi'])->name('registrasi.submit');
 Route::get('/login', [AuthController::class, 'tampilLogin'])->name('login');
 Route::post('/login/submit', [AuthController::class, 'submitLogin'])->name('login.submit');
+
+Route::get('/pendaftars/{id}/pdf', [PendaftarController::class, 'generatePdf'])->name('pendaftars.pdf');
+// Route::post('/pendaftars/{id}/acc', [PendaftarController::class, 'acc'])->name('pendaftars.acc');
 
 //ROUTE BACKEND
 Route::middleware('auth')->group(function () {
@@ -130,4 +136,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/berandaAdmin/edit/{id}', [BerandaController::class, 'edit'])->name('beranda.edit');
     Route::put('/berandaAdmin/update/{id}', [BerandaController::class, 'update'])->name('beranda.update');
     Route::delete('/berandaAdmin/delete/{id}', [BerandaController::class, 'destroy'])->name('beranda.destroy');
+    Route::resource('pendaftars', PendaftarController::class);
+    // Route::get('/pendaftars', [PendaftarController::class, 'index'])->name('pendaftars.index');
+    // Route::get('/pendaftars/{id}', [PendaftarController::class, 'show'])->name('pendaftars.show');
+    Route::post('/pendaftars/{pendaftar}/acc', [PendaftarController::class, 'acc'])->name('pendaftars.acc');
+    Route::post('/pendaftars/{id}/tolak', [PendaftarController::class, 'tolak'])->name('pendaftars.tolak');
+    Route::resource('santris', SantriController::class);
+    Route::get('santris/export/excel', [SantriController::class, 'exportExcel'])->name('santris.export.excel');
+    Route::get('/santris/export/pdf', [SantriController::class, 'generateAllPdf'])->name('santris.export.pdf');
 });

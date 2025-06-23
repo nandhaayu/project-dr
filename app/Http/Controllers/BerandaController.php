@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Beranda;
+use App\Models\Pendaftar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -62,7 +63,10 @@ class BerandaController extends Controller
         public function berandaAdmin()
         {
             $beranda = Beranda::first();  // Mengambil beranda pertama
-            return view('backend.beranda.index', compact('beranda'));
+            $jumlahNotifikasi = Pendaftar::where('status', 'pending')->count();
+            $pendaftars = Pendaftar::orderBy('created_at', 'desc')->get();
+
+            return view('backend.beranda.index', compact('beranda', 'jumlahNotifikasi', 'pendaftars'));
         }
     
         // Menampilkan form untuk membuat profil baru

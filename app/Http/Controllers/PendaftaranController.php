@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pendaftar;
 use App\Models\Pendaftaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -10,7 +11,10 @@ class PendaftaranController extends Controller
 {
     function pendaftaranAdmin () {
         $pendaftaran = Pendaftaran::first();
-        return view('backend.pendaftaran.index', compact('pendaftaran'));
+        $jumlahNotifikasi = Pendaftar::where('status', 'pending')->count();
+        $pendaftars = Pendaftar::orderBy('created_at', 'desc')->get();
+
+        return view('backend.pendaftaran.index', compact('pendaftaran', 'jumlahNotifikasi', 'pendaftars'));
     }
 
     function create () {

@@ -56,6 +56,9 @@ class HomeController extends Controller
         $pendaftaran = Pendaftaran::all();
         return view('pendaftaran', compact('pendaftaran'));
     }
+    public function daftarSekarang () {
+        return view('daftarSekarang');
+    }
     public function download($id)
     {
         // Ambil data file berdasarkan ID

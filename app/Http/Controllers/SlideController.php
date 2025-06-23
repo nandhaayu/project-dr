@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pendaftar;
 use App\Models\Slide;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -62,8 +63,11 @@ class SlideController extends Controller
     // Menampilkan semua slide di halaman admin
     public function slideAdmin()
     {
-        $slide = Slide::all();  
-        return view('backend.slide.index', compact('slide'));
+        $slide = Slide::all(); 
+        $jumlahNotifikasi = Pendaftar::where('status', 'pending')->count();
+        $pendaftars = Pendaftar::orderBy('created_at', 'desc')->get();
+
+        return view('backend.slide.index', compact('slide', 'pendaftars', 'jumlahNotifikasi'));
     }
 
     // Menampilkan form tambah slide
