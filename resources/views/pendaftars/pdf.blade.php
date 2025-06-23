@@ -144,13 +144,14 @@
                 <td>{{ $pendaftar->kurikulum }}</td>
             </tr>
             <tr>
-                <td class="label">Harapan & Capaian</td>
+                <td class="label">Alasan Masuk Pondok</td>
                 <td>{{ $pendaftar->harapan ?? '-' }}</td>
             </tr>
         </table>
 
         <p class="italic">
-            Harap cetak formulir bukti pendaftaran ini ke Pondok Pesantren Darur Rohmah untuk selanjutnya dilakukan verifikasi data.
+            Harap cetak formulir bukti pendaftaran ini dan bawa ke Pondok Pesantren Darur Rohmah untuk dilakukan verifikasi data.
+            Untuk informasi lebih lanjut mengenai pembayaran, silakan hubungi kami melalui WhatsApp atau datang langsung ke pondok.
         </p>
     </div>
 

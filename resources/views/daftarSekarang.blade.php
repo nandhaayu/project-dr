@@ -59,11 +59,6 @@
                     <input type="text" name="nama_orangtua" class="w-full mt-1 p-2 border rounded" value="{{ old('nama_orangtua') }}" required>
                 </div>
 
-                <!-- Kurikulum -->
-                {{-- <div class="mb-4">
-                    <label class="block text-sm font-medium text-gray-700">Kurikulum</label>
-                    <input type="text" name="kurikulum" class="w-full mt-1 p-2 border rounded" value="{{ old('kurikulum') }}" required>
-                </div> --}}
                 <div class="mb-4">
                     <label class="block text-sm font-medium text-gray-700">Kurikulum</label>
                     <select name="kurikulum" class="w-full mt-1 p-2 border rounded" required>
@@ -81,7 +76,7 @@
 
                 <!-- Harapan -->
                 <div class="mb-4">
-                    <label class="block text-sm font-medium text-gray-700">Harapan</label>
+                    <label class="block text-sm font-medium text-gray-700">Alasan Masuk Pondok</label>
                     <textarea name="harapan" class="w-full mt-1 p-2 border rounded" rows="3">{{ old('harapan') }}</textarea>
                 </div>
 
