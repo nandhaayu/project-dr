@@ -4,75 +4,62 @@ namespace App\Http\Controllers;
 
 use App\Models\Pendaftar;
 use App\Models\Post;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class PostController extends Controller
 {
-    function postAdmin () {
-        $post = Post::orderBy('created_at', 'desc')->paginate(5);
+    public function postAdmin()
+    {
+        $post = Post::latest()->paginate(5);
         $jumlahNotifikasi = Pendaftar::where('status', 'pending')->count();
-        $pendaftars = Pendaftar::orderBy('created_at', 'desc')->get();
+        $pendaftars = Pendaftar::latest()->get();
 
         return view('backend.post.index', compact('post', 'jumlahNotifikasi', 'pendaftars'));
     }
 
-    function create () {
-
+    public function create()
+    {
         $jumlahNotifikasi = Pendaftar::where('status', 'pending')->count();
-        $pendaftars = Pendaftar::orderBy('created_at', 'desc')->get();
+        $pendaftars = Pendaftar::latest()->get();
 
         return view('backend.post.create', compact('jumlahNotifikasi', 'pendaftars'));
     }
 
     public function store(Request $request)
     {
-        // Validasi input tanpa slug
         $request->validate([
             'title' => 'required|max:45',
             'body' => 'required',
             'author_id' => 'required|exists:users,id',
             'image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg,webp|max:2048',
-        ], [
-            'title.required' => 'Title wajib diisi',
-            'title.max' => 'Title maksimal 45 karakter',
-            'body.required' => 'Body wajib diisi',
-            'author_id.required' => 'Author ID wajib diisi',
-            'author_id.exists' => 'Author ID tidak valid',
-            'image.max' => 'Image maksimal 2 MB',
-            'image.mimes' => 'File ekstensi hanya bisa jpg,png,jpeg,gif, svg',
-            'image.image' => 'File harus berbentuk image'
         ]);
 
-        // Jika file image ada yang terupload
+        $post = new Post();
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->author_id = $request->author_id;
+        $post->save();
+
+        // Simpan image ke media library jika ada
         if ($request->hasFile('image')) {
-            // Simpan gambar menggunakan store() di folder 'public/artikel'
-            $fileName = $request->image->store('artikel', 'public');
-        } else {
-            $fileName = 'nophoto.jpg';
+            $post->addMediaFromRequest('image')->toMediaCollection('posts');
         }
 
-        // Insert tanpa slug
-        DB::table('posts')->insert([
-            'title' => $request->title,
-            'body' => $request->body,
-            'image' => $fileName,
-            'author_id' => $request->author_id,
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ]);
-
-        return redirect()->route('post.admin');
+        return redirect()->route('post.admin')->with('success', 'Postingan berhasil dibuat');
     }
 
-    public function edit(Post $id) {
-
+    public function edit(Post $id)
+    {
         $jumlahNotifikasi = Pendaftar::where('status', 'pending')->count();
-        $pendaftars = Pendaftar::orderBy('created_at', 'desc')->get();
+        $pendaftars = Pendaftar::latest()->get();
 
-        return view('backend.post.edit', compact('id', 'jumlahNotifikasi', 'pendaftars'));
+        return view('backend.post.edit', [
+            'id' => $id,
+            'jumlahNotifikasi' => $jumlahNotifikasi,
+            'pendaftars' => $pendaftars
+        ]);
     }
 
     public function update(Request $request, string $id)
@@ -82,60 +69,38 @@ class PostController extends Controller
             'body' => 'required',
             'author_id' => 'required|exists:users,id',
             'image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg,webp|max:2048',
-        ], [
-            'title.required' => 'Title wajib diisi',
-            'body.required' => 'Body wajib diisi',
-            'author_id.required' => 'Author ID wajib diisi',
-            'author_id.exists' => 'Author ID tidak valid',
-            'image.max' => 'Image maksimal 2 MB',
-            'image.mimes' => 'File ekstensi hanya bisa jpg,png,jpeg,gif, svg',
-            'image.image' => 'File harus berbentuk image'
         ]);
 
-        // Ambil data image lama
-        $imageLama = DB::table('posts')->select('image')->where('id', $id)->first();
-        
-        // Jika ada image baru yang di-upload
-        if ($request->hasFile('image')) {
-            // Hapus image lama jika ada
-            if ($imageLama && file_exists(public_path('storage/artikel/' . $imageLama->image))) {
-                unlink(public_path('storage/artikel/' . $imageLama->image));
-            }
+        $post = Post::findOrFail($id);
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post->author_id = $request->author_id;
+        $post->save();
 
-            // Simpan image baru menggunakan store()
-            $fileName = $request->image->store('artikel', 'public');
-        } else {
-            // Jika tidak ada image baru, gunakan image lama
-            $fileName = $imageLama->image;
+        // Hapus gambar lama & tambahkan yang baru
+        if ($request->hasFile('image')) {
+            $post->clearMediaCollection('posts');
+            $post->addMediaFromRequest('image')->toMediaCollection('posts');
         }
 
-        // Update data tanpa slug
-        DB::table('posts')->where('id', $id)->update([
-            'title' => $request->title,
-            'body' => $request->body,
-            'author_id' => $request->author_id,
-            'image' => $fileName,
-        ]);
-
-        return redirect()->route('post.admin');
+        return redirect()->route('post.admin')->with('success', 'Postingan berhasil diperbarui');
     }
 
-    public function destroy(Post $id) {
+    public function destroy(Post $id)
+    {
+        $id->clearMediaCollection('posts'); // hapus file gambar
         $id->delete();
-        return redirect()->route('post.admin')->with('succes', 'Data berhasil dihapus');
+
+        return redirect()->route('post.admin')->with('success', 'Data berhasil dihapus');
     }
 
     public function search(Request $request)
     {
-        $query = $request->input('query');
-
         $request->validate([
             'query' => 'required|string|max:255',
-        ], [
-            'query.required' => 'Kata kunci pencarian tidak boleh kosong.',
-            'query.max' => 'Kata kunci pencarian maksimal 255 karakter.',
         ]);
 
+        $query = $request->input('query');
         $posts = Post::where('title', 'like', "%{$query}%")
             ->orWhere('body', 'like', "%{$query}%")
             ->paginate(10);
