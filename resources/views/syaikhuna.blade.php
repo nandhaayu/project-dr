@@ -11,7 +11,9 @@
                     decoding="async"
                     src="{{ $d->getFirstMediaUrl('foto_syaikhuna') }}" 
                     alt="Foto Syaikhuna" 
-                    class="w-full h-auto rounded-lg mb-2">
+                    width="800" 
+                    height="533" 
+                    class="w-full h-auto object-cover rounded-lg mb-3">
                     <p class="text-gray-700 text-center font-semibold mb-2">{{ $d->nama ?? 'Nama Foto' }}</p>
                 </div>
 

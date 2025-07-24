@@ -4,7 +4,15 @@
           <div class="flex items-center">
               <div class="flex-shrink-0">
                   <div class="md:ml-16">
-                      <img loading="lazy" id="logo" class="h-12 w-auto max-w-xs" src="{{ asset('assets/img/logo-PPDR.png') }}" alt="logo">
+                    <img 
+                        loading="lazy" 
+                        id="logo" 
+                        class="h-12 w-auto max-w-xs" 
+                        src="{{ asset('assets/img/logo-PPDR.png') }}" 
+                        alt="logo"
+                        width="200" 
+                        height="48"
+                    />
                   </div>
               </div>
           </div>
