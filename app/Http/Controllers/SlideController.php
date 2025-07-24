@@ -90,15 +90,12 @@ class SlideController extends Controller
     }
 
     // Menghapus slide
-    public function destroy(Slide $slide)
-    {
-        // Menghapus foto dari penyimpanan jika ada
-        if ($slide->foto && Storage::exists('public/' . $slide->foto)) {
-            Storage::delete('public/' . $slide->foto);
-        }
+    public function destroy($id)
+{
+    $slide = Slide::findOrFail($id);
+    $slide->delete();
 
-        $slide->delete();
+    return redirect()->route('slide.admin')->with('success', 'Data berhasil dihapus');
+}
 
-        return redirect()->route('slide.admin')->with('success', 'Slide berhasil dihapus');
-    }
 }
