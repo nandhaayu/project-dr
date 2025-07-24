@@ -3,7 +3,9 @@
   <div class="relative overflow-hidden w-full h-full">
     @foreach ($slide as $index => $d)
     <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out {{ $index === 0 ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none' }}" id="slide{{ $index }}">
-      <img src="{{ asset('storage/' . $d->foto) }}" alt="Slide {{ $index + 1 }}" class="w-full md:h-full h-[300px] object-cover">
+      @foreach ($d->getMedia('foto') as $media)
+        <img src="{{ $media->getUrl() }}" alt="Foto" />
+      @endforeach
     </div>
     @endforeach
   </div>

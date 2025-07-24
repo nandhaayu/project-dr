@@ -7,17 +7,39 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div class="text-center">
               @if ($beranda)
-                <div class="aspect-w-16 aspect-h-9">
-                  <iframe
-                    src="{{ $beranda->link }}?rel=0&modestbranding=1&enablejsapi=1"
-                    title="Video Profil"
-                    frameborder="0"
+                @php
+                  $videoId = Str::after($beranda->link, 'https://www.youtube.com/watch?v=');
+                @endphp
+                <div class="relative aspect-w-16 aspect-h-9 rounded-lg shadow-md cursor-pointer group overflow-hidden">
+                  <img
+                    src="https://i.ytimg.com/vi/{{ $videoId }}/hqdefault.jpg"
+                    alt="Thumbnail Video"
+                    class="absolute top-0 left-0 w-full h-full object-cover"
                     loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen
-                    class="w-full h-72 rounded-lg shadow-md"
-                  ></iframe>
+                  />
+                  <div class="absolute inset-0 flex items-center justify-center bg-black/50 group-hover:bg-black/70 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-white opacity-80 group-hover:opacity-100" fill="currentColor" viewBox="0 0 16 16">
+                      <path d="M6.79 5.093A.5.5 0 0 1 7.5 5.5v5a.5.5 0 0 1-.79.407L4 8.972V7.028l2.79-1.935z"/>
+                    </svg>
+                  </div>
                 </div>
+
+                <script>
+                  document.addEventListener("DOMContentLoaded", () => {
+                    const container = document.querySelector(".group");
+                    container.addEventListener("click", () => {
+                      container.innerHTML = `
+                        <iframe
+                          src="https://www.youtube.com/embed/{{ $videoId }}?autoplay=1&rel=0&modestbranding=1"
+                          title="Video Profil"
+                          frameborder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowfullscreen
+                          class="absolute top-0 left-0 w-full h-full rounded-lg"
+                        ></iframe>`;
+                    });
+                  });
+                </script>
               @endif
             </div>
             <div class="text-justify">
