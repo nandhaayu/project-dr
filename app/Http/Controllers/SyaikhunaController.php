@@ -31,7 +31,7 @@ class SyaikhunaController extends Controller
             'judul' => 'required|string|max:255',
             'deskripsi' => 'required|string',
             'nama' => 'required|string|max:255',
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ]);
 
         $foto = null;
@@ -64,7 +64,7 @@ class SyaikhunaController extends Controller
             'judul' => 'required|string|max:255',
             'deskripsi' => 'required|string',
             'nama' => 'required|string|max:255',
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ]);
 
         $syaikhuna = Syaikhuna::findOrFail($id);

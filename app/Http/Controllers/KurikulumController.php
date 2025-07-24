@@ -37,7 +37,7 @@ class KurikulumController extends Controller
             'judul.max' => 'Judul maksimal 45 karakter',
             'deskripsi.required' => 'Deskripsi wajib diisi',
             'foto.max' => 'Foto maksimal 2 MB',
-            'foto.mimes' => 'File ekstensi hanya bisa jpg,png,jpeg,gif,svg',
+            'foto.mimes' => 'File ekstensi hanya bisa jpg,png,jpeg,gif,svg,webp',
             'foto.image' => 'File harus berbentuk image'
         ]);
 
@@ -70,7 +70,7 @@ class KurikulumController extends Controller
         $request->validate([
             'judul' => 'required|max:45',
             'deskripsi' => 'required',
-            'foto' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'foto' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg,webp|max:2048',
         ]);
 
         // Proses unggah foto

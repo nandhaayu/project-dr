@@ -34,7 +34,7 @@ class PostController extends Controller
             'title' => 'required|max:45',
             'body' => 'required',
             'author_id' => 'required|exists:users,id',
-            'image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg,webp|max:2048',
         ], [
             'title.required' => 'Title wajib diisi',
             'title.max' => 'Title maksimal 45 karakter',
@@ -81,7 +81,7 @@ class PostController extends Controller
             'title' => 'required|max:45',
             'body' => 'required',
             'author_id' => 'required|exists:users,id',
-            'image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg,webp|max:2048',
         ], [
             'title.required' => 'Title wajib diisi',
             'body.required' => 'Body wajib diisi',

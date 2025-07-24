@@ -14,7 +14,7 @@ class ProfilController extends Controller
     {
         $request->validate([
             'judul' => 'required|string|max:255',
-            'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',  // Validasi untuk foto
+            'foto' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',  // Validasi untuk foto
             'deskripsi' => 'required|string',
         ]);
 
@@ -36,7 +36,7 @@ class ProfilController extends Controller
     {
         $request->validate([
             'judul' => 'required|string|max:255',
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',  // Validasi untuk foto
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',  // Validasi untuk foto
             'deskripsi' => 'required|string',
         ]);
 
