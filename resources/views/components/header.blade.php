@@ -4,7 +4,7 @@
           <div class="flex items-center">
               <div class="flex-shrink-0">
                   <div class="md:ml-16">
-                      <img id="logo" class="h-12 w-auto max-w-xs" src="{{ asset('assets/img/logo-PPDR.png') }}" alt="logo">
+                      <img loading="lazy" id="logo" class="h-12 w-auto max-w-xs" src="{{ asset('assets/img/logo-PPDR.png') }}" alt="logo">
                   </div>
               </div>
           </div>
@@ -104,7 +104,6 @@
                     <a href="/daftarSekarang" class="block px-3 py-2 text-base font-medium {{ request()->is('daftarSekarang') ? 'bg-green-800 text-white' : 'text-green-700 hover:bg-green-900 hover:text-white' }}">Daftar Sekarang</a>
                 </div>
             </div>
-            {{-- <a href="/pendaftaran" class="block rounded-md px-3 py-2 text-base font-medium hover:bg-green-700 hover:text-white {{ request()->is('pendaftaran') ? 'bg-green-700 text-white' : '' }}">Pendaftaran</a> --}}
             <a href="/galeri" class="block rounded-md px-3 py-2 text-base font-medium hover:bg-green-700 hover:text-white {{ request()->is('galeri') ? 'bg-green-700 text-white' : '' }}">Galeri</a>
             <a href="/artikel" class="block rounded-md px-3 py-2 text-base font-medium hover:bg-green-700 hover:text-white {{ request()->is('artikel') || request()->is('artikel/*') ? 'bg-green-700 text-white' : '' }}">Artikel</a>
             <a href="/kontak" class="block rounded-md px-3 py-2 text-base font-medium hover:bg-green-700 hover:text-white {{ request()->is('kontak') ? 'bg-green-700 text-white' : '' }}">Kontak</a>
