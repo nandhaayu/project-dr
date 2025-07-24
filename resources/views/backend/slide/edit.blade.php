@@ -13,7 +13,13 @@
           <label for="foto" class="form-label">Foto</label>
           <input type="file" class="form-control mb-3" id="foto" name="foto" accept="image/*">
           @if($slide->foto && $slide->foto !== 'nophoto.jpg')
-            <img loading="lazy" src="{{ asset('storage/' . $slide->foto) }}" alt="Foto slide" class="rounded" style="width: 100%; max-width: 100px; height: auto;">
+          <img 
+              loading="lazy" 
+              decoding="async"
+              src="{{ $slide->getFirstMediaUrl('foto') }}" 
+              alt="Foto slide" 
+              class="rounded" 
+              style="width: 100%; max-width: 100px; height: auto;">
           @endif 
         </div>
 

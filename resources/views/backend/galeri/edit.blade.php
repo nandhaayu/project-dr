@@ -28,7 +28,12 @@
               <div class="d-flex flex-wrap gap-2">
                   @foreach ($fotoArray as $foto)
                       <div class="position-relative">
-                          <img loading="lazy" src="{{ url('storage/' . $foto) }}" class="rounded border" style="width: 100px; height: auto;">
+                      <img 
+                          loading="lazy" 
+                          src="{{ $berita->getFirstMediaUrl('foto') }}" 
+                          alt="Foto Berita" 
+                          class="rounded border" 
+                          style="width: 100px; height: auto;">
                       </div>
                   @endforeach
               </div>

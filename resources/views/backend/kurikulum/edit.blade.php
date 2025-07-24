@@ -30,7 +30,12 @@
           
           @if(!empty($kurikulum->foto))
               <div class="mt-2">
-                  <img loading="lazy" src="{{ asset('storage/' . $kurikulum->foto) }}" alt="Foto Kurikulum" class="rounded" style="width: 100px; height: auto;">
+              <img 
+                  loading="lazy" 
+                  src="{{ $kurikulum->getFirstMediaUrl('foto') }}" 
+                  alt="Foto Kurikulum" 
+                  class="rounded" 
+                  style="width: 100px; height: auto;">
               </div>
           @endif
       </div>      

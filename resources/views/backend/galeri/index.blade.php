@@ -31,7 +31,12 @@
                   
                   <div class="d-flex flex-wrap gap-2">
                       @foreach ($fotos as $foto)
-                          <img loading="lazy" src="{{ asset('storage/' . $foto) }}" alt="project-image" class="rounded" style="width: 100px; height: auto;">
+                      <img 
+                          loading="lazy" 
+                          src="{{ $model->getFirstMediaUrl('foto') }}" 
+                          alt="project-image" 
+                          class="rounded" 
+                          style="width: 100px; height: auto;">
                       @endforeach
                   </div>
               </td>

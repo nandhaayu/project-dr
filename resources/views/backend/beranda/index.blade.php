@@ -23,7 +23,12 @@
             @if($beranda)
             <tr>
               <td>
-                <img loading="lazy" src="{{ asset('storage/' . $beranda->foto) }}" alt="beranda Foto" class="rounded" style="width: 100%; max-width: 100px; height: auto;">
+              <img 
+                  loading="lazy" 
+                  src="{{ $beranda->getFirstMediaUrl('foto') }}" 
+                  alt="beranda Foto" 
+                  class="rounded" 
+                  style="width: 100%; max-width: 100px; height: auto;">
               </td>
               <td>{{ $beranda->link }}</td>
               <td>

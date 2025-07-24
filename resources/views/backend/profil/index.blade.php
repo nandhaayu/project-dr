@@ -25,7 +25,13 @@
             <tr>
               <td>{{ $profil->judul }}</td>
               <td>
-                <img loading="lazy" src="{{ asset('storage/' . $profil->foto) }}" alt="Profil Foto" class="rounded" style="width: 100%; max-width: 100px; height: auto;">
+              <img 
+                  loading="lazy" 
+                  decoding="async"
+                  src="{{ $profil->getFirstMediaUrl('foto') }}" 
+                  alt="Profil Foto" 
+                  class="rounded" 
+                  style="width: 100%; max-width: 100px; height: auto;">
               </td>
               <td>{!! $profil->deskripsi !!}</td>
               <td>

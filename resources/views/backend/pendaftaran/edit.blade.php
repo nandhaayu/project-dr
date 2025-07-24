@@ -49,7 +49,12 @@
             @enderror
             @if(!empty($id->foto))
               <div class="mt-2">
-                <img loading="lazy" src="{{ url('storage/'.$id->foto) }}" alt="Foto Pendaftaran" class="rounded" style="width: 100px; height: auto;">
+              <img 
+                  loading="lazy" 
+                  src="{{ $id->getFirstMediaUrl('foto') }}" 
+                  alt="Foto Pendaftaran" 
+                  class="rounded" 
+                  style="width: 100px; height: auto;">
               </div>
             @else
               <small class="form-text text-muted">Tidak ada foto sebelumnya.</small>
