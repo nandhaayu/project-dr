@@ -11,9 +11,9 @@
                             class="w-full border border-gray-300 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-105 transition duration-300 ease-in-out">
                             <!-- Featured Image -->
                             <a href="{{ route('show.singlePost', $d->id) }}">
-                                <img loading="lazy"
-                                    src="{{ asset('storage/' . $d->image) }}" 
-                                    alt="{{ $d['title'] }}" 
+                                    <img loading="lazy"
+                                    src="{{ $d->getFirstMediaUrl('image') }}" 
+                                    alt="{{ $d->title }}" 
                                     class="w-full h-48 object-cover">
                             </a>
                             <div class="p-4">

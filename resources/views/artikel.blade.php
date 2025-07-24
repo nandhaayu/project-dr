@@ -5,14 +5,16 @@
                 @foreach ($post as $d)
                     <article class="border rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
                         <!-- Gambar dengan Lazy Load -->
-                        <a href="{{ route('show.singlePost', $d->id) }}">
-                            <img 
-                                src="{{ asset('storage/' . $d->image) }}" 
-                                alt="{{ $d->title }}" 
-                                class="w-full h-48 object-cover"
-                                loading="lazy"
-                            >
-                        </a>
+                        @foreach ($d->getMedia('image') as $media)
+                            <a href="{{ route('show.singlePost', $d->id) }}">
+                                <img 
+                                    src="{{ $media->getUrl() }}" 
+                                    alt="{{ $d->title }}" 
+                                    class="w-full h-48 object-cover"
+                                    loading="lazy"
+                                >
+                            </a>
+                        @endforeach
                         <div class="p-4">
                             <!-- Judul -->
                             <a href="{{ route('show.singlePost', $d->id) }}">

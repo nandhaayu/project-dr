@@ -12,12 +12,12 @@
                                 @foreach ($fotos as $index => $foto)
                                     <div class="absolute inset-0 transition-opacity duration-700 ease-in-out {{ $index === 0 ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none' }}">
                                         <img 
-                                            src="{{ asset('storage/' . $foto) }}" 
+                                            src="{{ $foto->getUrl() }}" 
                                             alt="{{ $d->judul }}" 
                                             class="w-full h-full object-cover" 
                                             loading="lazy" 
                                             decoding="async"
-                                        >
+                                        />
                                     </div>
                                 @endforeach
                             </div>

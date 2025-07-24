@@ -131,7 +131,12 @@
           @foreach ($posts as $d)
           <div class="mb-6 flex flex-col sm:flex-row items-start gap-4 p-6 shadow-sm">
             <a href="{{ route('show.singlePost', $d->id) }}}}">
-              <img loading="lazy" src="{{ asset('storage/' . $d->image) }}" alt="Foto Artikel 1" class="w-full sm:w-72 h-44 object-cover rounded-lg mb-4 sm:mb-0">
+            <img 
+                loading="lazy" 
+                src="{{ $d->getFirstMediaUrl('image') }}" 
+                alt="Foto Artikel 1" 
+                class="w-full sm:w-72 h-44 object-cover rounded-lg mb-4 sm:mb-0"
+            />
             </a>
             <div class="flex-1">
               <a href="{{ route('show.singlePost', $d->id) }}">
@@ -172,7 +177,12 @@
               <!-- Berita 1 -->
               @if ($syaikhuna)
               <div class="p-4 shadow-sm text-center">
-                <img  loading="lazy" src="{{ asset('storage/' . $syaikhuna->foto) }}" alt="Berita 1" class="w-full h-auto object-cover rounded-lg mb-3">
+                <img 
+                    loading="lazy" 
+                    src="{{ $syaikhuna->getFirstMediaUrl('foto') }}" 
+                    alt="Berita 1" 
+                    class="w-full h-auto object-cover rounded-lg mb-3"
+                />
                 <h3 class="font-semibold text-gray-800">{{ $syaikhuna->nama }}</h3>
                 <p class="text-gray-600 text-sm mt-2 mb-2">-Pengasuh Pondok Pesantren Darur Rohmah-</p>
                 <p class="text-gray-700 leading-relaxed mb-2 text-sm">
@@ -183,7 +193,12 @@
               @endif
               <div class="p-4 shadow-sm">
                 @if ($beranda)
-                <img loading="lazy" src="{{ asset('storage/'. $beranda->foto) }}" alt="Berita 1" class="w-full h-full object-cover rounded-lg mb-3">
+                <img 
+                    loading="lazy" 
+                    src="{{ $beranda->getFirstMediaUrl('foto') }}" 
+                    alt="Berita 1" 
+                    class="w-full h-full object-cover rounded-lg mb-3"
+                />
                 @endif
               </div>
             </div>
