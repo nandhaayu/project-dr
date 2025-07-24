@@ -7,9 +7,17 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div class="text-center">
               @if ($beranda)
-              <div class="aspect-w-16 aspect-h-9">
-                <iframe src="{{ $beranda->link }}" title="Video Profil" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-72 rounded-lg shadow-md"></iframe>
-              </div>
+                <div class="aspect-w-16 aspect-h-9">
+                  <iframe
+                    src="{{ $beranda->link }}?rel=0&modestbranding=1&enablejsapi=1"
+                    title="Video Profil"
+                    frameborder="0"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen
+                    class="w-full h-72 rounded-lg shadow-md"
+                  ></iframe>
+                </div>
               @endif
             </div>
             <div class="text-justify">
