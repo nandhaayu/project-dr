@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/marquee.css') }}">
     <link rel="icon" href="{{ asset('assets/img/logo-PPDR.png') }}" type="image/png" />
     <link rel="preload" as="image" href="{{ asset('assets/img/logo-PPDR.png') }}">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body class="grid min-h-screen grid-rows-[auto_1fr_auto] bg-gray-100">
@@ -26,5 +28,5 @@
   
 </body>
 <script src="{{ asset('assets/js/slider.js') }}" defer></script>
-<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.0/dist/cdn.min.js"></script>
 </html>
