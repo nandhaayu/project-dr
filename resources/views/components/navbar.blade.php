@@ -1,24 +1,39 @@
-<nav class="bg-green-700 hidden md:block">
-    <div class="mx-auto max-w-8xl px-4 sm:px-6 lg:px-8">
-      <div class="flex h-14 items-center justify-between">
-        <div class="flex items-center">
-          <ul class="flex">
-            <li class="flex text-white text-sm items-center mr-4">                                        
-                <i class="fa-solid fa-phone mr-2"></i> 085712225557
-            </li>
-            <li class="flex text-white text-m items-center mr-4">|</li>
-            <li class="flex items-center text-white text-sm">
-                <i class="fa-solid fa-map-location-dot mr-2"></i> Kedung, Buaran, Kec. Mayong, Kabupaten Jepara, Jawa Tengah 59465, Indonesia
-            </li>
-        </ul>
-        </div>
-        <div class="flex items-center">
-          <ul class="px-2 flex text-white text-m items-center">
-            <li class="px-2 text-white hover:bg-green-900 rounded-2xl"><a href="https://wa.me/6285712225557" target="_blank"><i class="fa-brands fa-whatsapp fa-lg"></i></a></li>
-            <li class="px-2 text-white hover:bg-green-900 rounded-2xl"><a href="https://youtube.com/@daarurrohmahmedia-uc8sb?si=s9uIuBLgkPhAql8m" target="_blank"><i class="fab fa-youtube fa-lg"></i></a></li>
-            <li class="px-2 text-white hover:bg-green-900 rounded-2xl"><a href="https://www.instagram.com/daarurrohmahmedia?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"><i class="fab fa-instagram fa-lg"></i></a></li>
-          </ul>
-        </div>
-      </div>
+<nav class="bg-green-700 hidden md:block text-white text-sm">
+  <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex h-14 items-center justify-between">
+
+      <!-- Kontak -->
+      <ul class="flex flex-wrap gap-4 items-center">
+        <li class="flex items-center">
+          <i class="fa-solid fa-phone mr-2" aria-hidden="true"></i>
+          <span>0857 1222 5557</span>
+        </li>
+        <li>|</li>
+        <li class="flex items-center">
+          <i class="fa-solid fa-map-location-dot mr-2" aria-hidden="true"></i>
+          <span>Kedung, Buaran, Mayong, Jepara, Jawa Tengah 59465</span>
+        </li>
+      </ul>
+
+      <!-- Sosial Media -->
+      <ul class="flex gap-2 items-center">
+        <li>
+          <a href="https://wa.me/6285712225557" target="_blank" aria-label="WhatsApp" class="p-2 hover:bg-green-800 rounded-full transition-colors">
+            <i class="fab fa-whatsapp fa-lg" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://youtube.com/@daarurrohmahmedia-uc8sb?si=s9uIuBLgkPhAql8m" target="_blank" aria-label="YouTube" class="p-2 hover:bg-green-800 rounded-full transition-colors">
+            <i class="fab fa-youtube fa-lg" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/daarurrohmahmedia" target="_blank" aria-label="Instagram" class="p-2 hover:bg-green-800 rounded-full transition-colors">
+            <i class="fab fa-instagram fa-lg" aria-hidden="true"></i>
+          </a>
+        </li>
+      </ul>
+
     </div>
+  </div>
 </nav>
