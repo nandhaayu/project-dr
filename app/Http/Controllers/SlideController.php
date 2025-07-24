@@ -13,7 +13,7 @@ class SlideController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',  
+            'foto' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',  
         ]);
 
         // Mengupload foto dan menyimpan path
@@ -34,7 +34,7 @@ class SlideController extends Controller
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',  
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',  
         ]);
 
         $slide = Slide::findOrFail($id);
