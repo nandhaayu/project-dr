@@ -4,7 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  <link rel="preload" href="https://rsms.me/inter/inter.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://rsms.me/inter/inter.css"></noscript>
   <link rel="icon" href="{{ asset('assets/img/logo-PPDR.png') }}" type="image/png" />
   @vite('resources/css/app.css')
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -28,15 +29,14 @@
     </main>
   </div>
 </body>
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="{{ asset('backend/libs/jquery/dist/jquery.min.js') }}"></script>
-<script src="{{ asset('backend/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('backend/js/sidebarmenu.js') }}"></script>
-<script src="{{ asset('backend/js/app.min.js') }}"></script>
-<script src="{{ asset('backend/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
-<script src="{{ asset('backend/libs/simplebar/dist/simplebar.js') }}"></script>
-<script src="{{ asset('backend/js/dashboard.js') }}"></script>
-<script src="{{ asset('backend/summernote/summernote.min.js') }}"></script>
+<script defer  src="{{ asset('backend/libs/jquery/dist/jquery.min.js') }}"></script>
+<script defer  src="{{ asset('backend/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+<script defer  src="{{ asset('backend/js/sidebarmenu.js') }}"></script>
+<script defer  src="{{ asset('backend/js/app.min.js') }}"></script>
+<script defer  src="{{ asset('backend/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
+<script defer  src="{{ asset('backend/libs/simplebar/dist/simplebar.js') }}"></script>
+<script defer  src="{{ asset('backend/js/dashboard.js') }}"></script>
+<script defer  src="{{ asset('backend/summernote/summernote.min.js') }}"></script>
 <script>
   $(document).ready(function() {
     $('#summernote').summernote();
