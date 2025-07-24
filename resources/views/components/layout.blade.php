@@ -10,9 +10,10 @@
     <title>PONPES DARUR ROHMAH</title>
     <link rel="stylesheet" href="{{ asset('assets/css/marquee.css') }}">
     <link rel="icon" href="{{ asset('assets/img/logo-PPDR.png') }}" type="image/png" />
-    <link href="{{ asset('assets/css/fontawesome/css/fontawesome.css') }}" rel="stylesheet" />
+    <link rel="preload" as="image" href="{{ asset('assets/img/logo-PPDR.png') }}">
+    {{-- <link href="{{ asset('assets/css/fontawesome/css/fontawesome.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/css/fontawesome/css/brands.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/css/fontawesome/css/solid.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/css/fontawesome/css/solid.css') }}" rel="stylesheet" /> --}}
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body class="grid min-h-screen grid-rows-[auto_1fr_auto] bg-gray-100">
