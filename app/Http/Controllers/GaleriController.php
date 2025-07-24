@@ -66,7 +66,7 @@ class GaleriController extends Controller
 {
     $request->validate([
         'judul' => 'required|max:45',
-        'foto.*' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+        'foto.*' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg,webp|max:2048',
     ], [
         'judul.required' => 'Judul wajib diisi',
         'judul.max' => 'Judul maksimal 45 karakter',
