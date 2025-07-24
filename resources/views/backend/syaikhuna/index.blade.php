@@ -23,7 +23,7 @@
                 <td>{{ $d->judul }}</td>
                 <td>{{ $d->nama }}</td>
                 <td>
-                    <img src="{{ asset('storage/' . $d->foto) }}" alt="Foto {{ $d->judul }}" class="rounded" style="width: 100%; max-width: 100px; height: auto;">
+                    <img loading="lazy" src="{{ asset('storage/' . $d->foto) }}" alt="Foto {{ $d->judul }}" class="rounded" style="width: 100%; max-width: 100px; height: auto;">
                 </td>
                 <td>{!! $d->deskripsi !!}</td>
                 <td>

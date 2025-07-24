@@ -41,7 +41,7 @@
           <label for="foto" class="form-label">Foto</label>
           <input type="file" class="form-control mb-3" id="foto" name="foto" accept="image/*">
           @if(!empty($syaikhuna->foto))
-            <img src="{{ asset('storage/' . $syaikhuna->foto) }}" alt="Foto Syaikhuna" class="rounded" style="width: 100%; max-width: 100px; height: auto;">
+            <img loading="lazy" src="{{ asset('storage/' . $syaikhuna->foto) }}" alt="Foto Syaikhuna" class="rounded" style="width: 100%; max-width: 100px; height: auto;">
           @endif
         </div>
 

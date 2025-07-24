@@ -22,7 +22,7 @@
           <label for="foto" class="form-label">Foto</label>
           <input type="file" class="form-control mb-3" id="foto" name="foto" accept="image/*">
           @if($beranda->foto && $beranda->foto !== 'nophoto.jpg')
-            <img src="{{ asset('storage/' . $beranda->foto) }}" alt="Foto beranda" class="rounded" style="width: 100%; max-width: 100px; height: auto;">
+            <img loading="lazy" src="{{ asset('storage/' . $beranda->foto) }}" alt="Foto beranda" class="rounded" style="width: 100%; max-width: 100px; height: auto;">
           @endif 
         </div>
 

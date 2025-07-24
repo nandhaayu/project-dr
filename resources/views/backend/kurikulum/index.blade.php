@@ -22,7 +22,7 @@
               <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $d->judul }}</td>
-                <td><img src="{{ asset('storage/' . $d->foto) }}" alt="project-image" class="rounded" style="width: 100%; max-width: 100px; height: auto;"></td>
+                <td><img loading="lazy" src="{{ asset('storage/' . $d->foto) }}" alt="project-image" class="rounded" style="width: 100%; max-width: 100px; height: auto;"></td>
                 <td>{!! $d->deskripsi !!}</td>
                 <td>
                     <a href="{{ route('kurikulum.edit', $d->id) }}" class="btn btn-warning btn-sm">Edit</a>

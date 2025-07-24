@@ -12,7 +12,7 @@
             @foreach ($pendaftaran as $d)
             <div class=" bg-white p-6 rounded-lg shadow-lg">
                 <h3 class="font-bold text-gray-900 mb-4">{{ $d->judul }}</h3>
-                <img src="{{ asset('storage/' . $d->foto) }}" alt="Pamflet Pendaftaran" class="w-full h-auto rounded-lg mb-6">
+                <img  loading="lazy" src="{{ asset('storage/' . $d->foto) }}" alt="Pamflet Pendaftaran" class="w-full h-auto rounded-lg mb-6">
                 <p class="text-gray-700 leading-relaxed mb-4">
                     {!! $d->deskripsi !!}
                 </p>

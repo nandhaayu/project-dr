@@ -18,7 +18,7 @@
             @foreach ($slide as $d)
             <tr>
               <td>
-                <img src="{{ asset('storage/' . $d->foto) }}" alt="slide Foto" class="rounded" style="width: 100%; max-width: 100px; height: auto;">
+                <img loading="lazy" src="{{ asset('storage/' . $d->foto) }}" alt="slide Foto" class="rounded" style="width: 100%; max-width: 100px; height: auto;">
               </td>
               <td>
                 <div class="d-flex flex-wrap gap-1">

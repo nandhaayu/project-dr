@@ -36,7 +36,7 @@
             <label for="image" class="form-label">Foto</label>
             <input type="file" class="form-control mb-3" id="image" name="image" accept="image/*">
             @if(!empty($id->image))
-              <img src="{{ url('storage/'.$id->image) }}" alt="Current Image" class="rounded" style="width: 100%; max-width: 100px; height: auto;">
+              <img loading="lazy" src="{{ url('storage/'.$id->image) }}" alt="Current Image" class="rounded" style="width: 100%; max-width: 100px; height: auto;">
             @endif 
         </div>
 

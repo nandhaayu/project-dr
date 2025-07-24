@@ -5,7 +5,7 @@
                 <!-- Left: Gambar dan Deskripsi -->
                 @if ($profil)
                 <div class="lg:w-2/3 bg-white p-6 rounded-lg shadow-lg text-justify">
-                    <img src="{{ asset('storage/'. $profil->foto) }}" alt="Foto Pondok Pesantren Darruh Rahmah" class="w-full rounded-lg mb-6" style="object-position: center; object-fit:cover; max-height: 400px">
+                    <img  loading="lazy" src="{{ asset('storage/'. $profil->foto) }}" alt="Foto Pondok Pesantren Darruh Rahmah" class="w-full rounded-lg mb-6" style="object-position: center; object-fit:cover; max-height: 400px">
                     <h2 class="text-2xl font-bold text-gray-900 mb-4">{{ $profil->judul }}</h2>
                     <p class="text-gray-700 leading-relaxed text-justify">
                         {!! $profil->deskripsi !!}
@@ -19,7 +19,7 @@
                         <!-- Berita 1 -->
                         @foreach ($posts as $d)
                         <div class="bg-white p-4 rounded-lg shadow-lg">
-                            <img src="{{ asset('storage/' . $d->image) }}" alt="Berita 1" class="w-full h-44 object-cover rounded-lg mb-3">
+                            <img loading="lazy" src="{{ asset('storage/' . $d->image) }}" alt="Berita 1" class="w-full h-44 object-cover rounded-lg mb-3">
                             <h3 class="font-semibold text-gray-800">{{ $d->title }}</h3>
                             <p class="text-gray-600 text-sm mt-2 text-justify">
                                 {!! Illuminate\Support\Str::words(strip_tags($d->body), 10, '...') !!}
