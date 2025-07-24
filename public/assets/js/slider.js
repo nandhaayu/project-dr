@@ -31,3 +31,45 @@
       showSlide(currentSlide);
     }, 5000);
   });
+
+          function showSlide(galleryId, index) {
+            let gallery = document.getElementById("carousel-" + galleryId);
+            let slides = gallery.children;
+            let totalSlides = parseInt(gallery.getAttribute("data-total"));
+            
+            index = (index + totalSlides) % totalSlides; // Pastikan indeks tidak keluar dari batas
+            gallery.setAttribute("data-current", index);
+
+            Array.from(slides).forEach((slide, i) => {
+                slide.classList.toggle("opacity-100", i === index);
+                slide.classList.toggle("pointer-events-auto", i === index);
+                slide.classList.toggle("opacity-0", i !== index);
+                slide.classList.toggle("pointer-events-none", i !== index);
+            });
+        }
+
+        function nextSlide(galleryId) {
+            let gallery = document.getElementById("carousel-" + galleryId);
+            let currentSlide = parseInt(gallery.getAttribute("data-current") || 0);
+            showSlide(galleryId, currentSlide + 1);
+        }
+
+        function prevSlide(galleryId) {
+            let gallery = document.getElementById("carousel-" + galleryId);
+            let currentSlide = parseInt(gallery.getAttribute("data-current") || 0);
+            showSlide(galleryId, currentSlide - 1);
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll("[id^='carousel-']").forEach(gallery => {
+                gallery.setAttribute("data-current", 0);
+                let totalSlides = parseInt(gallery.getAttribute("data-total"));
+                
+                if (totalSlides > 1) {
+                    setInterval(() => {
+                        let currentSlide = parseInt(gallery.getAttribute("data-current") || 0);
+                        showSlide(gallery.id.replace('carousel-', ''), currentSlide + 1);
+                    }, 3000);
+                }
+            });
+        });
