@@ -1,34 +1,44 @@
 <x-layout>
     <section class="py-12 bg-gray-100">
         <div class="max-w-6xl mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 @foreach ($post as $d)
-                <article class="w-full mx-auto border rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300 ease-in-out">
-                    <!-- Featured Image -->
-                    <a href="{{ route('show.singlePost', $d->id) }}}}">
-                        <img src="{{ asset('storage/' . $d->image) }}" alt="{{ $d['title'] }}" class="w-full h-48 object-cover">
-                    </a>
-                    <div class="p-5">
-                        <!-- Title -->
+                    <article class="border rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300">
+                        <!-- Gambar dengan Lazy Load -->
                         <a href="{{ route('show.singlePost', $d->id) }}">
-                            <h2 class="mb-1 tracking-tight font-bold hover:underline">{{ $d['title'] }}</h2>
+                            <img 
+                                src="{{ asset('storage/' . $d->image) }}" 
+                                alt="{{ $d->title }}" 
+                                class="w-full h-48 object-cover"
+                                loading="lazy"
+                            >
                         </a>
-                        <!-- Author and Date -->
-                        <div class="text-gray-500 text-sm mb-4">
-                            By 
-                            <a href="#" class="hover:underline">{{ $d->author->name }}</a> 
-                            | {{ $d->created_at->format('j F Y') }}
+                        <div class="p-4">
+                            <!-- Judul -->
+                            <a href="{{ route('show.singlePost', $d->id) }}">
+                                <h2 class="text-lg font-semibold mb-2 hover:underline line-clamp-2">
+                                    {{ $d->title }}
+                                </h2>
+                            </a>
+                            <!-- Penulis & Tanggal -->
+                            <div class="text-gray-500 text-sm mb-3">
+                                Oleh <span class="font-medium">{{ $d->author->name }}</span> | {{ $d->created_at->format('j F Y') }}
+                            </div>
+                            <!-- Kutipan -->
+                            <p class="text-gray-700 text-sm text-justify leading-relaxed">
+                                {!! \Illuminate\Support\Str::words(strip_tags($d->body), 25, '...') !!}
+                            </p>
+                            <!-- Link Selengkapnya -->
+                            <a href="{{ route('show.singlePost', $d->id) }}" class="inline-block mt-4 text-green-600 text-sm font-medium hover:underline">
+                                Baca Selengkapnya &raquo;
+                            </a>
                         </div>
-                        <!-- Excerpt -->
-                        <p class="text-gray-700 font-light text-sm text-justify">{!! Illuminate\Support\Str::words(strip_tags($d->body), 25, '...') !!}</p>
-                        <!-- Read More -->
-                        <a href="{{ route('show.singlePost', $d->id) }}" class="mt-4 text-sm inline-block text-green-500 hover:underline">Baca Selengkapnya &raquo;</a>
-                    </div>
-                </article>
+                    </article>
                 @endforeach
             </div>
-            <!-- Pagination -->
-            <div class="mt-8 flex justify-center">
+
+            <!-- Navigasi Pagination -->
+            <div class="mt-10 flex justify-center">
                 {{ $post->links('pagination::tailwind') }}
             </div>
         </div>
